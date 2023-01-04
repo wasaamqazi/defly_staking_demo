@@ -29,29 +29,29 @@ const StakingTab = () => {
                 <img
                   src="\assets\images\stakingBlog.png"
                   alt=""
-                  className="img-fluid"
+                  className="img-fluid blob-img"
                 />
-              </div>
-              <div className="stak-circle">
-                <img src="\assets\images\nftStaking.png" alt="" />
-              </div>
-              <div className="stak-tab-tagline">
-                <h1>NFT STAKING</h1>
+                <img
+                  src="\assets\images\nftStaking.png"
+                  alt=""
+                  className="img-fluid img-circle"
+                />
+                <h1 className="stak-tab-tagline">NFT STAKING</h1>
               </div>
             </div>
-            <div className="right">
+            <div className="left">
               <div className="blob">
                 <img
                   src="\assets\images\stakingBlog.png"
                   alt=""
-                  className="img-fluid"
+                  className="img-fluid blob-img"
                 />
-              </div>
-              <div className="stak-circle">
-                <img src="\assets\images\nftStaking.png" alt="" />
-              </div>
-              <div className="stak-tab-tagline">
-                <h1>Token STAKING</h1>
+                <img
+                  src="\assets\images\nftStaking.png"
+                  alt=""
+                  className="img-fluid img-circle"
+                />
+                <h1 className="stak-tab-tagline">token STAKING</h1>
               </div>
             </div>
           </div>

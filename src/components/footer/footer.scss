@@ -96,3 +96,39 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .footer {
+    padding-top: 0px;
+    padding-bottom: 80px;
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      .logos {
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+      .learn-more {
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .subscribe-us {
+        width: fit-content;
+        margin: auto auto;
+        .footer-heading {
+          margin-bottom: 30px;
+        }
+        .subscribe-input {
+          margin-bottom: 30px;
+        }
+
+        .social-icons {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

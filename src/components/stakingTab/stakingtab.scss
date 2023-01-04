@@ -37,72 +37,112 @@
     display: flex;
     justify-content: space-between;
     .left {
-      position: relative;
-      width: fit-content;
+      // width: fit-content;
       &:hover {
         cursor: pointer;
       }
-      &:hover .blob {
+      &:hover .blob-img {
         transform: rotate(180deg);
         // transition: all 0.3s ease-in-out;
         transition: all 1s linear 0s;
       }
-      .stak-circle {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-      .stak-tab-tagline {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        h1 {
-          font-family: "Baloo Bhaijaan";
-          font-style: normal;
-          font-weight: 400;
-          font-size: 68.5618px;
-          text-align: center;
-          color: #060124;
-        }
-      }
-    }
 
-    .right {
-      position: relative;
-      width: fit-content;
-      &:hover {
-        cursor: pointer;
+      .blob {
+        position: relative;
+
+        .img-circle {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
       }
-      &:hover .blob {
-        transform: rotate(180deg);
-        // transition: all 0.3s ease-in-out;
-        transition: all 1s linear 0s;
-      }
-      .stak-circle {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
+
       .stak-tab-tagline {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        h1 {
-          font-family: "Baloo Bhaijaan";
-          font-style: normal;
-          font-weight: 400;
-          font-size: 68.5618px;
-          text-align: center;
-          color: #060124;
-        }
+        font-family: "Baloo Bhaijaan";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 68.5618px;
+        text-align: center;
+        color: #060124;
+        text-transform: uppercase;
       }
     }
   }
   .tab-detail2 {
     padding-bottom: 232px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .staking-tab {
+    // padding-left: 240px;
+    // padding-right: 240px;
+    padding-top: 100px;
+    .left {
+      .blob {
+        position: relative;
+        .img-circle {
+          position: absolute;
+          top: 50% !important;
+          left: 45% !important;
+          transform: translate(-50%, -50%) !important;
+          max-width: 70%;
+        }
+        .blob-img {
+          max-width: 90%;
+        }
+      }
+
+      .stak-tab-tagline {
+        position: absolute;
+        top: 50%;
+        left: 45% !important;
+        transform: translate(-50%, -50%);
+        font-size: 58.5618px !important;
+      }
+    }
+    .staking-tab-detail1 {
+      p {
+        font-size: 18px;
+      }
+    }
+    .tab-detail2 {
+      padding-bottom: 132px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .staking-tab {
+    .stak-tabs {
+      display: flex;
+      flex-direction: column !important;
+      align-items: center;
+
+      margin: 50px 0 !important;
+      .left {
+        .blob {
+          display: flex;
+          justify-content: center;
+          .img-circle {
+            left: 50% !important;
+          }
+
+          .stak-tab-tagline {
+            left: 50% !important;
+            transform: translate(-50%, -50%);
+            font-size: 48px !important;
+          }
+        }
+        &:last-child {
+          margin-top: 50px;
+        }
+      }
+    }
   }
 }

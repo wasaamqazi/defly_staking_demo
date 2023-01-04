@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "../navbar/NavBar";
 import "./hero.scss";
 const Hero = () => {
   return (

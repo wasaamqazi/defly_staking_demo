@@ -1,9 +1,8 @@
 .nav-bar {
   padding: 10px 150px 0px 150px;
-  position: sticky;
+  position: relative;
   width: 100%;
   background-color: #000;
-  top: 10px;
   .navbar-nav {
     .nav-item {
       display: flex;
@@ -40,6 +39,110 @@
         border: 2.23902px solid #fcc016;
         border-radius: 2.98537px;
         padding: 10px 10px 8px 10px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nav-bar {
+    padding: 0px !important;
+    position: relative;
+    .navbar-nav {
+      position: absolute;
+      top: 100%;
+      left: 0%;
+      // background-color: #fcc016;
+      background-color: #fcc016;
+      z-index: 3;
+      width: 100%;
+      padding: 20px 0;
+      padding-left: 40px;
+    }
+    .navbar-toggler {
+      width: 30px;
+      height: 20px;
+      position: relative;
+      transition: 0.5s ease-in-out;
+      outline: none;
+      box-shadow: none;
+      border: 0;
+
+      &:focus,
+      &:active {
+        outline: none;
+        box-shadow: none;
+        border: 0;
+        position: relative;
+      }
+
+      .toggler-icon {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: white;
+        border-radius: 1px;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: 0.25s ease-in-out;
+      }
+    }
+
+    .navbar-toggler.collapsed .top-bar {
+      position: absolute;
+      top: 0px;
+      transform: rotate(0deg);
+    }
+
+    .navbar-toggler.collapsed .middle-bar {
+      opacity: 1;
+      position: absolute;
+      top: 10px;
+      // filter: alpha(opacity=100);
+    }
+
+    .navbar-toggler.collapsed .bottom-bar {
+      position: absolute;
+      top: 20px;
+      transform: rotate(0deg);
+    }
+
+    /* when navigation is clicked */
+
+    .navbar-toggler .top-bar {
+      top: inherit;
+      transform: rotate(135deg);
+    }
+
+    .navbar-toggler .middle-bar {
+      opacity: 0;
+      top: inherit;
+      filter: alpha(opacity=0);
+    }
+
+    .navbar-toggler .bottom-bar {
+      top: inherit;
+      transform: rotate(-135deg);
+    }
+
+    /* Color of 3 lines */
+
+    .navbar-toggler.collapsed .toggler-icon {
+      background-color: white;
+    }
+
+    .nav-item {
+      a {
+        color: #000 !important;
+        &.lock-link {
+          color: #ababab !important;
+        }
+      }
+      button {
+        color: #000 !important;
+        border: 3px solid #000 !important;
       }
     }
   }

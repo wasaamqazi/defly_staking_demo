@@ -5,13 +5,13 @@ const NavBar = () => {
   return (
     <div>
       <section className="nav-bar">
-        <nav class="navbar navbar-expand-lg ">
+        <nav class="navbar navbar-expand-xl ">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">
               <img src="\assets\images\defly-logo.svg" alt="" srcset="" />
             </a>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler collapsed d-flex d-lg-none  flex-column justify-content-around"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
@@ -19,7 +19,9 @@ const NavBar = () => {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="toggler-icon top-bar"></span>
+              <span className="toggler-icon middle-bar"></span>
+              <span className="toggler-icon bottom-bar"></span>
             </button>
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
