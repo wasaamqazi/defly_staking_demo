@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "Baloo Bhaijaan";
+  src: url(./assets/font/BalooBhaijaanRegular.ttf);
+}
+
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  text-decoration: none;
+}

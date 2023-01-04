@@ -1,0 +1,64 @@
+.top-nft {
+  .section-header {
+    h1 {
+      font-family: "Quicksand";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 32.4597px;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-align: center;
+      padding-bottom: 110px;
+    }
+  }
+
+  .top-nft-content {
+    padding-bottom: 100px;
+
+    .top-nft-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 40px;
+    }
+
+    .top-nft-card {
+      width: 372px;
+      background: rgba(48, 56, 77, 0.5);
+      // background: rgba(144, 158, 196, 0.5);
+      backdrop-filter: blur(31px);
+      border-radius: 7px;
+      display: flex;
+      padding: 14px 16px;
+      .left {
+        img {
+          max-height: 59px;
+        }
+      }
+    }
+    .right {
+      margin-left: 23px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      p {
+        font-family: "DM Mono";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10.3583px;
+        color: #cbc8bd;
+        margin-bottom: 6px;
+
+        &:last-child {
+          margin-bottom: 0px;
+          font-size: 10.3583px;
+          color: #ffffff;
+
+          .icon {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}

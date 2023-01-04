@@ -1,0 +1,108 @@
+.staking-tab {
+  // padding-left: 240px;
+  // padding-right: 240px;
+  padding-top: 200px;
+  .section-header {
+    margin: 0 auto;
+    position: relative;
+    width: fit-content;
+    h1 {
+      font-family: "Quicksand";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 22.1489px;
+      text-transform: uppercase;
+      color: #121f41;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .staking-tab-detail1 {
+    margin-top: 74px;
+    p {
+      font-family: "Quicksand";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 22.1489px;
+      text-align: center;
+      color: #ffffff;
+    }
+  }
+  .stak-tabs {
+    margin-top: 137px;
+    margin-bottom: 137px;
+    display: flex;
+    justify-content: space-between;
+    .left {
+      position: relative;
+      width: fit-content;
+      &:hover {
+        cursor: pointer;
+      }
+      &:hover .blob {
+        transform: rotate(180deg);
+        // transition: all 0.3s ease-in-out;
+        transition: all 1s linear 0s;
+      }
+      .stak-circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .stak-tab-tagline {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        h1 {
+          font-family: "Baloo Bhaijaan";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 68.5618px;
+          text-align: center;
+          color: #060124;
+        }
+      }
+    }
+
+    .right {
+      position: relative;
+      width: fit-content;
+      &:hover {
+        cursor: pointer;
+      }
+      &:hover .blob {
+        transform: rotate(180deg);
+        // transition: all 0.3s ease-in-out;
+        transition: all 1s linear 0s;
+      }
+      .stak-circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .stak-tab-tagline {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        h1 {
+          font-family: "Baloo Bhaijaan";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 68.5618px;
+          text-align: center;
+          color: #060124;
+        }
+      }
+    }
+  }
+  .tab-detail2 {
+    padding-bottom: 232px;
+  }
+}

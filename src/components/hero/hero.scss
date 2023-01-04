@@ -1,0 +1,35 @@
+.hero-section {
+  position: relative;
+  .hero-tagline {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    h1 {
+      font-family: "Quicksand";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 209.441px;
+      color: #ffffff;
+      text-align: center;
+
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: #fcc016;
+      &:last-child {
+        font-family: "Quicksand";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 134.504px;
+        letter-spacing: 100px;
+        color: #fcc016;
+        margin-left: 100px;
+      }
+    }
+  }
+
+  .hero-gif {
+    position: absolute;
+    top: 0;
+  }
+}

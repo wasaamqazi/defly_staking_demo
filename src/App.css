@@ -1,0 +1,15 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.content {
+  background-color: rgb(211, 195, 195);
+  height: 200vh;
+}
+
+.landing {
+  background-image: url("./assets/images/background.png");
+  background-size: cover;
+}

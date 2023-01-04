@@ -1,0 +1,98 @@
+.footer {
+  padding-top: 116px;
+  padding-bottom: 280px;
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    .learn-more {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .footer-heading {
+        h1 {
+          font-family: "Open Sans";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 16.1664px;
+          text-transform: uppercase;
+          color: #fcc016;
+        }
+      }
+
+      a {
+        font-family: "Quicksand";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 17.9131px;
+        color: #ffffff;
+        text-transform: capitalize;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        width: fit-content;
+
+        &:hover {
+          transition: all 0.3s linear;
+          color: #fcc016;
+        }
+      }
+
+      &.subscribe-us {
+        .footer-heading {
+          display: flex;
+          justify-content: flex-end;
+        }
+        .subscribe-input {
+          display: flex;
+          justify-content: flex-end;
+          border: 0.790309px solid #ffffff;
+          border-radius: 11.0643px;
+          input {
+            background-color: transparent;
+            font-family: "Roboto";
+            font-style: normal;
+            font-weight: 300;
+            font-size: 14.2493px;
+            letter-spacing: 0.02em;
+            color: #9a9a9a;
+            width: 100%;
+            border: none;
+            outline: none;
+            padding: 11px 0px 11px 11px;
+          }
+
+          button {
+            background: #fcc016;
+            border-radius: 0px 11.0643px 11.0643px 0px;
+            width: 60px;
+            border: none;
+            position: relative;
+            left: 0.5px;
+            padding: 2px;
+          }
+        }
+
+        .social-icons {
+          display: flex;
+          justify-content: space-between;
+
+          a {
+            margin-top: 0;
+            .social-ico {
+              &:hover {
+                transition: all 0.3s linear;
+                color: #fcc016 !important;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .logos {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
