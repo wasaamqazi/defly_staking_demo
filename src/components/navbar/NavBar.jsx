@@ -8,7 +8,12 @@ const NavBar = () => {
         <nav class="navbar navbar-expand-xl ">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">
-              <img src="\assets\images\defly-logo.svg" alt="" srcset="" />
+              <img
+                src="\assets\images\defly-logo.svg"
+                alt=""
+                srcset=""
+                className="logo-img"
+              />
             </a>
             <button
               className="navbar-toggler collapsed d-flex d-lg-none  flex-column justify-content-around"

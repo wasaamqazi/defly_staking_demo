@@ -7,6 +7,7 @@ import TopNFT from "../components/topNFT/TopNFT";
 const Landing = () => {
   return (
     <div className="landing">
+      <Hero />
       <StakingTab />
       <TopNFT />
       <Footer />
