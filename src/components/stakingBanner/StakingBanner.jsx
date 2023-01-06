@@ -14,6 +14,9 @@ const StakingBanner = () => {
             <h2>with 4 tier</h2>
           </div>
         </div>
+        <video autoPlay className="stakingNft">
+          <source src="\assets\video\landing.mp4" type="" />
+        </video>
       </section>
     </div>
   );
