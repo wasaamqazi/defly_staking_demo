@@ -5,9 +5,9 @@ const NavBar = () => {
   return (
     <div>
       <section className="nav-bar">
-        <nav class="navbar navbar-expand-xl ">
+        <nav class="navbar navbar-expand-lg ">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
               <img
                 src="\assets\images\defly-logo.svg"
                 alt=""

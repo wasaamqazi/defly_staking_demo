@@ -1,8 +1,8 @@
 .nav-bar {
   padding: 10px 150px 0px 150px;
-  position: relative;
   width: 100%;
-  // background-color: #000;
+  z-index: 999;
+  position: relative;
   .navbar-nav {
     .nav-item {
       display: flex;
@@ -44,7 +44,12 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1400px) {
+  .nav-bar {
+    padding: 10px 50px 0px 50px;
+  }
+}
+@media screen and (max-width: 1000px) {
   .nav-bar {
     padding: 0px !important;
     position: relative;

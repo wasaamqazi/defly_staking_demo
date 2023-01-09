@@ -10,9 +10,11 @@ const Hero = () => {
           <h1>DEFLY BALL</h1>
           <h1>STAKING</h1>
         </div>
+        {/* <img src="\assets\images\herogif.png" alt="" className="img-fluid" /> */}
         <div className="hero-gifs">
-          <img src="\assets\images\herogif.png" alt="" className="img-fluid" />
-          {/* <img src="\assets\images\landing2.gif" alt="" className="img-fluid" /> */}
+          <video className="stakingNft" playsInline autoPlay muted loop>
+            <source src="\assets\video\landing.mp4" type="video/mp4" />
+          </video>
         </div>
       </section>
     </div>

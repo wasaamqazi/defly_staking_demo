@@ -1,5 +1,5 @@
 .unstaking {
-  padding-top: 170px;
+  padding-top: 140px;
   padding-bottom: 170px;
   position: relative;
   overflow-x: hidden;
@@ -294,5 +294,58 @@
       letter-spacing: 25px;
       //   border: 6.87px solid #fcc016;
     }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .unstaking {
+    .nftStaking-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 40px;
+      row-gap: 40px;
+    }
+  }
+}
+@media screen and (max-width: 992px) {
+  .unstaking {
+    .nftStaking-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 40px;
+      row-gap: 40px;
+    }
+  }
+}
+@media screen and (max-width: 764px) {
+  .unstaking {
+    .nftStaking-cards {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      column-gap: 40px;
+      row-gap: 40px;
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .unstaking {
+    padding-top: 55px;
+    padding-bottom: 55px;
+    .nftStaking-cards {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      column-gap: 40px;
+      row-gap: 40px;
+    }
+
+    .section-header {
+      margin-bottom: 55px;
+    }
+  }
+  .nftStaking-cards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: 40px;
+    row-gap: 40px;
   }
 }

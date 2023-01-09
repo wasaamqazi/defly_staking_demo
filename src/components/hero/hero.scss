@@ -1,13 +1,11 @@
 .hero-section {
   position: relative;
-  overflow-x: hidden;
   background-color: #000;
+  overflow: hidden;
   .hero-tagline {
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    padding: 220px 0;
+    position: relative;
+    z-index: 2;
     h1 {
       font-family: "Quicksand";
       font-style: normal;
@@ -15,7 +13,6 @@
       font-size: 209.441px;
       color: #ffffff;
       text-align: center;
-
       -webkit-text-stroke-width: 2px;
       -webkit-text-stroke-color: #fcc016;
       &:last-child {
@@ -31,61 +28,61 @@
   }
 
   .hero-gifs {
-    img {
-      width: 100%;
-    }
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
 
-@media screen and (max-width: 1280px) {
-  .hero-section {
-    .hero-tagline {
-      h1 {
-        font-size: 193.441px;
+// @media screen and (max-width: 1280px) {
+//   .hero-section {
+//     .hero-tagline {
+//       h1 {
+//         font-size: 193.441px;
 
-        &:last-child {
-          font-size: 114.504px;
-        }
-      }
-    }
-  }
-}
-@media screen and (max-width: 1100px) {
-  .hero-section {
-    .hero-tagline {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      h1 {
-        font-size: 163.441px;
-        // width: fit-content;
-        &:last-child {
-          font-size: 79.504px;
-          // width: fit-content;
-        }
-      }
-    }
-  }
-}
+//         &:last-child {
+//           font-size: 114.504px;
+//         }
+//       }
+//     }
+//   }
+// }
+// @media screen and (max-width: 1100px) {
+//   .hero-section {
+//     .hero-tagline {
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: center;
+//       align-items: center;
+//       h1 {
+//         font-size: 163.441px;
+//         // width: fit-content;
+//         &:last-child {
+//           font-size: 79.504px;
+//           // width: fit-content;
+//         }
+//       }
+//     }
+//   }
+// }
 
-@media screen and (max-width: 600px) {
-  .hero-section {
-    overflow: hidden !important;
+// @media screen and (max-width: 600px) {
+//   .hero-section {
+//     overflow: hidden !important;
 
-    h1 {
-      font-weight: 700;
-      font-size: 60px !important;
-      color: #ffffff;
-      text-align: center;
-      width: 300%;
-      &:last-child {
-        font-weight: 700;
-        font-size: 40px !important;
-        letter-spacing: 28px !important;
-        margin-left: 30px !important;
-        width: unset;
-      }
-    }
-  }
-}
+//     h1 {
+//       font-weight: 700;
+//       font-size: 60px !important;
+//       color: #ffffff;
+//       text-align: center;
+//       width: 300%;
+//       &:last-child {
+//         font-weight: 700;
+//         font-size: 40px !important;
+//         letter-spacing: 28px !important;
+//         margin-left: 30px !important;
+//         width: unset;
+//       }
+//     }
+//   }
+// }

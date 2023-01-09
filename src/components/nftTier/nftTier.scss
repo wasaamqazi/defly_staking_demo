@@ -1,7 +1,8 @@
 .nft-tier {
   .section-header {
-    margin: 0 auto;
+    margin: 90px auto;
     position: relative;
+
     width: fit-content;
     h1 {
       font-family: "Quicksand";
@@ -17,7 +18,7 @@
     }
   }
   .staking-tab-detail1 {
-    margin-top: 74px;
+    // margin-top: 74px;
     padding-bottom: 90px;
     p {
       font-family: "Quicksand";
@@ -239,5 +240,152 @@
     background: #740bf9;
     width: 222px;
     border-left: 12px solid #fcc016;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nft-tier {
+    .section-header {
+      margin: 55px auto;
+      position: relative;
+
+      width: fit-content;
+    }
+    .staking-tab-detail1 {
+      margin-top: 55px;
+      padding-bottom: 55px;
+      P {
+        font-size: 17px;
+      }
+    }
+
+    .tier-tabContent {
+      font-size: 17px;
+      padding-top: 55px;
+      padding-bottom: 55px;
+    }
+  }
+
+  .loadmore-btn {
+    margin-top: 55px;
+
+    button {
+      font-size: 28px;
+    }
+  }
+}
+
+// ------------- Token Tier
+
+.tokenTier {
+  .section-header {
+    margin: 90px auto;
+    position: relative;
+
+    width: fit-content;
+    h1 {
+      font-family: "Quicksand";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 22.1489px;
+      text-transform: uppercase;
+      color: #121f41;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .staking-tab-detail1 {
+    // margin-top: 74px;
+    padding-bottom: 90px;
+    p {
+      font-family: "Quicksand";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 22px;
+      text-align: center;
+      color: #ffffff;
+    }
+  }
+
+  .tier-parentTab {
+    border: none;
+    display: flex;
+    justify-content: center;
+    .nav-item {
+      position: relative;
+      :hover {
+        border: none !important;
+      }
+      p {
+        font-family: "Ranchers";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 39.5517px;
+        text-align: center;
+        color: #ffffff;
+        border-radius: 15px;
+        line-height: 1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-transform: capitalize;
+        user-select: none;
+        cursor: pointer;
+      }
+      .nav-link {
+        border: none !important;
+        &.active {
+          background-color: transparent;
+          border: none;
+
+          .tierback {
+            transition: all 0.3s linear;
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+
+  .tier-tabContent {
+    font-family: "Quicksand";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22.1489px;
+    text-align: center;
+    color: #ffffff;
+    padding-top: 90px;
+    padding-bottom: 0px;
+  }
+
+  .tierBackRotate {
+    transition: all 0.3s linear;
+    transform: rotate(180deg);
+  }
+}
+@media screen and (max-width: 600px) {
+  .tokenTier {
+    .section-header {
+      margin: 55px auto;
+      position: relative;
+
+      width: fit-content;
+    }
+    .staking-tab-detail1 {
+      margin-top: 55px;
+      padding-bottom: 55px;
+      P {
+        font-size: 17px;
+      }
+    }
+
+    .tier-tabContent {
+      font-size: 17px;
+      padding-top: 55px;
+      padding-bottom: 0px;
+    }
   }
 }

@@ -1,6 +1,14 @@
 import React from "react";
 import "./stakingtab.scss";
+import { useNavigate } from "react-router-dom";
 const StakingTab = () => {
+  const navigate = useNavigate();
+  const navTokenStaking = () => {
+    navigate("/navigateTokenStaking");
+  };
+  const navNFTStaking = () => {
+    navigate("/navNFTStaking");
+  };
   return (
     <div>
       <section className="staking-tab">
@@ -25,7 +33,7 @@ const StakingTab = () => {
           </div>
           <div className="stak-tabs">
             <div className="left">
-              <div className="blob">
+              <div className="blob" onClick={navNFTStaking}>
                 <img
                   src="\assets\images\stakingBlog.png"
                   alt=""
@@ -40,7 +48,7 @@ const StakingTab = () => {
               </div>
             </div>
             <div className="left">
-              <div className="blob">
+              <div className="blob" onClick={navTokenStaking}>
                 <img
                   src="\assets\images\stakingBlog.png"
                   alt=""
