@@ -1,13 +1,14 @@
 import React from "react";
 import "./navbar.scss";
 import { Icon } from "@iconify/react";
+import { NavLink } from "react-router-dom";
 const NavBar = () => {
   return (
     <div>
       <section className="nav-bar">
-        <nav class="navbar navbar-expand-lg ">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="/">
+        <nav className="navbar navbar-expand-lg ">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="/">
               <img
                 src="\assets\images\defly-logo.svg"
                 alt=""
@@ -28,20 +29,27 @@ const NavBar = () => {
               <span className="toggler-icon middle-bar"></span>
               <span className="toggler-icon bottom-bar"></span>
             </button>
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">
-                    DEFLY BALL NFTS
-                  </a>
+            <div
+              className="collapse navbar-collapse "
+              id="navbarSupportedContent"
+            >
+              <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link "
+                    aria-current="page"
+                    to="/navNFTStaking"
+                  >
+                    NFT STaking
+                  </NavLink>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    MY NFT’S
-                  </a>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/navigateTokenStaking">
+                    token STaking
+                  </NavLink>
                 </li>
-                <li class="nav-item ">
-                  <a class="nav-link lock-link" href="#">
+                <li className="nav-item ">
+                  <a className="nav-link lock-link" href="#">
                     STADIUMS
                     <Icon
                       icon="dashicons:lock"
@@ -52,8 +60,8 @@ const NavBar = () => {
                     />
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link  lock-link" href="#">
+                <li className="nav-item">
+                  <a className="nav-link  lock-link" href="#">
                     ACCESSORIES
                     <Icon
                       icon="dashicons:lock"
@@ -64,7 +72,7 @@ const NavBar = () => {
                     />
                   </a>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                   <button>CONNECT WALLET</button>
                 </li>
               </ul>

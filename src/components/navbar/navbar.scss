@@ -17,7 +17,7 @@
         // border: 0.2px solid #ffffff;
         margin-right: 30px;
         text-transform: uppercase;
-
+        padding: 5px 15px;
         &.lock-link {
           color: #ababab;
           display: flex;
@@ -26,6 +26,11 @@
           .locks {
             margin-left: 3px;
           }
+        }
+
+        &.active {
+          border: 2.3px solid #ffffff;
+          border-radius: 19.0371px;
         }
       }
 

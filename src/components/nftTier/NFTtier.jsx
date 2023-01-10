@@ -5,8 +5,10 @@ import { Icon } from "@iconify/react";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
-import { pink } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
+
 const NFTtier = () => {
+  const navigate = useNavigate();
   const topnft = [
     {
       nftName: "AUSTRALIAN SHEPHARD",
@@ -58,7 +60,9 @@ const NFTtier = () => {
   ];
 
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
-
+  const navNFTStaking = () => {
+    navigate("/stakingDetail");
+  };
   return (
     <div>
       <section className="nft-tier">
@@ -212,7 +216,7 @@ const NFTtier = () => {
           <div className="nftStaking-cards">
             {topnft.map((item) => {
               return (
-                <div className="staking-card">
+                <div className="staking-card" onClick={navNFTStaking}>
                   <div className="background">
                     <img
                       src="\assets\images\cardBack.png"

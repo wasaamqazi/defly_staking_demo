@@ -86,134 +86,134 @@
     transition: all 0.3s linear;
     transform: rotate(180deg);
   }
-}
-.nftStaking-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 40px;
-  row-gap: 70px;
-  .staking-card {
-    cursor: pointer;
-    position: relative;
-    width: fit-content;
-    margin: auto auto;
-    .card-plate {
-      position: absolute;
-      top: 16px;
-      left: 18px;
-      width: 100%;
+  .nftStaking-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 40px;
+    row-gap: 70px;
+    .staking-card {
+      cursor: pointer;
+      position: relative;
+      width: fit-content;
+      margin: auto auto;
+      .card-plate {
+        position: absolute;
+        top: 16px;
+        left: 18px;
+        width: 100%;
 
-      .card-gold-plate {
-        position: relative;
-        width: fit-content;
+        .card-gold-plate {
+          position: relative;
+          width: fit-content;
 
-        .fav {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          background: rgba(52, 52, 68, 0.9);
-          border-radius: 4.33358px;
-          padding: 0 10px 0 0px;
-          p {
-            font-family: "Poppins";
-            font-style: normal;
-            font-weight: 500;
-            font-size: 16.40735px;
-            line-height: 1;
-            text-transform: capitalize;
-            color: #ffffff;
+          .fav {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(52, 52, 68, 0.9);
+            border-radius: 4.33358px;
+            padding: 0 10px 0 0px;
+            p {
+              font-family: "Poppins";
+              font-style: normal;
+              font-weight: 500;
+              font-size: 16.40735px;
+              line-height: 1;
+              text-transform: capitalize;
+              color: #ffffff;
+            }
+
+            .css-i4bv87-MuiSvgIcon-root {
+              fill: white !important;
+            }
+          }
+          .ourNft {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            img {
+              width: auto;
+              max-height: 240px;
+            }
           }
 
-          .css-i4bv87-MuiSvgIcon-root {
-            fill: white !important;
+          .card-name {
+            position: absolute;
+            top: 105%;
+            left: 0px;
+            width: 100%;
+            p {
+              font-family: "DM Mono";
+              font-style: normal;
+              font-weight: 500;
+              font-size: 14.4453px;
+              line-height: 1;
+              letter-spacing: 0.04em;
+              text-transform: uppercase;
+              color: #ffffff;
+              padding: 10px 32px;
+              background: rgba(217, 217, 217, 0.21);
+              backdrop-filter: blur(2px);
+              border-radius: 7px;
+              text-align: center;
+            }
           }
-        }
-        .ourNft {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          img {
-            width: auto;
-            max-height: 240px;
-          }
-        }
 
-        .card-name {
-          position: absolute;
-          top: 105%;
-          left: 0px;
-          width: 100%;
-          p {
-            font-family: "DM Mono";
-            font-style: normal;
-            font-weight: 500;
-            font-size: 14.4453px;
-            line-height: 1;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            color: #ffffff;
-            padding: 10px 32px;
-            background: rgba(217, 217, 217, 0.21);
-            backdrop-filter: blur(2px);
-            border-radius: 7px;
-            text-align: center;
-          }
-        }
-
-        .creator-details {
-          position: absolute;
-          top: 125%;
-          display: flex;
-          justify-content: space-between;
-          width: 100%;
-          .left {
+          .creator-details {
+            position: absolute;
+            top: 125%;
             display: flex;
-            align-items: center;
-            .creator-tag {
+            justify-content: space-between;
+            width: 100%;
+            .left {
               display: flex;
-              flex-direction: column;
-              justify-content: space-between;
-              // background-color: red;
-              height: 90%;
-              margin-left: 10px;
-              p {
-                font-family: "DM Mono";
-                font-style: normal;
-                font-weight: 500;
-                font-size: 10.834px;
-                line-height: 14px;
-                letter-spacing: 0.04em;
-                text-transform: capitalize;
-                color: #817c7c;
+              align-items: center;
+              .creator-tag {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                // background-color: red;
+                height: 90%;
+                margin-left: 10px;
+                p {
+                  font-family: "DM Mono";
+                  font-style: normal;
+                  font-weight: 500;
+                  font-size: 10.834px;
+                  line-height: 14px;
+                  letter-spacing: 0.04em;
+                  text-transform: capitalize;
+                  color: #817c7c;
 
-                &:last-child {
-                  color: #ffffff;
+                  &:last-child {
+                    color: #ffffff;
+                  }
                 }
               }
             }
-          }
-          .right {
-            .price {
-              height: 100%;
-              display: flex;
-              flex-direction: column;
-              justify-content: space-between;
-              p {
-                font-family: "DM Mono";
-                font-style: normal;
-                font-weight: 500;
-                font-size: 10.834px;
-                letter-spacing: 0.04em;
-                text-transform: capitalize;
-                color: #817c7c;
+            .right {
+              .price {
+                height: 100%;
                 display: flex;
-                align-items: center;
-                &:last-child {
-                  color: #fff;
-                }
-                .icon {
-                  margin-right: 5px;
+                flex-direction: column;
+                justify-content: space-between;
+                p {
+                  font-family: "DM Mono";
+                  font-style: normal;
+                  font-weight: 500;
+                  font-size: 10.834px;
+                  letter-spacing: 0.04em;
+                  text-transform: capitalize;
+                  color: #817c7c;
+                  display: flex;
+                  align-items: center;
+                  &:last-child {
+                    color: #fff;
+                  }
+                  .icon {
+                    margin-right: 5px;
+                  }
                 }
               }
             }
@@ -222,24 +222,50 @@
       }
     }
   }
+
+  .loadmore-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    button {
+      font-family: "Ranchers";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 34.3492px;
+      line-height: 1;
+      color: #ffffff;
+      border: none;
+      padding: 15px 0;
+      background: #740bf9;
+      width: 222px;
+      border-left: 12px solid #fcc016;
+    }
+  }
 }
 
-.loadmore-btn {
-  display: flex;
-  justify-content: center;
-  margin-top: 100px;
-  button {
-    font-family: "Ranchers";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 34.3492px;
-    line-height: 1;
-    color: #ffffff;
-    border: none;
-    padding: 15px 0;
-    background: #740bf9;
-    width: 222px;
-    border-left: 12px solid #fcc016;
+@media screen and (max-width: 1400px) {
+  .nft-tier {
+    .nftStaking-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+@media screen and (max-width: 1000px) {
+  .nft-tier {
+    .nftStaking-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .nft-tier {
+    .nftStaking-cards {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr) !important;
+      row-gap: 40px;
+    }
   }
 }
 

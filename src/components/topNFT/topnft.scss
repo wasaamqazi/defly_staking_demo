@@ -99,6 +99,17 @@
   }
 }
 
+@media screen and (max-width: 1020px) {
+  .top-nft {
+    .top-nft-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr) !important;
+      row-gap: 40px;
+      align-self: center;
+    }
+  }
+}
+
 @media screen and (max-width: 600px) {
   .top-nft {
     .top-nft-content {
@@ -112,6 +123,11 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+      }
+    }
+    .section-header {
+      h1 {
+        font-size: 27px !important;
       }
     }
   }

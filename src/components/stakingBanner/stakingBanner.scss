@@ -1,7 +1,6 @@
 .nft-staking-banner {
   overflow-x: hidden;
   position: relative;
-  // background-color: #000;
   .stakingBanner-content {
     .tag-line {
       padding: 169px 250px;
@@ -175,7 +174,8 @@
   .nft-staking-banner {
     overflow-x: hidden;
     position: relative;
-
+    background-image: url("../../assets/images/fire.png") !important;
+    background-size: cover;
     .stakingBanner-content {
       .tag-line {
         padding: 169px 5px;
@@ -216,7 +216,7 @@
   }
 }
 
-// ---------------------Token Staking
+// ---------------------Token Staking------------------------------
 
 .token-staking-banner {
   overflow-x: hidden;
@@ -404,13 +404,13 @@
 
 @media screen and (max-width: 600px) {
   .token-staking-banner {
-    background-image: url("../../assets/images/fire.png");
+    background-image: url("../../assets/images/fire.png") !important;
     background-size: cover;
+    .stakingNft {
+      display: none !important;
+      // z-index: -10;
+    }
     .stakingBanner-content {
-      .stakingNft {
-        display: none;
-      }
-
       .tag-line {
         padding: 169px 0px;
         position: relative;
