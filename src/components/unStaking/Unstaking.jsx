@@ -127,8 +127,6 @@ const Unstaking = () => {
                         className="backImg img-fluid"
                       />
                       <div className="nft-claim-reward">
-                        <p>Claim Reward</p>
-
                         <p>
                           {/* days */}
                           <span className="days">
@@ -164,17 +162,20 @@ const Unstaking = () => {
                           </span>
                         </p>
                       </div>
-                      <div className="drop-shadow"></div>
+                      {/* <div className="drop-shadow"></div> */}
                     </div>
                     <div className="card-plate">
                       <div className="card-gold-plate">
+                        {/* backgound gold image */}
                         <img
                           src="\assets\images\cardSheild.png"
                           alt=""
                           className="img-fluid"
                         />
 
-                        <div className="fav d-flex align-items-center">
+                        {/* Favourite Checkbox */}
+
+                        <div className="fav d-flex align-items-center ">
                           <Checkbox
                             disabled
                             className="favCheck"
@@ -194,6 +195,7 @@ const Unstaking = () => {
                           <p>100</p>
                         </div>
 
+                        {/* Our NFT IMG (dog img) */}
                         <div className="ourNft">
                           <img
                             //   src="\assets\images\australianShephard.png"
@@ -203,17 +205,18 @@ const Unstaking = () => {
                           />
                         </div>
 
+                        {/* nft name  */}
                         <div className="card-name">
                           {/* <p>Australian shephard</p> */}
                           <p>{item.nftName} </p>
                         </div>
 
+                        {/* nft detail price */}
                         <div className="creator-details">
                           <div className="left">
-                            <div className="creator-avatar">
+                            {/* <div className="creator-avatar">
                               <img
-                                //   src="\assets\images\creatorAvatar.png"
-                                src={item.creatorAvatar}
+                                src="\assets\images\creatorAvatar.png"
                                 alt=""
                                 className="img-fluid"
                               />
@@ -221,9 +224,11 @@ const Unstaking = () => {
                             <div className="creator-tag">
                               <p>Creator</p>
 
-                              {/* <p className="creator-name">Sonia Williams</p> */}
-                              <p className="creator-name">{item.creatorname}</p>
-                            </div>
+                              <p className="creator-name">Sonia Williams</p>
+                            </div> */}
+                            <button className="claimReward">
+                              Claim Reward
+                            </button>
                           </div>
                           <div className="right">
                             <div className="price">

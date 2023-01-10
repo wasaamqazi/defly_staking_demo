@@ -169,6 +169,7 @@
             .left {
               display: flex;
               align-items: center;
+              width: 60%;
               .creator-tag {
                 display: flex;
                 flex-direction: column;
@@ -190,6 +191,19 @@
                     color: #ffffff;
                   }
                 }
+              }
+              .stake-card {
+                width: 100%;
+                background: linear-gradient(90deg, #fcc016 0%, #f9d03f 100%);
+                border-radius: 3.85093px;
+                font-family: "Ranchers";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 15.2784px;
+                color: #ffffff;
+                text-shadow: 0px 1.82756px 1.82756px rgba(0, 0, 0, 0.25);
+                padding: 7px 0;
+                text-transform: capitalize;
               }
             }
             .right {
@@ -218,6 +232,33 @@
               }
             }
           }
+        }
+      }
+
+      .nft-claim-reward {
+        opacity: 0;
+        p {
+          font-family: "Ranchers";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 39.5517px;
+          line-height: 1;
+          color: #fcc016;
+          text-shadow: 0px 0px 6px #fcc016;
+          text-align: center;
+          background: rgba(0, 0, 0, 0.7);
+          position: absolute;
+          z-index: 1;
+          top: 50%;
+          left: 50%;
+          width: 87%;
+          transform: translate(-50%, -100%);
+          padding: 5px 0;
+        }
+      }
+      &:hover {
+        .nft-claim-reward {
+          opacity: 1;
         }
       }
     }
@@ -414,4 +455,7 @@
       padding-bottom: 0px;
     }
   }
+}
+
+.staking-modal {
 }

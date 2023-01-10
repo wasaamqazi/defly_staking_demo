@@ -15,7 +15,7 @@ const NftStaking = () => {
         <StakingBanner />
         <NFTtier />
         <Unstaking />
-        <TopNFT />
+        {/* <TopNFT /> */}
         <Footer />
       </div>
     </div>

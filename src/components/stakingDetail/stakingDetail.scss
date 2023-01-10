@@ -24,469 +24,6 @@
       }
     }
 
-    .stakingDetail-card {
-      // background-color: #817c7c;
-      border: 1px solid #fcc016;
-      border-radius: 11px;
-      position: relative;
-      display: flex;
-      padding: 50px;
-      position: relative;
-      .left-side {
-        width: 35%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        .nftStaking-cards {
-          width: fit-content;
-          display: block !important;
-          position: relative;
-          z-index: 2;
-          .staking-card {
-            position: relative;
-            width: fit-content;
-            margin: auto auto;
-            .card-plate {
-              position: absolute;
-              top: 16px;
-              left: 18px;
-              width: 100%;
-
-              .card-gold-plate {
-                position: relative;
-                width: fit-content;
-
-                .fav {
-                  position: absolute;
-                  top: 10px;
-                  right: 10px;
-                  background: rgba(52, 52, 68, 0.9);
-                  border-radius: 4.33358px;
-                  padding: 0 10px 0 0px;
-                  p {
-                    font-family: "Poppins";
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size: 16.40735px;
-                    line-height: 1;
-                    text-transform: capitalize;
-                    color: #ffffff;
-                  }
-
-                  .css-i4bv87-MuiSvgIcon-root {
-                    fill: white !important;
-                  }
-                }
-                .ourNft {
-                  position: absolute;
-                  top: 50%;
-                  left: 50%;
-                  transform: translate(-50%, -50%);
-                  img {
-                    width: auto;
-                    max-height: 240px;
-                  }
-                }
-
-                .card-name {
-                  position: absolute;
-                  top: 105%;
-                  left: 0px;
-                  width: 100%;
-                  p {
-                    font-family: "DM Mono";
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size: 14.4453px;
-                    line-height: 1;
-                    letter-spacing: 0.04em;
-                    text-transform: uppercase;
-                    color: #ffffff;
-                    padding: 10px 32px;
-                    background: rgba(217, 217, 217, 0.21);
-                    backdrop-filter: blur(2px);
-                    border-radius: 7px;
-                    text-align: center;
-                  }
-                }
-
-                .creator-details {
-                  position: absolute;
-                  top: 125%;
-                  display: flex;
-                  justify-content: space-between;
-                  width: 100%;
-                  .left {
-                    display: flex;
-                    align-items: center;
-                    .creator-tag {
-                      display: flex;
-                      flex-direction: column;
-                      justify-content: space-between;
-                      // background-color: red;
-                      height: 90%;
-                      margin-left: 10px;
-                      p {
-                        font-family: "DM Mono";
-                        font-style: normal;
-                        font-weight: 500;
-                        font-size: 10.834px;
-                        line-height: 14px;
-                        letter-spacing: 0.04em;
-                        text-transform: capitalize;
-                        color: #817c7c;
-
-                        &:last-child {
-                          color: #ffffff;
-                        }
-                      }
-                    }
-                  }
-                  .right {
-                    .price {
-                      height: 100%;
-                      display: flex;
-                      flex-direction: column;
-                      justify-content: space-between;
-                      p {
-                        font-family: "DM Mono";
-                        font-style: normal;
-                        font-weight: 500;
-                        font-size: 10.834px;
-                        letter-spacing: 0.04em;
-                        text-transform: capitalize;
-                        color: #817c7c;
-                        display: flex;
-                        align-items: center;
-                        &:last-child {
-                          color: #fff;
-                        }
-                        .icon {
-                          margin-right: 5px;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-
-        .rotated-card {
-          position: absolute;
-          left: 40%;
-          transform: rotate(30deg);
-          top: 10% !important;
-          z-index: 1;
-          .card-plate {
-            position: absolute;
-            top: 10px !important;
-            left: 13px !important;
-            width: 100%;
-
-            .card-gold-plate {
-              position: relative;
-              width: fit-content;
-              img {
-                width: 80%;
-              }
-
-              .fav {
-                position: absolute;
-                display: none !important;
-                top: 10px;
-                right: 10px;
-                padding: 0 10px 0 0px;
-                p {
-                  font-size: 16.40735px;
-                }
-
-                .css-i4bv87-MuiSvgIcon-root {
-                  fill: white !important;
-                }
-              }
-              .ourNft {
-                position: absolute;
-                top: 50%;
-                left: 45% !important;
-                transform: translate(-50%, -50%);
-                img {
-                  width: 80% !important;
-                  max-height: 240px;
-                  transform: scaleX(-1);
-                }
-              }
-
-              .card-name {
-                position: absolute;
-                top: 105%;
-                left: 0px;
-                width: 100%;
-                p {
-                  font-size: 12px !important;
-                  padding: 10px 23px !important;
-                  width: fit-content !important;
-                }
-              }
-
-              .creator-details {
-                position: absolute;
-                top: 125%;
-                display: flex;
-                justify-content: space-evenly !important;
-                width: 85% !important;
-                .left {
-                  .creator-tag {
-                    height: 90%;
-                    margin-left: 5px !important;
-                    p {
-                      font-size: 10px;
-                      &:last-child {
-                        color: #ffffff;
-                      }
-                    }
-                  }
-                }
-                .right {
-                  .price {
-                    height: 100%;
-                    p {
-                      font-size: 10.834px;
-                      &:last-child {
-                        color: #fff;
-                      }
-                      .icon {
-                        margin-right: 5px;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-          .background {
-            img {
-              width: 80%;
-            }
-          }
-        }
-        .stake-btn {
-          display: flex;
-          justify-content: center;
-          width: 53%;
-          margin-top: 30px;
-          button {
-            width: 95%;
-            background: linear-gradient(90deg, #fcc016 0%, #f9d03f 100%);
-            border-radius: 5px;
-            border: none;
-            font-family: "Ranchers";
-            font-style: normal;
-            font-weight: 400;
-            font-size: 25px;
-            color: #ffffff;
-            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-          }
-        }
-      }
-
-      .right-side {
-        width: 65%;
-        .stakingDetail-card-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding-bottom: 10px;
-          h1 {
-            font-family: "DM Mono";
-            font-style: normal;
-            font-weight: 500;
-            font-size: 48.9788px;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            color: #fcc016;
-          }
-          .select-stakingTier {
-            .dropdown {
-              button {
-                background: #fcc016;
-                border-radius: 3px;
-                border: 0;
-                font-family: "Ranchers";
-                font-style: normal;
-                font-weight: 400;
-                font-size: 22px;
-                text-align: center;
-                color: #000000;
-              }
-
-              .dropdown-menu {
-                width: fit-content;
-                li {
-                  :hover {
-                    background-color: #fcbf16c7;
-                  }
-                  a {
-                    font-family: "Ranchers";
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 16px;
-                    text-align: center;
-                    color: #000000;
-                    user-select: none;
-                    cursor: pointer;
-                  }
-                }
-              }
-            }
-          }
-        }
-
-        .stakCard-details {
-          border-left: 8px solid #fcc016;
-          .price {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 0px 22px 22px 0px;
-            width: 30%;
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 20px 10px 10px;
-            p {
-              font-family: "DM Mono";
-              font-style: normal;
-              font-weight: 400;
-              font-size: 18.98px;
-              letter-spacing: 0.04em;
-              color: #ffffff;
-              text-transform: capitalize;
-              line-height: 1;
-              display: flex;
-              align-items: center;
-              img {
-                margin-right: 10px;
-              }
-            }
-          }
-          .discription {
-            background-color: rgba(255, 255, 255, 0.2);
-            margin-top: 22px;
-            padding: 10px 0px;
-            .discription-head {
-              width: 30%;
-              background: linear-gradient(
-                90deg,
-                rgba(252, 192, 22, 0.2) -3.08%,
-                rgba(255, 255, 255, 0) 104.63%
-              );
-              border-radius: 0px;
-              padding: 11px 10px;
-              p {
-                font-family: "DM Mono";
-                font-style: normal;
-                font-weight: 500;
-                font-size: 18.98px;
-                letter-spacing: 0.04em;
-                text-transform: capitalize;
-                color: #fcc016;
-              }
-            }
-            .discrip {
-              padding: 12px 42px 25px 10px;
-              p {
-                font-family: "Quicksand";
-                font-style: normal;
-                font-weight: 500;
-                font-size: 14px;
-                line-height: 18px;
-                letter-spacing: 0.04em;
-                text-transform: capitalize;
-                color: #ffffff;
-              }
-            }
-            .detail-element {
-              width: 50%;
-              padding: 20px 0px 30px 10px;
-              display: flex;
-              flex-direction: column;
-              .element-head {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-                p {
-                  font-family: "Quicksand";
-                  font-style: normal;
-                  font-weight: 700;
-                  font-size: 16px;
-                  letter-spacing: 0.04em;
-                  text-transform: capitalize;
-                  color: #fcc016;
-                }
-                .attribute-levels {
-                  p {
-                    font-family: "Quicksand";
-                    font-style: normal;
-                    font-weight: 600;
-                    font-size: 14px;
-                    line-height: 18px;
-                    letter-spacing: 0.04em;
-                    text-transform: capitalize;
-                    color: #ffffff;
-                    margin-top: 28px;
-                  }
-                }
-              }
-              .level-progress {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin-top: 30px;
-                h6 {
-                  font-family: "Quicksand";
-                  font-style: normal;
-                  font-weight: 600;
-                  font-size: 14px;
-                  letter-spacing: 0.04em;
-                  text-transform: capitalize;
-                  color: #ffffff;
-                }
-                .p-value {
-                  position: relative;
-                  .progress-bar {
-                    background: #1e1e1e;
-                    height: 14px;
-                    border-radius: 8px;
-                    width: 250px;
-
-                    .current-progress {
-                      height: 14px;
-                      background: #d3d0d0;
-                      border-radius: 8px;
-                    }
-                    .progress-value {
-                      position: absolute;
-                      right: 10px;
-                      bottom: 15px;
-
-                      p {
-                        font-family: "Quicksand";
-                        font-style: normal;
-                        font-weight: 500;
-                        font-size: 12px;
-                        letter-spacing: 0.04em;
-                        text-transform: capitalize;
-                        color: #ffffff;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
     .other-nftStaking-cards {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -817,9 +354,6 @@
         padding: 10px !important;
         .left-side {
           .nftStaking-cards {
-            &.rotated-card {
-              display: none !important;
-            }
           }
         }
 
@@ -847,6 +381,489 @@
       }
       .stake-btn {
         width: 80% !important;
+      }
+    }
+  }
+}
+
+.staking-modal {
+  // .showlazmi {
+  //   display: flex !important;
+  //   background-color: #000;
+  // }
+
+  .modal-dialog {
+    background-color: transparent !important;
+    background: transparent !important;
+    .modal-content {
+      background: transparent !important;
+      background-color: transparent !important;
+      border: none;
+      .modal-body {
+        outline: none;
+      }
+    }
+  }
+}
+.stakingDetail-card {
+  border: 1px solid #fcc016;
+  border-radius: 11px;
+  padding: 50px;
+  position: relative;
+  width: 970px !important;
+  display: flex !important;
+  background-color: #000000;
+  .left-side {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .nftStaking-cards {
+      width: fit-content;
+      display: block !important;
+      position: relative;
+      z-index: 2;
+      .staking-card {
+        position: relative;
+        width: fit-content;
+        margin: auto auto;
+        .card-plate {
+          position: absolute;
+          top: 16px;
+          left: 18px;
+          width: 100%;
+
+          .card-gold-plate {
+            position: relative;
+            width: fit-content;
+
+            .fav {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              background: rgba(52, 52, 68, 0.9);
+              border-radius: 4.33358px;
+              padding: 0 10px 0 0px;
+              p {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16.40735px;
+                line-height: 1;
+                text-transform: capitalize;
+                color: #ffffff;
+              }
+
+              .css-i4bv87-MuiSvgIcon-root {
+                fill: white !important;
+              }
+            }
+            .ourNft {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              img {
+                width: auto;
+                max-height: 240px;
+              }
+            }
+
+            .card-name {
+              position: absolute;
+              top: 105%;
+              left: 0px;
+              width: 100%;
+              p {
+                font-family: "DM Mono";
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14.4453px;
+                line-height: 1;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                color: #ffffff;
+                padding: 10px 32px;
+                background: rgba(217, 217, 217, 0.21);
+                backdrop-filter: blur(2px);
+                border-radius: 7px;
+                text-align: center;
+              }
+            }
+
+            .creator-details {
+              position: absolute;
+              top: 125%;
+              display: flex;
+              justify-content: space-between;
+              width: 100%;
+              .left {
+                display: flex;
+                align-items: center;
+                .creator-tag {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
+                  // background-color: red;
+                  height: 90%;
+                  margin-left: 10px;
+                  p {
+                    font-family: "DM Mono";
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 10.834px;
+                    line-height: 14px;
+                    letter-spacing: 0.04em;
+                    text-transform: capitalize;
+                    color: #817c7c;
+
+                    &:last-child {
+                      color: #ffffff;
+                    }
+                  }
+                }
+              }
+              .right {
+                .price {
+                  height: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
+                  p {
+                    font-family: "DM Mono";
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 10.834px;
+                    letter-spacing: 0.04em;
+                    text-transform: capitalize;
+                    color: #817c7c;
+                    display: flex;
+                    align-items: center;
+                    &:last-child {
+                      color: #fff;
+                    }
+                    .icon {
+                      margin-right: 5px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .rotated-card {
+      position: absolute;
+      left: 40%;
+      transform: rotate(30deg);
+      top: 10% !important;
+      z-index: 1;
+      .card-plate {
+        position: absolute;
+        top: 10px !important;
+        left: 13px !important;
+        width: 100%;
+
+        .card-gold-plate {
+          position: relative;
+          width: fit-content;
+          img {
+            width: 80%;
+          }
+
+          .fav {
+            position: absolute;
+            display: none !important;
+            top: 10px;
+            right: 10px;
+            padding: 0 10px 0 0px;
+            p {
+              font-size: 16.40735px;
+            }
+
+            .css-i4bv87-MuiSvgIcon-root {
+              fill: white !important;
+            }
+          }
+          .ourNft {
+            position: absolute;
+            top: 50%;
+            left: 45% !important;
+            transform: translate(-50%, -50%);
+            img {
+              width: 80% !important;
+              max-height: 240px;
+              transform: scaleX(-1);
+            }
+          }
+
+          .card-name {
+            position: absolute;
+            top: 105%;
+            left: 0px;
+            width: 100%;
+            p {
+              font-size: 12px !important;
+              padding: 10px 23px !important;
+              width: fit-content !important;
+            }
+          }
+
+          .creator-details {
+            position: absolute;
+            top: 125%;
+            display: flex;
+            justify-content: space-evenly !important;
+            width: 85% !important;
+            .left {
+              .creator-tag {
+                height: 90%;
+                margin-left: 5px !important;
+                p {
+                  font-size: 10px;
+                  &:last-child {
+                    color: #ffffff;
+                  }
+                }
+              }
+            }
+            .right {
+              .price {
+                height: 100%;
+                p {
+                  font-size: 10.834px;
+                  &:last-child {
+                    color: #fff;
+                  }
+                  .icon {
+                    margin-right: 5px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .background {
+        img {
+          width: 80%;
+        }
+      }
+    }
+    .stake-btn {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 30px;
+      button {
+        width: 95%;
+        background: linear-gradient(90deg, #fcc016 0%, #f9d03f 100%);
+        border-radius: 5px;
+        border: none;
+        font-family: "Ranchers";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 25px;
+        color: #ffffff;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+    }
+  }
+
+  .right-side {
+    width: 65%;
+    .stakingDetail-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      h1 {
+        font-family: "DM Mono";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 48.9788px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #fcc016;
+      }
+      .select-stakingTier {
+        .dropdown {
+          button {
+            background: #fcc016;
+            border-radius: 3px;
+            border: 0;
+            font-family: "Ranchers";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 22px;
+            text-align: center;
+            color: #000000;
+          }
+
+          .dropdown-menu {
+            width: fit-content;
+            li {
+              :hover {
+                background-color: #fcbf16c7;
+              }
+              a {
+                font-family: "Ranchers";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                text-align: center;
+                color: #000000;
+                user-select: none;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .stakCard-details {
+      border-left: 8px solid #fcc016;
+      .price {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 0px 22px 22px 0px;
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px 10px 10px;
+        p {
+          font-family: "DM Mono";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 18.98px;
+          letter-spacing: 0.04em;
+          color: #ffffff;
+          text-transform: capitalize;
+          line-height: 1;
+          display: flex;
+          align-items: center;
+          img {
+            margin-right: 10px;
+          }
+        }
+      }
+      .discription {
+        background-color: rgba(255, 255, 255, 0.2);
+        margin-top: 22px;
+        padding: 10px 0px;
+        .discription-head {
+          width: 30%;
+          background: linear-gradient(
+            90deg,
+            rgba(252, 192, 22, 0.2) -3.08%,
+            rgba(255, 255, 255, 0) 104.63%
+          );
+          border-radius: 0px;
+          padding: 11px 10px;
+          p {
+            font-family: "DM Mono";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18.98px;
+            letter-spacing: 0.04em;
+            text-transform: capitalize;
+            color: #fcc016;
+          }
+        }
+        .discrip {
+          padding: 12px 42px 25px 10px;
+          p {
+            font-family: "Quicksand";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 18px;
+            letter-spacing: 0.04em;
+            text-transform: capitalize;
+            color: #ffffff;
+          }
+        }
+        .detail-element {
+          width: 50%;
+          padding: 20px 0px 30px 10px;
+          display: flex;
+          flex-direction: column;
+          .element-head {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            p {
+              font-family: "Quicksand";
+              font-style: normal;
+              font-weight: 700;
+              font-size: 16px;
+              letter-spacing: 0.04em;
+              text-transform: capitalize;
+              color: #fcc016;
+            }
+            .attribute-levels {
+              p {
+                font-family: "Quicksand";
+                font-style: normal;
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 18px;
+                letter-spacing: 0.04em;
+                text-transform: capitalize;
+                color: #ffffff;
+                margin-top: 28px;
+              }
+            }
+          }
+          .level-progress {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 30px;
+            h6 {
+              font-family: "Quicksand";
+              font-style: normal;
+              font-weight: 600;
+              font-size: 14px;
+              letter-spacing: 0.04em;
+              text-transform: capitalize;
+              color: #ffffff;
+            }
+            .p-value {
+              position: relative;
+              .progress-bar {
+                background: #1e1e1e;
+                height: 14px;
+                border-radius: 8px;
+                width: 250px;
+
+                .current-progress {
+                  height: 14px;
+                  background: #d3d0d0;
+                  border-radius: 8px;
+                }
+                .progress-value {
+                  position: absolute;
+                  right: 10px;
+                  bottom: 15px;
+
+                  p {
+                    font-family: "Quicksand";
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 12px;
+                    letter-spacing: 0.04em;
+                    text-transform: capitalize;
+                    color: #ffffff;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

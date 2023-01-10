@@ -58,7 +58,7 @@ const StakingDetail = () => {
       <section className="staking-detail">
         <NavBar />
 
-        <div className="staking-detail-content">
+        <div className="staking-detail-content ">
           <div className="section-header">
             <h1>nft Staking details</h1>
             <img
@@ -159,7 +159,7 @@ const StakingDetail = () => {
                   </div>
                 </div>
                 {/* Rotated Card in nft detail page */}
-                <div className="nftStaking-cards rotated-card">
+                {/* <div className="nftStaking-cards rotated-card">
                   <div className="staking-card">
                     <div className="background ">
                       <img
@@ -241,7 +241,7 @@ const StakingDetail = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="stake-btn">
                   <button>stake</button>
                 </div>
@@ -304,7 +304,7 @@ const StakingDetail = () => {
                     </p>
                   </div>
                 </div>
-                <div className="discription">
+                {/* <div className="discription">
                   <div className="discription-head">
                     <p>Details</p>
                   </div>
@@ -361,7 +361,7 @@ const StakingDetail = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

@@ -19,7 +19,7 @@ const TokenStakingPage = () => {
         <TokenTier />
         <TotalToken />
         <Unstaking />
-        <TopNFT />
+        {/* <TopNFT /> */}
         <Footer />
       </div>
     </div>

@@ -6,63 +6,50 @@ import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
-
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import StakingDetailModal from "../stakingDetail/StakingDetailModal";
 const NFTtier = () => {
-  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const topnft = [
     {
       nftName: "AUSTRALIAN SHEPHARD",
-      creatorname: "Sonia Williams",
       nftPrice: 4.89,
       nftImg: "/assets/images/australianShephard.png",
-      creatorAvatar: "/assets/images/creatorAvatar.png",
     },
     {
       nftName: "Border collie",
-      creatorname: " Jade shaw",
-      creatorAvatar: "/assets/images/creatorAvatar.png",
-
       nftPrice: 3.6,
       nftImg: "/assets/images/borderCollie.png",
     },
     {
       nftName: "Bull terrier",
-      creatorname: "Nina holland ",
-      creatorAvatar: "/assets/images/creatorAvatar.png",
-
       nftPrice: 3.6,
       nftImg: "/assets/images/australianShephard.png",
     },
     {
       nftName: "CHIHUAHUA ",
-      creatorname: "Jack Hager ",
-      creatorAvatar: "/assets/images/creatorAvatar.png",
-
       nftPrice: 3.69,
       nftImg: "/assets/images/australianShephard.png",
     },
     {
       nftName: "POODLE",
-      creatorname: "john wick ",
-      creatorAvatar: "/assets/images/creatorAvatar.png",
-
       nftPrice: 31.6,
       nftImg: "/assets/images/australianShephard.png",
     },
     {
       nftName: "DOBERMAN",
-      creatorname: " sabrina kate",
-      creatorAvatar: "/assets/images/creatorAvatar.png",
-
       nftPrice: 3.64,
       nftImg: "/assets/images/australianShephard.png",
     },
   ];
 
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
-  const navNFTStaking = () => {
-    navigate("/stakingDetail");
-  };
+
   return (
     <div>
       <section className="nft-tier">
@@ -216,13 +203,16 @@ const NFTtier = () => {
           <div className="nftStaking-cards">
             {topnft.map((item) => {
               return (
-                <div className="staking-card" onClick={navNFTStaking}>
+                <div className="staking-card">
                   <div className="background">
                     <img
                       src="\assets\images\cardBack.png"
                       alt=""
                       className="backImg img-fluid"
                     />
+                    <div className="nft-claim-reward">
+                      <p>Claim Reward</p>
+                    </div>
                   </div>
                   <div className="card-plate">
                     <div className="card-gold-plate">
@@ -267,10 +257,9 @@ const NFTtier = () => {
 
                       <div className="creator-details">
                         <div className="left">
-                          <div className="creator-avatar">
+                          {/* <div className="creator-avatar ">
                             <img
-                              //   src="\assets\images\creatorAvatar.png"
-                              src={item.creatorAvatar}
+                              src="\assets\images\creatorAvatar.png"
                               alt=""
                               className="img-fluid"
                             />
@@ -278,9 +267,11 @@ const NFTtier = () => {
                           <div className="creator-tag">
                             <p>Creator</p>
 
-                            {/* <p className="creator-name">Sonia Williams</p> */}
-                            <p className="creator-name">{item.creatorname}</p>
-                          </div>
+                            <p className="creator-name">Sonia Williams</p>
+                          </div> */}
+                          <button className="stake-card" onClick={handleShow}>
+                            stake
+                          </button>
                         </div>
                         <div className="right">
                           <div className="price">
@@ -309,6 +300,19 @@ const NFTtier = () => {
             <button>load more</button>
           </div>
         </div>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          // backdrop="static"
+          keyboard={false}
+          size="lg"
+          className="staking-modal"
+          centered
+        >
+          <Modal.Body>
+            <StakingDetailModal />
+          </Modal.Body>
+        </Modal>
       </section>
     </div>
   );
