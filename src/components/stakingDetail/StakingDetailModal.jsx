@@ -185,7 +185,7 @@ const StakingDetailModal = () => {
                   </div>
                 </div> */}
               <div className="stake-btn">
-                <button>stake</button>
+                <button>approved</button>
               </div>
             </div>
           </div>

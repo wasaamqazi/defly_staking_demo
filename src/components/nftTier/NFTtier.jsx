@@ -305,12 +305,20 @@ const NFTtier = () => {
           onHide={handleClose}
           // backdrop="static"
           keyboard={false}
-          size="lg"
+          size="xl"
           className="staking-modal"
           centered
         >
           <Modal.Body>
             <StakingDetailModal />
+            <button onClick={handleClose} className="close-modal-btn">
+              <Icon
+                icon="mdi:close-box"
+                color="#fcc016"
+                width="32"
+                height="32"
+              />
+            </button>
           </Modal.Body>
         </Modal>
       </section>

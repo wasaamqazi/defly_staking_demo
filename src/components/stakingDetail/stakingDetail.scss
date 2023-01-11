@@ -333,6 +333,41 @@
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .stakingDetail-card {
+    padding: 10px !important;
+    display: flex;
+    flex-direction: column;
+    .left-side {
+      width: 100% !important;
+      order: 2;
+      margin-top: 10px;
+    }
+
+    .right-side {
+      width: 100% !important;
+      order: 1;
+      .stakCard-details {
+        .price {
+          width: 80% !important;
+        }
+      }
+      .stakingDetail-card-header {
+        flex-wrap: wrap;
+        .select-stakingTier {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+        h1 {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
 @media screen and (max-width: 700px) {
   .staking-detail {
     .staking-detail-content {
@@ -350,35 +385,6 @@
         margin: 55px 0 !important;
       }
 
-      .stakingDetail-card {
-        padding: 10px !important;
-        .left-side {
-          .nftStaking-cards {
-          }
-        }
-
-        .right-side {
-          .stakCard-details {
-            .price {
-              width: 80% !important;
-            }
-            .discription {
-              .detail-element {
-                width: 100% !important;
-                padding: 20px 10px 30px 10px !important;
-
-                .level-progress {
-                  .p-value {
-                    .progress-bar {
-                      width: 200px !important;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
       .stake-btn {
         width: 80% !important;
       }
@@ -387,10 +393,9 @@
 }
 
 .staking-modal {
-  // .showlazmi {
-  //   display: flex !important;
-  //   background-color: #000;
-  // }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .modal-dialog {
     background-color: transparent !important;
@@ -401,6 +406,14 @@
       border: none;
       .modal-body {
         outline: none;
+
+        .close-modal-btn {
+          border: none;
+          background: transparent;
+          position: absolute;
+          top: 3%;
+          right: 8%;
+        }
       }
     }
   }
@@ -555,104 +568,104 @@
       }
     }
 
-    .rotated-card {
-      position: absolute;
-      left: 40%;
-      transform: rotate(30deg);
-      top: 10% !important;
-      z-index: 1;
-      .card-plate {
-        position: absolute;
-        top: 10px !important;
-        left: 13px !important;
-        width: 100%;
+    // .rotated-card {
+    //   position: absolute;
+    //   left: 40%;
+    //   transform: rotate(30deg);
+    //   top: 10% !important;
+    //   z-index: 1;
+    //   .card-plate {
+    //     position: absolute;
+    //     top: 10px !important;
+    //     left: 13px !important;
+    //     width: 100%;
 
-        .card-gold-plate {
-          position: relative;
-          width: fit-content;
-          img {
-            width: 80%;
-          }
+    //     .card-gold-plate {
+    //       position: relative;
+    //       width: fit-content;
+    //       img {
+    //         width: 80%;
+    //       }
 
-          .fav {
-            position: absolute;
-            display: none !important;
-            top: 10px;
-            right: 10px;
-            padding: 0 10px 0 0px;
-            p {
-              font-size: 16.40735px;
-            }
+    //       .fav {
+    //         position: absolute;
+    //         display: none !important;
+    //         top: 10px;
+    //         right: 10px;
+    //         padding: 0 10px 0 0px;
+    //         p {
+    //           font-size: 16.40735px;
+    //         }
 
-            .css-i4bv87-MuiSvgIcon-root {
-              fill: white !important;
-            }
-          }
-          .ourNft {
-            position: absolute;
-            top: 50%;
-            left: 45% !important;
-            transform: translate(-50%, -50%);
-            img {
-              width: 80% !important;
-              max-height: 240px;
-              transform: scaleX(-1);
-            }
-          }
+    //         .css-i4bv87-MuiSvgIcon-root {
+    //           fill: white !important;
+    //         }
+    //       }
+    //       .ourNft {
+    //         position: absolute;
+    //         top: 50%;
+    //         left: 45% !important;
+    //         transform: translate(-50%, -50%);
+    //         img {
+    //           width: 80% !important;
+    //           max-height: 240px;
+    //           transform: scaleX(-1);
+    //         }
+    //       }
 
-          .card-name {
-            position: absolute;
-            top: 105%;
-            left: 0px;
-            width: 100%;
-            p {
-              font-size: 12px !important;
-              padding: 10px 23px !important;
-              width: fit-content !important;
-            }
-          }
+    //       .card-name {
+    //         position: absolute;
+    //         top: 105%;
+    //         left: 0px;
+    //         width: 100%;
+    //         p {
+    //           font-size: 12px !important;
+    //           padding: 10px 23px !important;
+    //           width: fit-content !important;
+    //         }
+    //       }
 
-          .creator-details {
-            position: absolute;
-            top: 125%;
-            display: flex;
-            justify-content: space-evenly !important;
-            width: 85% !important;
-            .left {
-              .creator-tag {
-                height: 90%;
-                margin-left: 5px !important;
-                p {
-                  font-size: 10px;
-                  &:last-child {
-                    color: #ffffff;
-                  }
-                }
-              }
-            }
-            .right {
-              .price {
-                height: 100%;
-                p {
-                  font-size: 10.834px;
-                  &:last-child {
-                    color: #fff;
-                  }
-                  .icon {
-                    margin-right: 5px;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      .background {
-        img {
-          width: 80%;
-        }
-      }
-    }
+    //       .creator-details {
+    //         position: absolute;
+    //         top: 125%;
+    //         display: flex;
+    //         justify-content: space-evenly !important;
+    //         width: 85% !important;
+    //         .left {
+    //           .creator-tag {
+    //             height: 90%;
+    //             margin-left: 5px !important;
+    //             p {
+    //               font-size: 10px;
+    //               &:last-child {
+    //                 color: #ffffff;
+    //               }
+    //             }
+    //           }
+    //         }
+    //         .right {
+    //           .price {
+    //             height: 100%;
+    //             p {
+    //               font-size: 10.834px;
+    //               &:last-child {
+    //                 color: #fff;
+    //               }
+    //               .icon {
+    //                 margin-right: 5px;
+    //               }
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    //   .background {
+    //     img {
+    //       width: 80%;
+    //     }
+    //   }
+    // }
     .stake-btn {
       display: flex;
       justify-content: center;
@@ -660,7 +673,7 @@
       margin-top: 30px;
       button {
         width: 95%;
-        background: linear-gradient(90deg, #fcc016 0%, #f9d03f 100%);
+        background: linear-gradient(90deg, #56ab2f 0%, #a8e063 100%);
         border-radius: 5px;
         border: none;
         font-family: "Ranchers";
@@ -669,6 +682,7 @@
         font-size: 25px;
         color: #ffffff;
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        text-transform: capitalize;
       }
     }
   }
@@ -730,7 +744,7 @@
       .price {
         background: rgba(255, 255, 255, 0.2);
         border-radius: 0px 22px 22px 0px;
-        width: 30%;
+        width: 50%;
         display: flex;
         justify-content: space-between;
         padding: 10px 20px 10px 10px;
