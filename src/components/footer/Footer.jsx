@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import React from "react";
+import { Link } from "react-router-dom";
 import "./footer.scss";
 const Footer = () => {
   return (
@@ -8,17 +9,19 @@ const Footer = () => {
         <div className="container">
           <div className="footer-content">
             <div className="logos">
-              <img
-                src="\assets\images\defly-logo.svg"
-                alt=""
-                className="img-fluid"
-              />
+              <Link to="/">
+                <img
+                  src="\assets\images\defly-logo.svg"
+                  alt=""
+                  className="img-fluid"
+                />
+              </Link>
             </div>
             <div className="learn-more">
               <div className="footer-heading">
                 <h1>learn More</h1>
               </div>
-              <a href="#"> home</a>
+              <Link to="/"> home</Link>
               <a href="#"> Gameplay</a>
               <a href="#"> Roadmap</a>
               <a href="#"> Superverse</a>
@@ -37,9 +40,11 @@ const Footer = () => {
               <div className="footer-heading">
                 <h1>Quick Links</h1>
               </div>
-              <a href="#">home</a>
+              <a href="#">Whitepaper</a>
               <a href="#">Pitch Deck</a>
-              <a href="#">Marketplace</a>
+              <Link to="https://market.deflyball.com/" target="_blank">
+                Marketplace
+              </Link>
               <a href="#">Smart contract</a>
             </div>
             <div className="learn-more subscribe-us">
@@ -58,7 +63,7 @@ const Footer = () => {
               </div>
 
               <div className="social-icons">
-                <a href="#" target="_blank">
+                {/* <a href="#" target="_blank">
                   <Icon
                     icon="mdi:facebook"
                     color="white"
@@ -66,7 +71,7 @@ const Footer = () => {
                     height="40"
                     className="social-ico"
                   />
-                </a>
+                </a> */}
                 <a href="https://www.instagram.com/deflyball/" target="_blank">
                   <Icon
                     icon="mdi:instagram"
@@ -85,9 +90,9 @@ const Footer = () => {
                     className="social-ico"
                   />
                 </a>
-                <a href="" target="_blank">
+                <a href="https://medium.com/@deflyball" target="_blank">
                   <Icon
-                    icon="mdi:discord"
+                    icon="mdi:medium"
                     color="white"
                     width="40"
                     height="40"

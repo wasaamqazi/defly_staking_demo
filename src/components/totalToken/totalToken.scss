@@ -166,25 +166,107 @@
         }
       }
     }
+    .unstyled {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      margin-top: 70px;
+      label {
+        font-family: "Quicksand";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 31px;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+      }
+      .styled-checkbox {
+        position: absolute; // take it out of document flow
+        opacity: 0; // hide it
+        display: flex;
+        & + label {
+          position: relative;
+          cursor: pointer;
+          padding: 0;
+        }
+
+        // Box.
+        & + label:before {
+          content: "";
+          margin-right: 10px;
+          display: inline-block;
+          vertical-align: text-top;
+          width: 30px;
+          height: 30px;
+          border: 2.83px solid #fffbfb;
+          border-radius: 5px;
+        }
+
+        // Box hover
+        &:hover + label:before {
+          background: #f9d03f;
+        }
+
+        // Box focus
+        &:focus + label:before {
+          box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+        }
+
+        // Box checked
+        &:checked + label:before {
+          background: #f9d03f;
+          border: 2px solid #fff;
+          border-radius: 5px;
+        }
+
+        // Disabled state label.
+        &:disabled + label {
+          color: #b8b8b8;
+          cursor: auto;
+        }
+
+        // Disabled box.
+        &:disabled + label:before {
+          box-shadow: none;
+          background: #ddd;
+        }
+
+        // Checkmark. Could be replaced with an image
+        &:checked + label:after {
+          content: "";
+          position: absolute;
+          left: 10px;
+          top: 15px;
+          background: white;
+          width: 3px;
+          height: 3px;
+          box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white,
+            4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+          transform: rotate(45deg);
+        }
+      }
+    }
   }
 }
 
 @media screen and (max-width: 992px) {
   .total-token {
+    padding-top: 55px;
     .container {
       max-width: 840px;
       .token-box {
         padding-top: 20px;
         padding-bottom: 20px;
         padding-left: 0px;
-        padding-right: 0px;
+        padding-right: 10px;
         .box-input {
           width: fit-content;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           margin-top: 55px;
-
           .top {
             display: flex;
             flex-direction: column;
@@ -192,6 +274,7 @@
             width: fit-content;
             ul {
               margin-bottom: -20px;
+              list-style: none;
               li {
                 font-size: 18px;
                 margin-bottom: 20px;
@@ -215,6 +298,7 @@
             margin-top: 30px;
             ul {
               margin-bottom: -20px;
+              list-style: none;
               li {
                 font-family: "Quicksand";
                 font-style: normal;
@@ -313,6 +397,25 @@
             font-size: 33.44px;
             line-height: 42px;
           }
+        }
+      }
+
+      .unstyled {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 10px;
+        margin-top: 35px;
+        label {
+          font-family: "Quicksand";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 25px;
+          line-height: 31px;
+          color: #ffffff;
+          display: flex;
+          align-items: center;
+          margin-left: 0px;
         }
       }
     }

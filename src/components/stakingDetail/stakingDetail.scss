@@ -390,6 +390,16 @@
       }
     }
   }
+
+  .stakingDetail-card {
+    .right-side {
+      .stakCard-details {
+        .price {
+          width: 100% !important;
+        }
+      }
+    }
+  }
 }
 
 .staking-modal {
@@ -879,6 +889,22 @@
           }
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .stakingDetail-card
+    // .left-side
+    // .nftStaking-cards
+    // .staking-card
+    // .card-plate
+  {
+    .card-gold-plate {
+      position: relative;
+      left: -9px !important;
+      width: fit-content;
+      top: -6px !important;
     }
   }
 }

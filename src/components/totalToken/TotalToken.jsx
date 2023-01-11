@@ -13,9 +13,74 @@ const TotalToken = () => {
                 <img src="\assets\images\defly-logo.svg" alt="" />
               </h1>
             </div>
+            <div>
+              <ul class="unstyled centered">
+                <li className="listStyle">
+                  <input
+                    class="styled-checkbox"
+                    id="styled-checkbox-1"
+                    value="15%"
+                    type="radio"
+                    name="token"
+                  />
+                  <label for="styled-checkbox-1">15 %</label>
+                </li>
+                <li className="listStyle">
+                  <input
+                    class="styled-checkbox"
+                    id="styled-checkbox-2"
+                    value="value2"
+                    type="radio"
+                    name="token"
+                  />
+                  <label for="styled-checkbox-2">25 %</label>
+                </li>
+                <li>
+                  <input
+                    class="styled-checkbox"
+                    id="styled-checkbox-3"
+                    value="value3"
+                    type="radio"
+                    name="token"
+                  />
+                  <label for="styled-checkbox-3">50%</label>
+                </li>
+                <li>
+                  <input
+                    class="styled-checkbox"
+                    id="styled-checkbox-4"
+                    type="radio"
+                    value="value4"
+                    name="token"
+                  />
+                  <label for="styled-checkbox-4">75 %</label>
+                </li>
 
+                <li>
+                  <input
+                    class="styled-checkbox"
+                    id="styled-checkbox-5"
+                    value="value5"
+                    type="radio"
+                    name="token"
+                  />
+                  <label for="styled-checkbox-5">100 %</label>
+                </li>
+
+                <li>
+                  <input
+                    class="styled-checkbox"
+                    id="styled-checkbox-6"
+                    value="custom"
+                    type="radio"
+                    name="token"
+                  />
+                  <label for="styled-checkbox-6">Custom</label>
+                </li>
+              </ul>
+            </div>
             <div className="box-input">
-              <div className="top">
+              <div className="top" id="customToken">
                 <ul>
                   <li>How Much You Satke Defly Tokens</li>
                 </ul>

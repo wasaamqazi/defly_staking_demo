@@ -137,3 +137,31 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .hero-section {
+    overflow: hidden !important;
+    .hero-tagline {
+      padding: 120px 0;
+      position: relative;
+      z-index: 2;
+      h1 {
+        font-weight: 700;
+        font-size: 50px !important;
+        color: #ffffff;
+        text-align: center;
+        width: 300%;
+        text-shadow: -1px 0 #fcc016, 1px -1px 0 #fcc016, -1px 1px 0 #fcc016,
+          1px 1px 0 #fcc016;
+        &:last-child {
+          font-weight: 700;
+          font-size: 30px !important;
+          letter-spacing: 26px !important;
+          margin-left: 30px !important;
+          width: unset;
+          text-shadow: unset !important;
+        }
+      }
+    }
+  }
+}
