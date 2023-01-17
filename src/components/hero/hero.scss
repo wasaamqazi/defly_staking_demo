@@ -2,10 +2,41 @@
   position: relative;
   background-color: #000;
   overflow: hidden;
+
+  .coming-time-container {
+    // position: relative;
+    // height: 20vh;
+    overflow: hidden !important;
+
+
+    .coming-time {
+      color: white;
+      background-color: #fcc016;
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -0%);
+      z-index: 999999;
+      font-family: "Quicksand";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 32px;
+      padding: 5px 0px;
+      // color: #fcc016;
+
+
+    }
+  }
+
+
+
   .hero-tagline {
     padding: 220px 0;
     position: relative;
     z-index: 2;
+
     h1 {
       font-family: "Quicksand";
       font-style: normal;
@@ -18,6 +49,7 @@
 
       text-shadow: -3px -3px 0 #fcc016, 3px -3px 0 #fcc016, -3px 3px 0 #fcc016,
         3px 3px 0 #fcc016;
+
       &:last-child {
         font-family: "Quicksand";
         font-style: normal;
@@ -36,24 +68,34 @@
     top: 0;
     left: 0;
     object-fit: cover;
+
     video {
       width: 100%;
       height: 100%;
     }
+
     .landing-back {
       display: none;
     }
   }
 }
 
-@media screen and (max-width: 1320px) {
+@media screen and (max-width: 1370px) {
   .hero-section {
+    .coming-time-container {
+      .coming-time {
+        font-size: 26px;
+        padding: 2px 0px;
+      }
+    }
+
     .hero-tagline {
       h1 {
-        font-size: 193.441px;
+        font-size: 130px;
 
         &:last-child {
-          font-size: 114.504px;
+          font-size: 75px;
+          letter-spacing: 60px;
         }
       }
     }
@@ -74,6 +116,7 @@
     }
   }
 }
+
 @media screen and (max-width: 1100px) {
   .hero-section {
     .hero-tagline {
@@ -81,8 +124,10 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
       h1 {
         font-size: 163.441px;
+
         // width: fit-content;
         &:last-child {
           font-size: 79.504px;
@@ -97,10 +142,20 @@
 @media screen and (max-width: 600px) {
   .hero-section {
     overflow: hidden !important;
+    height: 100vh;
+
+    .coming-time-container {
+      .coming-time {
+        font-size: 18px;
+        padding: 2px 0px;
+      }
+    }
+
     .hero-tagline {
       padding: 120px 0;
       position: relative;
       z-index: 2;
+
       h1 {
         font-weight: 700;
         font-size: 60px !important;
@@ -109,6 +164,7 @@
         width: 300%;
         text-shadow: -1px 0 #fcc016, 1px -1px 0 #fcc016, -1px 1px 0 #fcc016,
           1px 1px 0 #fcc016;
+
         &:last-child {
           font-weight: 700;
           font-size: 40px !important;
@@ -126,11 +182,13 @@
       left: 0%;
       transform: translate(0%, -50%);
       object-fit: cover;
+
       video {
         width: 100%;
         height: 100%;
         display: none;
       }
+
       .landing-back {
         display: block;
       }
@@ -138,13 +196,22 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 361px) {
   .hero-section {
     overflow: hidden !important;
+
+    .coming-time-container {
+      .coming-time {
+        font-size: 18px;
+        padding: 2px 0px;
+      }
+    }
+
     .hero-tagline {
       padding: 120px 0;
       position: relative;
       z-index: 2;
+
       h1 {
         font-weight: 700;
         font-size: 50px !important;
@@ -153,6 +220,7 @@
         width: 300%;
         text-shadow: -1px 0 #fcc016, 1px -1px 0 #fcc016, -1px 1px 0 #fcc016,
           1px 1px 0 #fcc016;
+
         &:last-child {
           font-weight: 700;
           font-size: 30px !important;
