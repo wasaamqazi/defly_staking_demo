@@ -115,7 +115,7 @@ const StakingDetail = () => {
                           <img
                             src="\assets\images\australianShephard.png"
                             alt=""
-                            srcset=""
+                            srcSet=""
                           />
                         </div>
 
@@ -199,7 +199,7 @@ const StakingDetail = () => {
                           <img
                             src="\assets\images\australianShephard.png"
                             alt=""
-                            srcset=""
+                            srcSet=""
                           />
                         </div>
 
@@ -251,28 +251,28 @@ const StakingDetail = () => {
               <div className="stakingDetail-card-header">
                 <h1>romeo</h1>
                 <div className="select-stakingTier">
-                  <div class="dropdown">
+                  <div className="dropdown">
                     <button
-                      class="btn btn-secondary dropdown-toggle"
+                      className="btn btn-secondary dropdown-toggle"
                       type="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
                       Select Tier
                     </button>
-                    <ul class="dropdown-menu">
+                    <ul className="dropdown-menu">
                       <li>
-                        <a class="dropdown-item"> Tier 1 ( 15 Days )</a>
+                        <a className="dropdown-item"> Tier 1 ( 15 Days )</a>
                       </li>
                       <li>
-                        <a class="dropdown-item"> Tier 2 ( 30 Days )</a>
+                        <a className="dropdown-item"> Tier 2 ( 30 Days )</a>
                       </li>
 
                       <li>
-                        <a class="dropdown-item"> Tier 3 (60 Days )</a>
+                        <a className="dropdown-item"> Tier 3 (60 Days )</a>
                       </li>
                       <li>
-                        <a class="dropdown-item"> Tier 3 (90 Days )</a>
+                        <a className="dropdown-item"> Tier 3 (90 Days )</a>
                       </li>
                     </ul>
                   </div>
@@ -377,9 +377,9 @@ const StakingDetail = () => {
             </div>
 
             <div className="other-nftStaking-cards">
-              {otherNFT.map((item) => {
+              {otherNFT.map((item, index) => {
                 return (
-                  <div className="staking-card">
+                  <div className="staking-card" key={index}>
                     <div className="background">
                       <img
                         src="\assets\images\cardBack.png"
@@ -419,7 +419,7 @@ const StakingDetail = () => {
                             //   src="\assets\images\australianShephard.png"
                             src={item.nftImg}
                             alt=""
-                            srcset=""
+                            srcSet=""
                           />
                         </div>
 

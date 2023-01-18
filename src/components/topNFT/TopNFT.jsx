@@ -45,9 +45,9 @@ const TopNFT = () => {
         <div className="top-nft-content">
           <div className="container">
             <div className="top-nft-grid">
-              {topnft.map((item) => {
+              {topnft.map((item, index) => {
                 return (
-                  <div className="top-nft-card">
+                  <div className="top-nft-card" key={index}>
                     <div className="left">
                       <img src={item.topnftImg} alt="" className="img-fluid" />
                     </div>

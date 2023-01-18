@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./navbar.scss";
 import { Icon } from "@iconify/react";
 import { NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const NavBar = () => {
 
@@ -197,7 +198,7 @@ const NavBar = () => {
               <img
                 src="\assets\images\defly-logo.svg"
                 alt=""
-                srcset=""
+                srcSet=""
                 className="logo-img"
               />
             </a>
