@@ -5,6 +5,8 @@ import { Icon } from "@iconify/react";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
+import { staker } from "../../utils/action";
+import Countdown from "react-countdown";
 const Unstaking = () => {
   const topnft = [
     {
@@ -57,27 +59,48 @@ const Unstaking = () => {
   ];
 
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
-  const [days, setDays] = useState(0);
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
-  const deadline = "January, 31, 2023";
-  const getTime = () => {
-    const time = Date.parse(deadline) - Date.now();
-    setDays(Math.floor(time / (1000 * 60 * 60 * 24)));
-    setHours(Math.floor((time / (1000 * 60 * 60)) % 24));
-    setMinutes(Math.floor((time / 1000 / 60) % 60));
-    setSeconds(Math.floor((time / 1000) % 60));
-  };
+  // const [days, setDays] = useState(0);
+  // const [hours, setHours] = useState(0);
+  // const [minutes, setMinutes] = useState(0);
+  // const [seconds, setSeconds] = useState(0);
+  const [stakerDetail, setStakerDetail] = useState({});
+
+  // const deadline = "January, 31, 2023";
+  // const getTime = () => {
+
+  //   console.log(CountdownTime);
+  //   const time = Date.parse(CountdownTime) - Date.now();
+  //   setDays(Math.floor(time / (1000 * 60 * 60 * 24)));
+  //   setHours(Math.floor((time / (1000 * 60 * 60)) % 24));
+  //   setMinutes(Math.floor((time / 1000 / 60) % 60));
+  //   setSeconds(Math.floor((time / 1000) % 60));
+  // };
+
+
+  const getStaker = async () => {
+    let temp = await staker().then(res => {
+
+      setStakerDetail(res)
+    })
+  }
+
 
   useEffect(() => {
-    const interval = setInterval(() => getTime(deadline), 1000);
+    getStaker()
+  }, [])
+  useEffect(() => {
+    console.log(stakerDetail);
 
-    return () => clearInterval(interval);
-  }, []);
+    console.log(stakerDetail?.data?.image);
+  }, [stakerDetail])
+
+
+
+
   return (
     <div>
-      <section className="unstaking">
+
+      {stakerDetail ? <section className="unstaking">
         <div className="section-header">
           <h1>un staking</h1>
           <img
@@ -87,134 +110,103 @@ const Unstaking = () => {
           />
         </div>
         <div className="container">
-          <div className="select-stakingTier">
-            <div class="dropdown">
+          {/* <div className="select-stakingTier">
+            <div className="dropdown">
               <button
-                class="btn btn-secondary dropdown-toggle"
+                className="btn btn-secondary dropdown-toggle"
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 Select Tier
               </button>
-              <ul class="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li>
-                  <a class="dropdown-item"> Tier 1 ( 15 Days )</a>
+                  <a className="dropdown-item"> Tier 1 ( 15 Days )</a>
                 </li>
                 <li>
-                  <a class="dropdown-item"> Tier 2 ( 30 Days )</a>
+                  <a className="dropdown-item"> Tier 2 ( 30 Days )</a>
                 </li>
 
                 <li>
-                  <a class="dropdown-item"> Tier 3 (60 Days )</a>
+                  <a className="dropdown-item"> Tier 3 (60 Days )</a>
                 </li>
                 <li>
-                  <a class="dropdown-item"> Tier 3 (90 Days )</a>
+                  <a className="dropdown-item"> Tier 3 (90 Days )</a>
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
 
           <div className="unstaking-cards">
             <div className="nftStaking-cards">
-              {topnft.map((item) => {
-                return (
-                  <div className="staking-card ">
-                    <div className="background">
-                      <img
-                        src="\assets\images\cardBack.png"
-                        alt=""
-                        className="backImg img-fluid"
+              <div className="staking-card " >
+                <div className="background">
+                  <img
+                    src="\assets\images\cardBack.png"
+                    alt=""
+                    className="backImg img-fluid"
+                  />
+                  <div className="nft-claim-reward">
+                    {
+
+                      <Countdown date={stakerDetail.countdownTime} />
+                    }
+
+                  </div>
+                  {/* <div className="drop-shadow"></div> */}
+                </div>
+                <div className="card-plate">
+                  <div className="card-gold-plate">
+                    {/* backgound gold image */}
+                    <img
+                      src="\assets\images\cardSheild.png"
+                      alt=""
+                      className="img-fluid"
+                    />
+
+                    {/* Favourite Checkbox */}
+
+                    <div className="fav d-flex align-items-center ">
+                      <Checkbox
+                        disabled
+                        className="favCheck"
+                        {...label}
+                        icon={<FavoriteBorder />}
+                        checkedIcon={
+                          <Favorite
+                            sx={{
+                              color: "white",
+                              "&.Mui-checked": {
+                                border: "white",
+                              },
+                            }}
+                          />
+                        }
                       />
-                      <div className="nft-claim-reward">
-                        <p>
-                          {/* days */}
-                          <span className="days">
-                            <span className="time">
-                              {days < 10 ? "0" + days : days}
-                            </span>
-                            <span className="alphaTime">days</span>
-                          </span>
-                          <span className="timer-space"> : </span>
-                          {/* hour */}
-                          <span className="days">
-                            <span className="time">
-                              {hours < 10 ? "0" + hours : hours}
-                            </span>
-                            <span className="alphaTime">hours</span>
-                          </span>
-                          <span className="timer-space"> : </span>
-
-                          {/* minutes */}
-                          <span className="days">
-                            <span className="time">
-                              {minutes < 10 ? "0" + minutes : minutes}
-                            </span>
-                            <span className="alphaTime">minutes</span>
-                          </span>
-                          <span className="timer-space"> : </span>
-                          {/* second */}
-                          <span className="days">
-                            <span className="time">
-                              {seconds < 10 ? "0" + seconds : seconds}
-                            </span>
-                            <span className="alphaTime">seconds</span>
-                          </span>
-                        </p>
-                      </div>
-                      {/* <div className="drop-shadow"></div> */}
+                      <p>100</p>
                     </div>
-                    <div className="card-plate">
-                      <div className="card-gold-plate">
-                        {/* backgound gold image */}
-                        <img
-                          src="\assets\images\cardSheild.png"
-                          alt=""
-                          className="img-fluid"
-                        />
 
-                        {/* Favourite Checkbox */}
+                    {/* Our NFT IMG (dog img) */}
+                    <div className="ourNft">
+                      <img
+                        src={stakerDetail?.data?.image}
 
-                        <div className="fav d-flex align-items-center ">
-                          <Checkbox
-                            disabled
-                            className="favCheck"
-                            {...label}
-                            icon={<FavoriteBorder />}
-                            checkedIcon={
-                              <Favorite
-                                sx={{
-                                  color: "white",
-                                  "&.Mui-checked": {
-                                    border: "white",
-                                  },
-                                }}
-                              />
-                            }
-                          />
-                          <p>100</p>
-                        </div>
+                        alt=""
+                        srcSet=""
+                      />
+                    </div>
 
-                        {/* Our NFT IMG (dog img) */}
-                        <div className="ourNft">
-                          <img
-                            //   src="\assets\images\australianShephard.png"
-                            src={item.nftImg}
-                            alt=""
-                            srcset=""
-                          />
-                        </div>
+                    {/* nft name  */}
+                    <div className="card-name">
+                      <p>{stakerDetail?.data?.name}</p>
+                      {/* <p>{item.nftName} </p> */}
+                    </div>
 
-                        {/* nft name  */}
-                        <div className="card-name">
-                          {/* <p>Australian shephard</p> */}
-                          <p>{item.nftName} </p>
-                        </div>
-
-                        {/* nft detail price */}
-                        <div className="creator-details">
-                          <div className="left">
-                            {/* <div className="creator-avatar">
+                    {/* nft detail price */}
+                    <div className="creator-details">
+                      <div className="left">
+                        {/* <div className="creator-avatar">
                               <img
                                 src="\assets\images\creatorAvatar.png"
                                 alt=""
@@ -226,31 +218,29 @@ const Unstaking = () => {
 
                               <p className="creator-name">Sonia Williams</p>
                             </div> */}
-                            <button className="claimReward">
-                              Claim Reward
-                            </button>
-                          </div>
-                          <div className="right">
-                            <div className="price">
-                              <p>Price</p>
-                              <p>
-                                <Icon
-                                  icon="cryptocurrency:eth"
-                                  color="white"
-                                  width="11"
-                                  height="11"
-                                  className="icon"
-                                />
-                                <span>{item.nftPrice} ETH</span>
-                              </p>
-                            </div>
-                          </div>
+                        <button className="claimReward">
+                          Claim Reward
+                        </button>
+                      </div>
+                      <div className="right">
+                        <div className="price">
+                          <p>Price</p>
+                          <p>
+                            <Icon
+                              icon="cryptocurrency:eth"
+                              color="white"
+                              width="11"
+                              height="11"
+                              className="icon"
+                            />
+                            {/* <span>{item.nftPrice} ETH</span> */}
+                          </p>
                         </div>
                       </div>
                     </div>
                   </div>
-                );
-              })}
+                </div>
+              </div>
             </div>
           </div>
           <div className="loadmore-btn">
@@ -260,7 +250,7 @@ const Unstaking = () => {
         <div className="unstakback">
           <h1>unstaking</h1>
         </div>
-      </section>
+      </section> : <></>}
     </div>
   );
 };

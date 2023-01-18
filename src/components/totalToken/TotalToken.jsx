@@ -14,10 +14,10 @@ const TotalToken = () => {
               </h1>
             </div>
             <div>
-              <ul class="unstyled centered">
+              <ul className="unstyled centered">
                 <li className="listStyle">
                   <input
-                    class="styled-checkbox"
+                    className="styled-checkbox"
                     id="styled-checkbox-1"
                     value="15%"
                     type="radio"
@@ -27,7 +27,7 @@ const TotalToken = () => {
                 </li>
                 <li className="listStyle">
                   <input
-                    class="styled-checkbox"
+                    className="styled-checkbox"
                     id="styled-checkbox-2"
                     value="value2"
                     type="radio"
@@ -37,7 +37,7 @@ const TotalToken = () => {
                 </li>
                 <li>
                   <input
-                    class="styled-checkbox"
+                    className="styled-checkbox"
                     id="styled-checkbox-3"
                     value="value3"
                     type="radio"
@@ -47,7 +47,7 @@ const TotalToken = () => {
                 </li>
                 <li>
                   <input
-                    class="styled-checkbox"
+                    className="styled-checkbox"
                     id="styled-checkbox-4"
                     type="radio"
                     value="value4"
@@ -58,7 +58,7 @@ const TotalToken = () => {
 
                 <li>
                   <input
-                    class="styled-checkbox"
+                    className="styled-checkbox"
                     id="styled-checkbox-5"
                     value="value5"
                     type="radio"
@@ -69,7 +69,7 @@ const TotalToken = () => {
 
                 <li>
                   <input
-                    class="styled-checkbox"
+                    className="styled-checkbox"
                     id="styled-checkbox-6"
                     value="custom"
                     type="radio"
@@ -93,9 +93,9 @@ const TotalToken = () => {
                   <li>Choose Your Tier / Time Frame For Staking</li>
                 </ul>
                 <div className="select-stakingTier input-resp ">
-                  <div class="dropdown">
+                  <div className="dropdown">
                     <button
-                      class="btn btn-secondary dropdown-toggle"
+                      className="btn btn-secondary dropdown-toggle"
                       type="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
@@ -103,19 +103,19 @@ const TotalToken = () => {
                       Select Tier
                     </button>
 
-                    <ul class="dropdown-menu">
+                    <ul className="dropdown-menu">
                       <li>
-                        <a class="dropdown-item"> Tier 1 ( 15 Days )</a>
+                        <a className="dropdown-item"> Tier 1 ( 15 Days )</a>
                       </li>
                       <li>
-                        <a class="dropdown-item"> Tier 2 ( 30 Days )</a>
+                        <a className="dropdown-item"> Tier 2 ( 30 Days )</a>
                       </li>
 
                       <li>
-                        <a class="dropdown-item"> Tier 3 (60 Days )</a>
+                        <a className="dropdown-item"> Tier 3 (60 Days )</a>
                       </li>
                       <li>
-                        <a class="dropdown-item"> Tier 3 (90 Days )</a>
+                        <a className="dropdown-item"> Tier 3 (90 Days )</a>
                       </li>
                     </ul>
                   </div>

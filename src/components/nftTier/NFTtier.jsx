@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./nftTier.scss";
 import tierBack from "../../assets/images/tierBack.png";
 import { Icon } from "@iconify/react";
@@ -9,46 +9,97 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import StakingDetailModal from "../stakingDetail/StakingDetailModal";
+import { approve, deposit, getMyNFTsDataOld, getNFTs } from "../../utils/action";
+import axios from "axios"
+import "./stakingDetail.scss";
+
 const NFTtier = () => {
   const [show, setShow] = useState(false);
+  const [NFTdetails, setNFTdetails] = useState([]);
+  const [allDATA, setALLDATA] = useState([]);
+  const [currentItem, setCurrentItem] = useState({});
+  const [tireSelected, setTire] = useState("");
+
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = (item) => {
+    setShow(true)
+    // console.log(item);
+    setCurrentItem(item)
+    console.log(item.tokenId);
 
-  const topnft = [
-    {
-      nftName: "AUSTRALIAN SHEPHARD",
-      nftPrice: 4.89,
-      nftImg: "/assets/images/australianShephard.png",
-    },
-    {
-      nftName: "Border collie",
-      nftPrice: 3.6,
-      nftImg: "/assets/images/borderCollie.png",
-    },
-    {
-      nftName: "Bull terrier",
-      nftPrice: 3.6,
-      nftImg: "/assets/images/australianShephard.png",
-    },
-    {
-      nftName: "CHIHUAHUA ",
-      nftPrice: 3.69,
-      nftImg: "/assets/images/australianShephard.png",
-    },
-    {
-      nftName: "POODLE",
-      nftPrice: 31.6,
-      nftImg: "/assets/images/australianShephard.png",
-    },
-    {
-      nftName: "DOBERMAN",
-      nftPrice: 3.64,
-      nftImg: "/assets/images/australianShephard.png",
-    },
-  ];
+  };
 
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
+
+  const getAllNFTs = async () => {
+    const allNFTs = await getNFTs();
+    // console.log(allNFTs);
+    var temp = [];
+    allNFTs.map((item, index) => {
+      // console.log(item);
+      axios.get(item.tokenURI).then((res) => {
+        // console.log(res.data);
+
+        temp.push({
+          description: res.data.description,
+          id: res.data.id,
+          image: res.data.image,
+          image_1: res.data.image_1,
+          name: res.data.name,
+          tokenId: item.tokenid,
+          attributes: res.data.attributes,
+        })
+        setNFTdetails(temp)
+      })
+    })
+
+  }
+
+  const mergeArray = async () => {
+    if (NFTdetails) {
+
+
+      const oldNFTS = await getMyNFTsDataOld()
+
+      let nftTempArr = [
+        ...NFTdetails,
+        ...oldNFTS.nftData,
+      ];
+      // console.log(nftTempArr);
+
+      setALLDATA(nftTempArr)
+    }
+  }
+
+  const stake = () => {
+
+    if (tireSelected) {
+      console.log(tireSelected);
+      console.log(currentItem.tokenId);
+
+      deposit(currentItem.tokenId, tireSelected)
+
+    } else {
+      alert("please select tier")
+    }
+  }
+
+  const approveNFT = async () => {
+    approve(currentItem.tokenId)
+  }
+
+
+  useEffect(() => {
+    getAllNFTs()
+
+  }, [])
+
+  useEffect(() => {
+    mergeArray()
+  }, [NFTdetails])
+
+
 
   return (
     <div>
@@ -72,10 +123,10 @@ const NFTtier = () => {
               quis malesuada aliquet dolor.
             </p>
           </div>
-          <ul class="nav nav-tabs tier-parentTab" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
+          {/* <ul className="nav nav-tabs tier-parentTab" id="myTab" role="tablist">
+            <li className="nav-item" role="presentation">
               <button
-                class="nav-link active"
+                className="nav-link active"
                 id="home-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#tier1"
@@ -89,20 +140,20 @@ const NFTtier = () => {
                   alt=""
                   className="tierback"
 
-                  //   className={isActive ? "tierback" : "tierBackRotate"}
+                //   className={isActive ? "tierback" : "tierBackRotate"}
                 />
               </button>
               <p
                 data-bs-target="#tier1"
                 data-bs-toggle="tab"
-                // onClick={rotateback}
+              // onClick={rotateback}
               >
                 tier 1
               </p>
             </li>
-            <li class="nav-item" role="presentation">
+            <li className="nav-item" role="presentation">
               <button
-                class="nav-link"
+                className="nav-link"
                 id="profile-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#tier2"
@@ -117,9 +168,9 @@ const NFTtier = () => {
                 Tier 2
               </p>
             </li>
-            <li class="nav-item" role="presentation">
+            <li className="nav-item" role="presentation">
               <button
-                class="nav-link"
+                className="nav-link"
                 id="contact-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#tier3"
@@ -135,9 +186,9 @@ const NFTtier = () => {
               </p>
             </li>
 
-            <li class="nav-item" role="presentation">
+            <li className="nav-item" role="presentation">
               <button
-                class="nav-link"
+                className="nav-link"
                 id="disabled-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#tier4"
@@ -152,67 +203,156 @@ const NFTtier = () => {
                 tier 4
               </p>
             </li>
-          </ul>
-          <div class="tab-content" id="myTabContent">
+          </ul> */}
+
+          {/* this is tab1 tier1 */}
+
+          <p className="tier-tabContent">
+            You Can Stake Your DEFLY BALL NFT for 15 Days, 30 Days, 60 Days and 90 Days
+          </p>
+          {/* <div className="tab-content" id="myTabContent">
             <div
-              class="tab-pane fade show active"
+              className="tab-pane fade show active"
               id="tier1"
               role="tabpanel"
               aria-labelledby="home-tab"
-              tabindex="0"
+              tabIndex="0"
             >
               <p className="tier-tabContent">
-                Tier1 : You Can Stake Your DEFLY BALL NFT for 15 Days
+                You Can Stake Your DEFLY BALL NFT for 15 Days, 30 Days, 60 Days and 90 Days
               </p>
+
+              <div className="nftStaking-cards">
+                {topnft.map((item, index) => {
+                  return (
+                    <div className="staking-card" key={index}>
+                      <div className="background">
+                        <img
+                          src="\assets\images\cardBack.png"
+                          alt=""
+                          className="backImg img-fluid"
+                        />
+                        <div className="nft-claim-reward">
+                          <p>Claim Reward</p>
+                        </div>
+                      </div>
+                      <div className="card-plate">
+                        <div className="card-gold-plate">
+                          <img
+                            src="\assets\images\cardSheild.png"
+                            alt=""
+                            className="img-fluid"
+                          />
+
+                          <div className="fav d-flex align-items-center">
+                            <Checkbox
+                              className="favCheck"
+                              {...label}
+                              icon={<FavoriteBorder />}
+                              checkedIcon={
+                                <Favorite
+                                  sx={{
+                                    color: "white",
+                                    "&.Mui-checked": {
+                                      border: "white",
+                                    },
+                                  }}
+                                />
+                              }
+                            />
+                            <p>100</p>
+                          </div>
+
+                          <div className="ourNft">
+                            <img
+
+                              src={item.nftImg}
+                              alt=""
+                              srcSet=""
+                            />
+                          </div>
+
+                          <div className="card-name">
+
+                            <p>{item.nftName} </p>
+                          </div>
+
+                          <div className="creator-details">
+                            <div className="left">
+
+                              <button className="stake-card" onClick={handleShow}>
+                                stake
+                              </button>
+                            </div>
+                            <div className="right">
+                              <div className="price">
+                                <p>Price</p>
+                                <p>
+                                  <Icon
+                                    icon="cryptocurrency:eth"
+                                    color="white"
+                                    width="11"
+                                    height="11"
+                                    className="icon"
+                                  />
+                                  <span>{item.nftPrice} ETH</span>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
             <div
-              class="tab-pane fade"
+              className="tab-pane fade"
               id="tier2"
               role="tabpanel"
               aria-labelledby="profile-tab"
-              tabindex="0"
+              tabIndex="0"
             >
               <p className="tier-tabContent">
-                Tier1 : You Can Stake Your DEFLY BALL NFT for 30 Days
+                Tier2 : You Can Stake Your DEFLY BALL NFT for 30 Days
               </p>
             </div>
             <div
-              class="tab-pane fade"
+              className="tab-pane fade"
               id="tier3"
               role="tabpanel"
               aria-labelledby="contact-tab"
-              tabindex="0"
+              tabIndex="0"
             >
               <p className="tier-tabContent">
-                Tier1 : You Can Stake Your DEFLY BALL NFT for 60 Days
+                Tier3 : You Can Stake Your DEFLY BALL NFT for 60 Days
               </p>
             </div>
             <div
-              class="tab-pane fade"
+              className="tab-pane fade"
               id="tier4"
               role="tabpanel"
               aria-labelledby="disabled-tab"
-              tabindex="0"
+              tabIndex="0"
             >
               <p className="tier-tabContent">
-                Tier1 : You Can Stake Your DEFLY BALL NFT for 90 Days
+                Tier4 : You Can Stake Your DEFLY BALL NFT for 90 Days
               </p>
             </div>
-          </div>
+          </div> */}
 
           <div className="nftStaking-cards">
-            {topnft.map((item) => {
+            {allDATA.map((item, index) => {
               return (
-                <div className="staking-card">
+                <div className="staking-card" key={index}>
                   <div className="background">
                     <img
                       src="\assets\images\cardBack.png"
                       alt=""
                       className="backImg img-fluid"
                     />
-                    <div className="nft-claim-reward">
-                      <p>Claim Reward</p>
-                    </div>
+
                   </div>
                   <div className="card-plate">
                     <div className="card-gold-plate">
@@ -243,38 +383,27 @@ const NFTtier = () => {
 
                       <div className="ourNft">
                         <img
-                          //   src="\assets\images\australianShephard.png"
-                          src={item.nftImg}
+
+                          src={item.image}
                           alt=""
-                          srcset=""
+                          srcSet=""
                         />
                       </div>
 
                       <div className="card-name">
-                        {/* <p>Australian shephard</p> */}
-                        <p>{item.nftName} </p>
+
+                        <p>{item.name} </p>
                       </div>
 
                       <div className="creator-details">
                         <div className="left">
-                          {/* <div className="creator-avatar ">
-                            <img
-                              src="\assets\images\creatorAvatar.png"
-                              alt=""
-                              className="img-fluid"
-                            />
-                          </div>
-                          <div className="creator-tag">
-                            <p>Creator</p>
 
-                            <p className="creator-name">Sonia Williams</p>
-                          </div> */}
-                          <button className="stake-card" onClick={handleShow}>
+                          <button className="stake-card" onClick={() => handleShow(item)}>
                             stake
                           </button>
                         </div>
                         <div className="right">
-                          <div className="price">
+                          {/* <div className="price">
                             <p>Price</p>
                             <p>
                               <Icon
@@ -286,7 +415,7 @@ const NFTtier = () => {
                               />
                               <span>{item.nftPrice} ETH</span>
                             </p>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>
@@ -295,6 +424,8 @@ const NFTtier = () => {
               );
             })}
           </div>
+
+
 
           <div className="loadmore-btn">
             <button>load more</button>
@@ -310,7 +441,178 @@ const NFTtier = () => {
           centered
         >
           <Modal.Body>
-            <StakingDetailModal />
+            <div>
+              <div className="staking-modal">
+                <div className="stakingDetail-card show-lazmi">
+                  <div className="left-side">
+                    <div
+                      className="responsive-rotation"
+                      style={{ position: "relative" }}
+                    >
+
+                      <div className="nftStaking-cards">
+                        <div className="staking-card">
+                          <div className="background">
+                            <img
+                              src="\assets\images\cardBack.png"
+                              alt=""
+                              className="backImg img-fluid"
+                            />
+                          </div>
+                          <div className="card-plate">
+                            <div className="card-gold-plate">
+                              <img
+                                src="\assets\images\cardSheild.png"
+                                alt=""
+                                className="img-fluid"
+                              />
+
+                              <div className="fav d-flex align-items-center">
+                                <Checkbox
+                                  className="favCheck"
+                                  {...label}
+                                  icon={<FavoriteBorder />}
+                                  checkedIcon={
+                                    <Favorite
+                                      sx={{
+                                        color: "white",
+                                        "&.Mui-checked": {
+                                          border: "white",
+                                        },
+                                      }}
+                                    />
+                                  }
+                                />
+                                <p>100</p>
+                              </div>
+
+                              <div className="ourNft">
+                                <img
+                                  src={currentItem.image}
+                                  alt=""
+                                  srcSet=""
+                                />
+                              </div>
+
+                              <div className="card-name">
+                                <p>{currentItem.name}</p>
+                              </div>
+
+                              <div className="creator-details">
+                                <div className="left">
+                                  <div className="creator-avatar">
+                                    <img
+                                      src="\assets\images\creatorAvatar.png"
+                                      alt=""
+                                      className="img-fluid"
+                                    />
+                                  </div>
+                                  <div className="creator-tag">
+                                    <p>Creator</p>
+
+                                    <p className="creator-name">Deflyball</p>
+                                  </div>
+                                </div>
+                                <div className="right">
+                                  {/* <div className="price">
+                                    <p>Price</p>
+                                    <p>
+                                      <Icon
+                                        icon="cryptocurrency:eth"
+                                        color="white"
+                                        width="11"
+                                        height="11"
+                                        className="icon"
+                                      />
+                                      <span>4.89 ETH</span>
+                                    </p>
+                                  </div> */}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="stake-btn">
+                        <button onClick={approveNFT}>approved</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="right-side">
+                    <div className="stakingDetail-card-header">
+                      <h1>{currentItem.name}</h1>
+
+                    </div>
+                    <div className="stakCard-details">
+                      <div className="price">
+                        <p>price</p>
+                        <p>
+                          <img src="\assets\images\eth.png" alt="" />
+                          4.89 ETH
+                        </p>
+                      </div>
+                      <div className="discription">
+                        <div className="discription-head">
+                          <p>Description</p>
+                        </div>
+                        <div className="discrip">
+                          <p>
+                            {currentItem.description}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="select-stakingTier">
+
+                        <select name="" id="" onChange={(e) => {
+                          setTire(e.currentTarget.value)
+
+                        }}>
+
+                          <option value="">Select Tier</option>
+                          <option value="15">Tier 1 ( 15 Days )</option>
+                          <option value="30">Tier 2 ( 30 Days )</option>
+                          <option value="60">Tier 3 ( 60 Days )</option>
+                          <option value="90">Tier 4 ( 90 Days )</option>
+                        </select>
+
+
+                        <button onClick={() => stake()
+                        }>Stake</button>
+                        {/* <div className="dropdown">
+                                          <button
+                                            className="btn btn-secondary dropdown-toggle"
+                                            type="button"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                          >
+                                            Select Tier
+                                          </button>
+                                          <ul className="dropdown-menu">
+                                            <li>
+                                              <a className="dropdown-item" onClick={(e) => {
+                                                console.log(e);
+                                              }}> Tier 1 ( 15 Days )</a>
+                                            </li>
+                                            <li>
+                                              <a className="dropdown-item"> Tier 2 ( 30 Days )</a>
+                                            </li>
+
+                                            <li>
+                                              <a className="dropdown-item"> Tier 3 (60 Days )</a>
+                                            </li>
+                                            <li>
+                                              <a className="dropdown-item"> Tier 3 (90 Days )</a>
+                                            </li>
+                                          </ul>
+                                        </div> */}
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <button onClick={handleClose} className="close-modal-btn">
               <Icon
                 icon="mdi:close-box"
@@ -322,7 +624,7 @@ const NFTtier = () => {
           </Modal.Body>
         </Modal>
       </section>
-    </div>
+    </div >
   );
 };
 

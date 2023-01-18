@@ -25,10 +25,10 @@ const TokenTier = () => {
               quis malesuada aliquet dolor.
             </p>
           </div>
-          <ul class="nav nav-tabs tier-parentTab" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
+          <ul className="nav nav-tabs tier-parentTab" id="myTab" role="tablist">
+            <li className="nav-item" role="presentation">
               <button
-                class="nav-link active"
+                className="nav-link active"
                 id="home-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#tier1"
@@ -42,20 +42,20 @@ const TokenTier = () => {
                   alt=""
                   className="tierback"
 
-                  //   className={isActive ? "tierback" : "tierBackRotate"}
+                //   className={isActive ? "tierback" : "tierBackRotate"}
                 />
               </button>
               <p
                 data-bs-target="#tier1"
                 data-bs-toggle="tab"
-                // onClick={rotateback}
+              // onClick={rotateback}
               >
                 tier 1
               </p>
             </li>
-            <li class="nav-item" role="presentation">
+            <li className="nav-item" role="presentation">
               <button
-                class="nav-link"
+                className="nav-link"
                 id="profile-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#tier2"
@@ -70,9 +70,9 @@ const TokenTier = () => {
                 Tier 2
               </p>
             </li>
-            <li class="nav-item" role="presentation">
+            <li className="nav-item" role="presentation">
               <button
-                class="nav-link"
+                className="nav-link"
                 id="contact-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#tier3"
@@ -88,9 +88,9 @@ const TokenTier = () => {
               </p>
             </li>
 
-            <li class="nav-item" role="presentation">
+            <li className="nav-item" role="presentation">
               <button
-                class="nav-link"
+                className="nav-link"
                 id="disabled-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#tier4"
@@ -106,46 +106,46 @@ const TokenTier = () => {
               </p>
             </li>
           </ul>
-          <div class="tab-content" id="myTabContent">
+          <div className="tab-content" id="myTabContent">
             <div
-              class="tab-pane fade show active"
+              className="tab-pane fade show active"
               id="tier1"
               role="tabpanel"
               aria-labelledby="home-tab"
-              tabindex="0"
+              tabIndex="0"
             >
               <p className="tier-tabContent">
                 Tier1 : You Can Stake Your DEFLY BALL NFT for 15 Days
               </p>
             </div>
             <div
-              class="tab-pane fade"
+              className="tab-pane fade"
               id="tier2"
               role="tabpanel"
               aria-labelledby="profile-tab"
-              tabindex="0"
+              tabIndex="0"
             >
               <p className="tier-tabContent">
                 Tier1 : You Can Stake Your DEFLY BALL NFT for 30 Days
               </p>
             </div>
             <div
-              class="tab-pane fade"
+              className="tab-pane fade"
               id="tier3"
               role="tabpanel"
               aria-labelledby="contact-tab"
-              tabindex="0"
+              tabIndex="0"
             >
               <p className="tier-tabContent">
                 Tier1 : You Can Stake Your DEFLY BALL NFT for 60 Days
               </p>
             </div>
             <div
-              class="tab-pane fade"
+              className="tab-pane fade"
               id="tier4"
               role="tabpanel"
               aria-labelledby="disabled-tab"
-              tabindex="0"
+              tabIndex="0"
             >
               <p className="tier-tabContent">
                 Tier1 : You Can Stake Your DEFLY BALL NFT for 90 Days
