@@ -1,6 +1,51 @@
-import React from "react";
+// import React from "react";
 import "./totalToken.scss";
+import React, { useEffect, useState } from "react";
+import tierBack from "../../assets/images/tierBack.png";
+import { Icon } from "@iconify/react";
+import Checkbox from "@mui/material/Checkbox";
+import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import Favorite from "@mui/icons-material/Favorite";
+import { useNavigate } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import StakingDetailModal from "../stakingDetail/StakingDetailModal";
+import { getTokens, StakeToken, approveTokens } from "../../utils/functions";
+import axios from "axios"
+
 const TotalToken = () => {
+
+
+  const [Tokens, setTokens] = useState("")
+  const [tireSelected, setTire] = useState("");
+  const [customTokens, setCustomTokens] = useState(250)
+
+  const getAllTokens = async () => {
+    const allNFTs = await getTokens()
+    setTokens(allNFTs)
+
+  }
+
+  const Approve = async () => {
+    await approveTokens(customTokens)
+  }
+
+  const Stake = async () => {
+    console.log(customTokens);
+    console.log(tireSelected);
+    await StakeToken(customTokens, tireSelected)
+  }
+
+  useEffect(() => {
+    getAllTokens()
+    console.log(Tokens);
+  }, [Tokens])
+  useEffect(() => {
+    console.log(tireSelected)
+    console.log(customTokens)
+  }, [Tokens])
+
+
   return (
     <div>
       <section className="total-token">
@@ -9,11 +54,11 @@ const TotalToken = () => {
             <div className="box-heading">
               <h1>total token</h1>
               <h1>
-                1000
+                {Tokens}
                 <img src="\assets\images\defly-logo.svg" alt="" />
               </h1>
             </div>
-            <div>
+            {/* <div>
               <ul className="unstyled centered">
                 <li className="listStyle">
                   <input
@@ -78,14 +123,16 @@ const TotalToken = () => {
                   <label for="styled-checkbox-6">Custom</label>
                 </li>
               </ul>
-            </div>
+            </div> */}
             <div className="box-input">
               <div className="top" id="customToken">
                 <ul>
-                  <li>How Much You Satke Defly Tokens</li>
+                  <li>How Much You Stake Defly Tokens</li>
                 </ul>
                 <div className="input-resp">
-                  <input type="number" placeholder="Type Here ..." />
+                  <input value={customTokens} type="number" placeholder="Type Here ..." min={250} onChange={e => {
+                    setCustomTokens(e.target.value)
+                  }} />
                 </div>
               </div>
               <div className="bottom">
@@ -94,7 +141,7 @@ const TotalToken = () => {
                 </ul>
                 <div className="select-stakingTier input-resp ">
                   <div className="dropdown">
-                    <button
+                    {/* <button
                       className="btn btn-secondary dropdown-toggle"
                       type="button"
                       data-bs-toggle="dropdown"
@@ -102,6 +149,7 @@ const TotalToken = () => {
                     >
                       Select Tier
                     </button>
+               
 
                     <ul className="dropdown-menu">
                       <li>
@@ -117,13 +165,25 @@ const TotalToken = () => {
                       <li>
                         <a className="dropdown-item"> Tier 3 (90 Days )</a>
                       </li>
-                    </ul>
+                    </ul> */}
+                    <select name="" id="" onChange={(e) => {
+                      setTire(e.currentTarget.value)
+
+                    }}>
+
+                      <option value="">Select Tier</option>
+                      <option value="15">Tier 1 ( 15 Days )</option>
+                      <option value="30">Tier 2 ( 30 Days )</option>
+                      <option value="60">Tier 3 ( 60 Days )</option>
+                      <option value="90">Tier 4 ( 90 Days )</option>
+                    </select>
                   </div>
                 </div>
               </div>
             </div>
             <div className="stak-btn">
-              <button>Stake</button>
+              <button onClick={Approve}>Approve</button>
+              <button onClick={Stake}>Stake</button>
             </div>
           </div>
         </div>

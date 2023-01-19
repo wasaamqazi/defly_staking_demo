@@ -5,9 +5,15 @@ import { Icon } from "@iconify/react";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
-import { staker } from "../../utils/action";
+import { staker, unstake } from "../../utils/action";
+import axios from 'axios';
 import Countdown from "react-countdown";
 const Unstaking = () => {
+  const [nftImage, setNftImage] = useState("")
+  const [nftDetails, setNftDetails] = useState("")
+  const [nftCountdown, setNftCountdown] = useState("")
+
+
   const topnft = [
     {
       nftName: "AUSTRALIAN SHEPHARD",
@@ -63,12 +69,7 @@ const Unstaking = () => {
   // const [hours, setHours] = useState(0);
   // const [minutes, setMinutes] = useState(0);
   // const [seconds, setSeconds] = useState(0);
-  const [stakerDetail, setStakerDetail] = useState({});
-
-  // const deadline = "January, 31, 2023";
-  // const getTime = () => {
-
-  //   console.log(CountdownTime);
+  const [stakerDetail, setStakerDetail] = useState('')
   //   const time = Date.parse(CountdownTime) - Date.now();
   //   setDays(Math.floor(time / (1000 * 60 * 60 * 24)));
   //   setHours(Math.floor((time / (1000 * 60 * 60)) % 24));
@@ -78,9 +79,28 @@ const Unstaking = () => {
 
 
   const getStaker = async () => {
-    let temp = await staker().then(res => {
+    let temp = await staker().then(async res => {
+      console.log(res)
+      if (res && JSON.stringify(res) !== '{}') {
+        console.log('Helo axios')
+        setNftCountdown(res.countdownTime)
+        await axios.get(res.tokenuri).then(async res => {
+          console.log(res.data);
+          setNftDetails(res.data)
+        }).catch(err => {
+          console.log(err)
 
-      setStakerDetail(res)
+        })
+      }
+    })
+    console.log(temp)
+  }
+
+  const withDrawNFT = async () => {
+    const result = await unstake().then(res => {
+      // setNftImage("")
+      // setNftDetails("")
+      // setNftCountdown("")
     })
   }
 
@@ -89,18 +109,17 @@ const Unstaking = () => {
     getStaker()
   }, [])
   useEffect(() => {
-    console.log(stakerDetail);
+    // console.log('details', stakerDetail);
+    setNftImage(nftDetails.image)
+  }, [nftDetails])
 
-    console.log(stakerDetail?.data?.image);
-  }, [stakerDetail])
-
-
-
-
+  useEffect(() => {
+    console.log(nftCountdown);
+  }, [nftCountdown])
   return (
     <div>
 
-      {stakerDetail ? <section className="unstaking">
+      {nftDetails ? <section className="unstaking">
         <div className="section-header">
           <h1>un staking</h1>
           <img
@@ -147,10 +166,10 @@ const Unstaking = () => {
                     alt=""
                     className="backImg img-fluid"
                   />
-                  <div className="nft-claim-reward">
+                  <div className="nft-claim-reward" style={{ color: 'white' }}>
                     {
 
-                      <Countdown date={stakerDetail.countdownTime} />
+                      < Countdown date={nftCountdown} />
                     }
 
                   </div>
@@ -189,17 +208,21 @@ const Unstaking = () => {
 
                     {/* Our NFT IMG (dog img) */}
                     <div className="ourNft">
-                      <img
-                        src={stakerDetail?.data?.image}
+
+
+                      {nftImage ? <img
+                        src={nftImage}
 
                         alt=""
-                        srcSet=""
-                      />
+
+                      /> : <></>}
+
                     </div>
 
                     {/* nft name  */}
                     <div className="card-name">
-                      <p>{stakerDetail?.data?.name}</p>
+                      <p>{nftDetails.name}</p>
+                      {/* <p>Hello</p> */}
                       {/* <p>{item.nftName} </p> */}
                     </div>
 
@@ -218,7 +241,7 @@ const Unstaking = () => {
 
                               <p className="creator-name">Sonia Williams</p>
                             </div> */}
-                        <button className="claimReward">
+                        <button className="claimReward" onClick={withDrawNFT}>
                           Claim Reward
                         </button>
                       </div>

@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import StakingDetailModal from "../stakingDetail/StakingDetailModal";
-import { approve, deposit, getMyNFTsDataOld, getNFTs } from "../../utils/action";
+import { approve, deposit, getMyNFTsDataOld, getNFTs, unstake } from "../../utils/action";
 import axios from "axios"
 import "./stakingDetail.scss";
 
@@ -34,7 +34,7 @@ const NFTtier = () => {
 
   const getAllNFTs = async () => {
     const allNFTs = await getNFTs();
-    // console.log(allNFTs);
+    console.log(allNFTs);
     var temp = [];
     allNFTs.map((item, index) => {
       // console.log(item);
@@ -89,9 +89,9 @@ const NFTtier = () => {
     approve(currentItem.tokenId)
   }
 
-
   useEffect(() => {
     getAllNFTs()
+
 
   }, [])
 

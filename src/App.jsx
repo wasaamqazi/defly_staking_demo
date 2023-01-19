@@ -15,11 +15,11 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Landing />} />
-        {/* <Route path="/" element={<StakingDetail />} /> */}
-        {/* <Route path="/navigateTokenStaking" element={<TokenStakingPage />} />
+        {/* <Route path="/" element={<Landing />} /> */}
+        <Route path="/" element={<StakingDetail />} />
+        <Route path="/navigateTokenStaking" element={<TokenStakingPage />} />
         <Route path="/navNFTStaking" element={<NftStaking />} />
-        <Route path="/stakingDetail" element={<StakingDetail />} /> */}
+        <Route path="/stakingDetail" element={<StakingDetail />} />
       </Routes>
     </div>
   );
