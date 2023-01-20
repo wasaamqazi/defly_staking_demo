@@ -3,6 +3,7 @@ import Footer from "../components/footer/Footer";
 import NFTtier from "../components/nftTier/NFTtier";
 import TokenTier from "../components/nftTier/TokenTier";
 import TokenStaking from "../components/stakingBanner/TokenStaking";
+import TokenUnstake from "../components/tokenUnstaking/TokenUnstake";
 import TopNFT from "../components/topNFT/TopNFT";
 import TotalToken from "../components/totalToken/TotalToken";
 import Unstaking from "../components/unStaking/Unstaking";
@@ -18,8 +19,8 @@ const TokenStakingPage = () => {
         {/* <NFTtier /> */}
         <TokenTier />
         <TotalToken />
-        {/* <Unstaking /> */}
-        {/* <TopNFT /> */}
+        <TokenUnstake />
+
         <Footer />
       </div>
     </div>

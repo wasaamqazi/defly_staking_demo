@@ -10,41 +10,91 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import StakingDetailModal from "../stakingDetail/StakingDetailModal";
-import { getTokens, StakeToken, approveTokens } from "../../utils/functions";
-import axios from "axios"
+import {
+  getTokens,
+  StakeToken,
+  approveTokens,
+  checkApprove,
+} from "../../utils/functions";
+import axios from "axios";
 
 const TotalToken = () => {
-
-
-  const [Tokens, setTokens] = useState("")
+  const [Tokens, setTokens] = useState("");
   const [tireSelected, setTire] = useState("");
-  const [customTokens, setCustomTokens] = useState(250)
+  const [customTokens, setCustomTokens] = useState(250);
+  const [approve, setApprove] = useState(false);
+  const [range, setRange] = useState("");
 
   const getAllTokens = async () => {
-    const allNFTs = await getTokens()
-    setTokens(allNFTs)
+    const allNFTs = await getTokens();
+    setTokens(allNFTs);
+  };
 
-  }
+  const approveCheck = async () => {
+    const allApproveToken = await checkApprove();
+    setApprove(allApproveToken);
+  };
 
   const Approve = async () => {
-    await approveTokens(customTokens)
-  }
+    console.log(Tokens);
+    if (Tokens == "") {
+      alert("You Have 0 Tokens !!!");
+    } else {
+      await approveTokens(Tokens);
+    }
+  };
 
   const Stake = async () => {
-    console.log(customTokens);
-    console.log(tireSelected);
-    await StakeToken(customTokens, tireSelected)
-  }
+    if (tireSelected == "") {
+      alert("Please Select Tier Value !!!");
+    } else {
+      if (tireSelected == 15 && (customTokens < 250 || customTokens > 999)) {
+        alert("Select Token Value (250 - 999) !!!");
+      } else if (
+        tireSelected == 30 &&
+        (customTokens < 1000 || customTokens > 2499)
+      ) {
+        alert("Select Token Value (1000 - 2499) !!!");
+      } else if (
+        tireSelected == 60 &&
+        (customTokens < 2500 || customTokens > 4999)
+      ) {
+        alert("Select Token Value (2500 - 4999) !!!");
+      } else if (tireSelected == 90 && customTokens < 5000) {
+        alert("Select Token Value (5000 - more) !!!");
+      } else {
+        await StakeToken(customTokens, tireSelected);
+      }
+    }
+  };
 
   useEffect(() => {
-    getAllTokens()
+    getAllTokens();
     console.log(Tokens);
-  }, [Tokens])
+  }, [Tokens]);
   useEffect(() => {
-    console.log(tireSelected)
-    console.log(customTokens)
-  }, [Tokens])
-
+    if (tireSelected == 15) {
+      setRange("(250 - 999)");
+      setCustomTokens(250);
+    } else if (tireSelected == 30) {
+      setRange("(1000 - 2499)");
+      setCustomTokens(1000);
+    } else if (tireSelected == 60) {
+      setRange("(2500 - 4999)");
+      setCustomTokens(2500);
+    } else if (tireSelected == 90) {
+      setRange("( 5000.... )");
+      setCustomTokens(5000);
+    } else {
+      setRange("(250 - 999)");
+      setCustomTokens(250);
+    }
+    console.log(range);
+  }, [tireSelected]);
+  useEffect(() => {
+    approveCheck();
+    console.log(approve);
+  }, [approve]);
 
   return (
     <div>
@@ -125,65 +175,62 @@ const TotalToken = () => {
               </ul>
             </div> */}
             <div className="box-input">
-              <div className="top" id="customToken">
-                <ul>
-                  <li>How Much You Stake Defly Tokens</li>
-                </ul>
-                <div className="input-resp">
-                  <input value={customTokens} type="number" placeholder="Type Here ..." min={250} onChange={e => {
-                    setCustomTokens(e.target.value)
-                  }} />
-                </div>
-              </div>
               <div className="bottom">
                 <ul>
                   <li>Choose Your Tier / Time Frame For Staking</li>
                 </ul>
                 <div className="select-stakingTier input-resp ">
-                  <div className="dropdown">
-                    {/* <button
-                      className="btn btn-secondary dropdown-toggle"
-                      type="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
+                  <select
+                    name=""
+                    id=""
+                    onChange={(e) => {
+                      setTire(e.currentTarget.value);
+                    }}
+                    className="dropdown-menu-select"
+                  >
+                    <option value="" className="select-menu">
                       Select Tier
-                    </button>
-               
-
-                    <ul className="dropdown-menu">
-                      <li>
-                        <a className="dropdown-item"> Tier 1 ( 15 Days )</a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item"> Tier 2 ( 30 Days )</a>
-                      </li>
-
-                      <li>
-                        <a className="dropdown-item"> Tier 3 (60 Days )</a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item"> Tier 3 (90 Days )</a>
-                      </li>
-                    </ul> */}
-                    <select name="" id="" onChange={(e) => {
-                      setTire(e.currentTarget.value)
-
-                    }}>
-
-                      <option value="">Select Tier</option>
-                      <option value="15">Tier 1 ( 15 Days )</option>
-                      <option value="30">Tier 2 ( 30 Days )</option>
-                      <option value="60">Tier 3 ( 60 Days )</option>
-                      <option value="90">Tier 4 ( 90 Days )</option>
-                    </select>
-                  </div>
+                    </option>
+                    <option value="15" className="select-menu">
+                      Tier 1 ( 15 Days )
+                    </option>
+                    <option value="30" className="select-menu">
+                      Tier 2 ( 30 Days )
+                    </option>
+                    <option value="60" className="select-menu">
+                      Tier 3 ( 60 Days )
+                    </option>
+                    <option value="90" className="select-menu">
+                      Tier 4 ( 90 Days )
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div className="top" id="customToken">
+                <ul>
+                  <li>
+                    How Much You Stake Defly Tokens <span> {range} </span>
+                  </li>
+                </ul>
+                <div className="input-resp">
+                  <input
+                    value={customTokens}
+                    type="number"
+                    placeholder="Type Here ..."
+                    min={250}
+                    onChange={(e) => {
+                      setCustomTokens(e.target.value);
+                    }}
+                  />
                 </div>
               </div>
             </div>
             <div className="stak-btn">
-              <button onClick={Approve}>Approve</button>
-              <button onClick={Stake}>Stake</button>
+              {approve == Tokens ? (
+                <button onClick={Stake}>Stake</button>
+              ) : (
+                <button onClick={Approve}>Approve</button>
+              )}
             </div>
           </div>
         </div>

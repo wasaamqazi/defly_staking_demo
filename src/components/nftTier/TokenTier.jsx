@@ -3,6 +3,7 @@ import "./nftTier.scss";
 import tierBack from "../../assets/images/tierBack.png";
 
 const TokenTier = () => {
+
   return (
     <div>
       <section className="tokenTier">

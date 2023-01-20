@@ -78,10 +78,27 @@ export const getTokens = async () => {
     let nfts_data_new = await window.defly_ERC20_contract.methods
         .balanceOf(window.ethereum.selectedAddress)
         .call();
-    nfts_data_new = nfts_data_new / 1000000000000000000;
+    const etherValue = Web3.utils.fromWei(nfts_data_new, 'ether');
+    console.log(etherValue);
+    // const tokensCustom = web3.utils.toWei(String(tokens), "ether");
+    // nfts_data_new = nfts_data_new / 1000000000000000000;
 
-    return nfts_data_new;
+    return etherValue;
 };
+
+
+export const checkApprove = async () => {
+    let nfts_data_new = await window.defly_ERC20_contract.methods
+        .allowance(window.ethereum.selectedAddress,VITE_DEFLY_Token_STAKING)
+        .call();
+    const etherValue = Web3.utils.fromWei(nfts_data_new, 'ether');
+    console.log(etherValue);
+    // const tokensCustom = web3.utils.toWei(String(tokens), "ether");
+    // nfts_data_new = nfts_data_new / 1000000000000000000;
+
+    return etherValue;
+};
+
 
 // export const getMyNFTsDataOld = async () => {
 
@@ -142,10 +159,9 @@ export const getTokens = async () => {
 
 // };
 export const StakeToken = async (customTokens, tier) => {
-    // await window.ethereum.enable();
-    console.log(customTokens);
-    console.log(tier);
-    window.defly_Token_contract.methods.deposit(customTokens, tier)
+    const tokensCustom = web3.utils.toWei(String(customTokens), "ether");
+    console.log(tokensCustom);
+    window.defly_Token_contract.methods.deposit(tokensCustom, tier)
         .send({ from: window.ethereum.selectedAddress })
         .on("transactionHash", async (hash) => {
             console.log(hash);
@@ -165,16 +181,56 @@ export const StakeToken = async (customTokens, tier) => {
 
 };
 export const approveTokens = async (tokens) => {
+    const tokensCustom = web3.utils.toWei(String(tokens), "ether");
+    console.log(tokensCustom);
     window.defly_ERC20_contract.methods
-        .approve(VITE_DEFLY_Token_STAKING, tokens)
+        .approve(VITE_DEFLY_Token_STAKING, tokensCustom)
         .send({ from: window.ethereum.selectedAddress })
         .on("transactionHash", async (hash) => {
             console.log(hash);
+            for (let index = 0; index > -1; index++) {
+                var receipt = await web3.eth.getTransactionReceipt(hash)
+                if (receipt != null) {
+                    window.location.reload(false)
+                    break;
+                }
+                console.log("hello");
+            }
         })
         .on("error", (error) => {
             toast("Something went wrong while Approving");
         });
 };
+export const getAllStakedTokens = async () => {
+    let nfts_data_new = await window.defly_Token_contract.methods
+        .Staker(window.ethereum.selectedAddress)
+        .call();
+    console.log(nfts_data_new);
+    let time = await ((Number(nfts_data_new.day) * 24 * 60 * 60) + Number(nfts_data_new.StartTime)) * 1000
+    nfts_data_new.countdownTime = time;
+    nfts_data_new.tokens = await Web3.utils.fromWei(nfts_data_new.tokens, 'ether');
+    return nfts_data_new;
+};
+export const unStakeToken = async () => {
+    window.defly_Token_contract.methods.withdraw(window.ethereum.selectedAddress)
+        .send({ from: window.ethereum.selectedAddress })
+        .on("transactionHash", async (hash) => {
+            console.log(hash);
+            for (let index = 0; index > -1; index++) {
+                var receipt = await web3.eth.getTransactionReceipt(hash)
+                if (receipt != null) {
+                    window.location.reload(false)
+                    break;
+                }
+                console.log("hello");
+            }
+        })
+        .on("error", (error) => {
+            toast("Something went wrong while Approving");
+
+        });
+};
+
 // export const staker = async () => {
 
 //     let stakerDetails = await window.defly_nft_staking.methods
