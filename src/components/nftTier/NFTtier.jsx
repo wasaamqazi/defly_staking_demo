@@ -16,6 +16,7 @@ import {
   deposit,
   getMyNFTsDataOld,
   getNFTs,
+  stakerInfo,
   unstake,
 } from "../../utils/action";
 import axios from "axios";
@@ -28,6 +29,7 @@ const NFTtier = () => {
   const [currentItem, setCurrentItem] = useState({});
   const [tireSelected, setTire] = useState("");
   const [ApproveCheck, setApproveCheck] = useState(false);
+  const [Staker, setStaker] = useState("");
 
   const VITE_DEFLY_NFT_STAKING = import.meta.env.VITE_DEFLY_NFT_STAKING;
   const VITE_DEFLY_MINT_721 = import.meta.env.VITE_DEFLY_MINT_721;
@@ -65,6 +67,11 @@ const NFTtier = () => {
         setNFTdetails(temp);
       });
     });
+  };
+  const stakerDet = async () => {
+    const staker = await stakerInfo();
+    console.log(staker.DepositToken);
+    setStaker(staker.DepositToken);
   };
 
   const mergeArray = async () => {
@@ -124,6 +131,10 @@ const NFTtier = () => {
 
   useEffect(() => {
     getAllNFTs();
+  }, []);
+
+  useEffect(() => {
+    stakerDet();
   }, []);
 
   useEffect(() => {
@@ -421,18 +432,20 @@ const NFTtier = () => {
                       <div className="card-name">
                         <p>{item.name} </p>
                       </div>
-
-                      <div className="creator-details">
-                        <div className="left">
-                          <button
-                            className="stake-card"
-                            onClick={() => handleShow(item)}
-                          >
-                            stake
-                          </button>
-                        </div>
-                        <div className="right">
-                          {/* <div className="price">
+                      {Staker ? (
+                        <p></p>
+                      ) : (
+                        <div className="creator-details">
+                          <div className="left">
+                            <button
+                              className="stake-card"
+                              onClick={() => handleShow(item)}
+                            >
+                              stake
+                            </button>
+                          </div>
+                          <div className="right">
+                            {/* <div className="price">
                             <p>Price</p>
                             <p>
                               <Icon
@@ -445,8 +458,9 @@ const NFTtier = () => {
                               <span>{item.nftPrice} ETH</span>
                             </p>
                           </div> */}
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                   </div>
                 </div>

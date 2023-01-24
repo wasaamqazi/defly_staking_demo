@@ -162,6 +162,12 @@ export const Approve = async (tokenid) => {
         return false;
     } 
 };
+export const stakerInfo = async () => {
+
+    let stakerDetails = await window.defly_nft_staking.methods
+        .Staker(window.ethereum.selectedAddress).call()
+    return stakerDetails;
+};
 export const staker = async () => {
 
     let stakerDetails = await window.defly_nft_staking.methods
