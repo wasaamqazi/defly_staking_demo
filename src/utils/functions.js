@@ -180,27 +180,28 @@ export const StakeToken = async (customTokens, tier) => {
         });
 
 };
-export const approveTokens = async (tokens) => {
-    const tokensCustom = web3.utils.toWei(String(tokens), "ether");
-    console.log(tokensCustom);
-    window.defly_ERC20_contract.methods
-        .approve(VITE_DEFLY_Token_STAKING, tokensCustom)
-        .send({ from: window.ethereum.selectedAddress })
-        .on("transactionHash", async (hash) => {
-            console.log(hash);
-            for (let index = 0; index > -1; index++) {
-                var receipt = await web3.eth.getTransactionReceipt(hash)
-                if (receipt != null) {
-                    window.location.reload(false)
-                    break;
-                }
-                console.log("hello");
-            }
-        })
-        .on("error", (error) => {
-            toast("Something went wrong while Approving");
-        });
-};
+// export const approveTokens = async (tokens) => {
+//     const tokensCustom = web3.utils.toWei(String(tokens), "ether");
+//     console.log(tokensCustom);
+//     window.defly_ERC20_contract.methods
+//         .approve(VITE_DEFLY_Token_STAKING, tokensCustom)
+//         .send({ from: window.ethereum.selectedAddress })
+//         .on("transactionHash", async (hash) => {
+//             console.log(hash);
+//             for (let index = 0; index > -1; index++) {
+//                 var receipt = await web3.eth.getTransactionReceipt(hash)
+//                 if (receipt != null) {
+//                     // window.location.reload(false)
+//                     return true;
+//                 }
+//                 console.log("hello");
+//             }
+//         })
+//         .on("error", (error) => {
+//             toast("Something went wrong while Approving");
+//             return false;
+//         });
+// };
 export const getAllStakedTokens = async () => {
     let nfts_data_new = await window.defly_Token_contract.methods
         .Staker(window.ethereum.selectedAddress)

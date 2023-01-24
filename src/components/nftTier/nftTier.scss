@@ -1,4 +1,14 @@
 .nft-tier {
+  .tier-tabContent {
+    font-family: "Anton" !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    text-align: center;
+    color: #ffffff;
+    padding-top: 95px;
+    padding-bottom: 69px;
+  }
   .section-header {
     margin: 90px auto;
     position: relative;
@@ -69,17 +79,6 @@
         }
       }
     }
-  }
-
-  .tier-tabContent {
-    font-family: "Quicksand";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 22.1489px;
-    text-align: center;
-    color: #ffffff;
-    padding-top: 95px;
-    padding-bottom: 69px;
   }
 
   .tierBackRotate {
@@ -419,14 +418,15 @@
   }
 
   .tier-tabContent {
-    font-family: "Quicksand";
+    font-family: "Anton";
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 22.1489px;
     text-align: center;
     color: #ffffff;
     padding-top: 90px;
     padding-bottom: 0px;
+    letter-spacing: 1px;
   }
 
   .tierBackRotate {

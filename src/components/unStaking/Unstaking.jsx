@@ -6,13 +6,12 @@ import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 import { staker, unstake } from "../../utils/action";
-import axios from 'axios';
+import axios from "axios";
 import Countdown from "react-countdown";
 const Unstaking = () => {
-  const [nftImage, setNftImage] = useState("")
-  const [nftDetails, setNftDetails] = useState("")
-  const [nftCountdown, setNftCountdown] = useState("")
-
+  const [nftImage, setNftImage] = useState("");
+  const [nftDetails, setNftDetails] = useState("");
+  const [nftCountdown, setNftCountdown] = useState("");
 
   const topnft = [
     {
@@ -69,7 +68,7 @@ const Unstaking = () => {
   // const [hours, setHours] = useState(0);
   // const [minutes, setMinutes] = useState(0);
   // const [seconds, setSeconds] = useState(0);
-  const [stakerDetail, setStakerDetail] = useState('')
+  const [stakerDetail, setStakerDetail] = useState("");
   //   const time = Date.parse(CountdownTime) - Date.now();
   //   setDays(Math.floor(time / (1000 * 60 * 60 * 24)));
   //   setHours(Math.floor((time / (1000 * 60 * 60)) % 24));
@@ -77,59 +76,59 @@ const Unstaking = () => {
   //   setSeconds(Math.floor((time / 1000) % 60));
   // };
 
-
   const getStaker = async () => {
-    let temp = await staker().then(async res => {
-      console.log(res)
-      if (res && JSON.stringify(res) !== '{}') {
-        console.log('Helo axios')
-        setNftCountdown(res.countdownTime)
-        await axios.get(res.tokenuri).then(async res => {
-          console.log(res.data);
-          setNftDetails(res.data)
-        }).catch(err => {
-          console.log(err)
-
-        })
+    let temp = await staker().then(async (res) => {
+      console.log(res);
+      if (res && JSON.stringify(res) !== "{}") {
+        console.log("Helo axios");
+        setNftCountdown(res.countdownTime);
+        await axios
+          .get(res.tokenuri)
+          .then(async (res) => {
+            console.log(res.data);
+            setNftDetails(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
-    })
-    console.log(temp)
-  }
+    });
+    console.log(temp);
+  };
 
   const withDrawNFT = async () => {
-    const result = await unstake().then(res => {
+    const result = await unstake().then((res) => {
       // setNftImage("")
       // setNftDetails("")
       // setNftCountdown("")
-    })
-  }
-
+    });
+  };
 
   useEffect(() => {
-    getStaker()
-  }, [])
+    getStaker();
+  }, []);
   useEffect(() => {
     // console.log('details', stakerDetail);
-    setNftImage(nftDetails.image)
-  }, [nftDetails])
+    setNftImage(nftDetails.image);
+  }, [nftDetails]);
 
   useEffect(() => {
     console.log(nftCountdown);
-  }, [nftCountdown])
+  }, [nftCountdown]);
   return (
     <div>
-
-      {nftDetails ? <section className="unstaking">
-        <div className="section-header">
-          <h1>un staking</h1>
-          <img
-            src="\assets\images\headingBackground.png"
-            alt=""
-            className="img-fluid"
-          />
-        </div>
-        <div className="container">
-          {/* <div className="select-stakingTier">
+      {nftDetails ? (
+        <section className="unstaking">
+          <div className="section-header">
+            <h1>un staking</h1>
+            <img
+              src="\assets\images\headingBackground.png"
+              alt=""
+              className="img-fluid"
+            />
+          </div>
+          <div className="container">
+            {/* <div className="select-stakingTier">
             <div className="dropdown">
               <button
                 className="btn btn-secondary dropdown-toggle"
@@ -157,79 +156,70 @@ const Unstaking = () => {
             </div>
           </div> */}
 
-          <div className="unstaking-cards">
-            <div className="nftStaking-cards">
-              <div className="staking-card " >
-                <div className="background">
-                  <img
-                    src="\assets\images\cardBack.png"
-                    alt=""
-                    className="backImg img-fluid"
-                  />
-                  <div className="nft-claim-reward" style={{ color: 'white' }}>
-                    {
-
-                      < Countdown date={nftCountdown} />
-                    }
-
-                  </div>
-                  {/* <div className="drop-shadow"></div> */}
-                </div>
-                <div className="card-plate">
-                  <div className="card-gold-plate">
-                    {/* backgound gold image */}
+            <div className="unstaking-cards">
+              <div className="nftStaking-cards">
+                <div className="staking-card ">
+                  <div className="background">
                     <img
-                      src="\assets\images\cardSheild.png"
+                      src="\assets\images\cardBack.png"
                       alt=""
-                      className="img-fluid"
+                      className="backImg img-fluid"
                     />
-
-                    {/* Favourite Checkbox */}
-
-                    <div className="fav d-flex align-items-center ">
-                      <Checkbox
-                        disabled
-                        className="favCheck"
-                        {...label}
-                        icon={<FavoriteBorder />}
-                        checkedIcon={
-                          <Favorite
-                            sx={{
-                              color: "white",
-                              "&.Mui-checked": {
-                                border: "white",
-                              },
-                            }}
-                          />
-                        }
-                      />
-                      <p>100</p>
+                    <div
+                      className="nft-claim-reward"
+                      style={{ color: "white" }}
+                    >
+                      {<Countdown date={nftCountdown} />}
                     </div>
-
-                    {/* Our NFT IMG (dog img) */}
-                    <div className="ourNft">
-
-
-                      {nftImage ? <img
-                        src={nftImage}
-
+                    {/* <div className="drop-shadow"></div> */}
+                  </div>
+                  <div className="card-plate">
+                    <div className="card-gold-plate">
+                      {/* backgound gold image */}
+                      <img
+                        src="\assets\images\cardSheild.png"
                         alt=""
+                        className="img-fluid"
+                      />
 
-                      /> : <></>}
+                      {/* Favourite Checkbox */}
 
-                    </div>
+                      <div className="fav d-flex align-items-center ">
+                        <Checkbox
+                          disabled
+                          className="favCheck"
+                          {...label}
+                          icon={<FavoriteBorder />}
+                          checkedIcon={
+                            <Favorite
+                              sx={{
+                                color: "white",
+                                "&.Mui-checked": {
+                                  border: "white",
+                                },
+                              }}
+                            />
+                          }
+                        />
+                        <p>100</p>
+                      </div>
 
-                    {/* nft name  */}
-                    <div className="card-name">
-                      <p>{nftDetails.name}</p>
-                      {/* <p>Hello</p> */}
-                      {/* <p>{item.nftName} </p> */}
-                    </div>
+                      {/* Our NFT IMG (dog img) */}
+                      <div className="ourNft">
+                        {nftImage ? <img src={nftImage} alt="" /> : <></>}
+                      </div>
 
-                    {/* nft detail price */}
-                    <div className="creator-details">
-                      <div className="left">
-                        {/* <div className="creator-avatar">
+                      {/* nft name  */}
+                      <div className="card-name">
+                        <p>{nftDetails.name}</p>
+                        {/* <p>Hello</p> */}
+                        {/* <p>{item.nftName} </p> */}
+                      </div>
+
+                      {/* nft detail price */}
+                      <div className="creator-details">
+                        <div className="left">
+                          {/* <div className="creator-avatar">
                               <img
                                 src="\assets\images\creatorAvatar.png"
                                 alt=""
@@ -241,23 +231,24 @@ const Unstaking = () => {
 
                               <p className="creator-name">Sonia Williams</p>
                             </div> */}
-                        <button className="claimReward" onClick={withDrawNFT}>
-                          Claim Reward
-                        </button>
-                      </div>
-                      <div className="right">
-                        <div className="price">
-                          <p>Price</p>
-                          <p>
-                            <Icon
-                              icon="cryptocurrency:eth"
-                              color="white"
-                              width="11"
-                              height="11"
-                              className="icon"
-                            />
-                            {/* <span>{item.nftPrice} ETH</span> */}
-                          </p>
+                          <button className="claimReward" onClick={withDrawNFT}>
+                            Claim Reward
+                          </button>
+                        </div>
+                        <div className="right">
+                          <div className="price">
+                            <p>Price</p>
+                            <p>
+                              <Icon
+                                icon="cryptocurrency:eth"
+                                color="white"
+                                width="11"
+                                height="11"
+                                className="icon"
+                              />
+                              {/* <span>{item.nftPrice} ETH</span> */}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -265,15 +256,17 @@ const Unstaking = () => {
                 </div>
               </div>
             </div>
+            <div className="loadmore-btn">
+              <button>load more</button>
+            </div>
           </div>
-          <div className="loadmore-btn">
-            <button>load more</button>
+          <div className="unstakback">
+            <h1>unstaking</h1>
           </div>
-        </div>
-        <div className="unstakback">
-          <h1>unstaking</h1>
-        </div>
-      </section> : <></>}
+        </section>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

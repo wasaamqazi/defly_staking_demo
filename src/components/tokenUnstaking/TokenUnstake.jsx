@@ -55,82 +55,17 @@ const TokenUnstake = () => {
               <div className="token-box">
                 <div className="box-heading">
                   <h1>token staked</h1>
-                  <h1>
+                  <h1 style={{ color: "white" }}>
                     {Tokens}
                     <img src="\assets\images\defly-logo.svg" alt="" />
                   </h1>
                 </div>
-                {/* <div>
-              <ul className="unstyled centered">
-                <li className="listStyle">
-                  <input
-                    className="styled-checkbox"
-                    id="styled-checkbox-1"
-                    value="15%"
-                    type="radio"
-                    name="token"
-                  />
-                  <label for="styled-checkbox-1">15 %</label>
-                </li>
-                <li className="listStyle">
-                  <input
-                    className="styled-checkbox"
-                    id="styled-checkbox-2"
-                    value="value2"
-                    type="radio"
-                    name="token"
-                  />
-                  <label for="styled-checkbox-2">25 %</label>
-                </li>
-                <li>
-                  <input
-                    className="styled-checkbox"
-                    id="styled-checkbox-3"
-                    value="value3"
-                    type="radio"
-                    name="token"
-                  />
-                  <label for="styled-checkbox-3">50%</label>
-                </li>
-                <li>
-                  <input
-                    className="styled-checkbox"
-                    id="styled-checkbox-4"
-                    type="radio"
-                    value="value4"
-                    name="token"
-                  />
-                  <label for="styled-checkbox-4">75 %</label>
-                </li>
 
-                <li>
-                  <input
-                    className="styled-checkbox"
-                    id="styled-checkbox-5"
-                    value="value5"
-                    type="radio"
-                    name="token"
-                  />
-                  <label for="styled-checkbox-5">100 %</label>
-                </li>
-
-                <li>
-                  <input
-                    className="styled-checkbox"
-                    id="styled-checkbox-6"
-                    value="custom"
-                    type="radio"
-                    name="token"
-                  />
-                  <label for="styled-checkbox-6">Custom</label>
-                </li>
-              </ul>
-            </div> */}
                 <div
                   className="nft-claim-reward mt-5 d-flex justify-content-center "
-                  style={{ color: "white" }}
+                  style={{ color: "white", paddingBottom: "2rem" }}
                 >
-                  <h1>
+                  <h1 className="customCountDownClass">
                     {nftCountdown && nftCountdown > 0 ? (
                       <Countdown date={nftCountdown} />
                     ) : (
@@ -138,8 +73,27 @@ const TokenUnstake = () => {
                     )}
                   </h1>
                 </div>
+                <div class="danger">
+                  <p>
+                    <strong>NOTE!</strong>
+                  </p>
+                  <p>
+                    {" "}
+                    If tokens are unstake before time then 2% penalty on staked
+                    tokens and <br></br> No reward of NFTs.
+                  </p>
+                </div>
+                {/* <div
+                  className="nft-claim-reward mt-5 d-flex justify-content-center "
+                  style={{ color: "white" }}
+                >
+                  <p1>
+                    NOTICE<br></br>If tokens are unstake before time then 2%
+                    penalty on staked tokens and <br></br> No reward of NFTs.
+                  </p1>
+                </div> */}
                 <div className="stak-btn">
-                  <button onClick={unStaked}>Unstake</button>
+                  <button onClick={unStaked}>UnStake</button>
                 </div>
               </div>
             </div>

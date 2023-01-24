@@ -9,8 +9,14 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import StakingDetailModal from "../stakingDetail/StakingDetailModal";
-import { approve, deposit, getMyNFTsDataOld, getNFTs, unstake } from "../../utils/action";
-import axios from "axios"
+import {
+  approve,
+  deposit,
+  getMyNFTsDataOld,
+  getNFTs,
+  unstake,
+} from "../../utils/action";
+import axios from "axios";
 import "./stakingDetail.scss";
 
 const NFTtier = () => {
@@ -20,14 +26,12 @@ const NFTtier = () => {
   const [currentItem, setCurrentItem] = useState({});
   const [tireSelected, setTire] = useState("");
 
-
   const handleClose = () => setShow(false);
   const handleShow = (item) => {
-    setShow(true)
+    setShow(true);
     // console.log(item);
-    setCurrentItem(item)
+    setCurrentItem(item);
     console.log(item.tokenId);
-
   };
 
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
@@ -49,57 +53,45 @@ const NFTtier = () => {
           name: res.data.name,
           tokenId: item.tokenid,
           attributes: res.data.attributes,
-        })
-        setNFTdetails(temp)
-      })
-    })
-
-  }
+        });
+        setNFTdetails(temp);
+      });
+    });
+  };
 
   const mergeArray = async () => {
     if (NFTdetails) {
+      const oldNFTS = await getMyNFTsDataOld();
 
-
-      const oldNFTS = await getMyNFTsDataOld()
-
-      let nftTempArr = [
-        ...NFTdetails,
-        ...oldNFTS.nftData,
-      ];
+      let nftTempArr = [...NFTdetails, ...oldNFTS.nftData];
       // console.log(nftTempArr);
 
-      setALLDATA(nftTempArr)
+      setALLDATA(nftTempArr);
     }
-  }
+  };
 
   const stake = () => {
-
     if (tireSelected) {
       console.log(tireSelected);
       console.log(currentItem.tokenId);
 
-      deposit(currentItem.tokenId, tireSelected)
-
+      deposit(currentItem.tokenId, tireSelected);
     } else {
-      alert("please select tier")
+      alert("please select tier");
     }
-  }
+  };
 
   const approveNFT = async () => {
-    approve(currentItem.tokenId)
-  }
+    approve(currentItem.tokenId);
+  };
 
   useEffect(() => {
-    getAllNFTs()
-
-
-  }, [])
+    getAllNFTs();
+  }, []);
 
   useEffect(() => {
-    mergeArray()
-  }, [NFTdetails])
-
-
+    mergeArray();
+  }, [NFTdetails]);
 
   return (
     <div>
@@ -207,8 +199,9 @@ const NFTtier = () => {
 
           {/* this is tab1 tier1 */}
 
-          <p className="tier-tabContent">
-            You Can Stake Your DEFLY BALL NFT for 15 Days, 30 Days, 60 Days and 90 Days
+          <p className="customFont ">
+            You Can Stake Your DEFLY BALL NFT for 15 Days, 30 Days, 60 Days and
+            90 Days
           </p>
           {/* <div className="tab-content" id="myTabContent">
             <div
@@ -352,7 +345,6 @@ const NFTtier = () => {
                       alt=""
                       className="backImg img-fluid"
                     />
-
                   </div>
                   <div className="card-plate">
                     <div className="card-gold-plate">
@@ -382,23 +374,19 @@ const NFTtier = () => {
                       </div>
 
                       <div className="ourNft">
-                        <img
-
-                          src={item.image}
-                          alt=""
-                          srcSet=""
-                        />
+                        <img src={item.image} alt="" srcSet="" />
                       </div>
 
                       <div className="card-name">
-
                         <p>{item.name} </p>
                       </div>
 
                       <div className="creator-details">
                         <div className="left">
-
-                          <button className="stake-card" onClick={() => handleShow(item)}>
+                          <button
+                            className="stake-card"
+                            onClick={() => handleShow(item)}
+                          >
                             stake
                           </button>
                         </div>
@@ -425,8 +413,6 @@ const NFTtier = () => {
             })}
           </div>
 
-
-
           <div className="loadmore-btn">
             <button>load more</button>
           </div>
@@ -449,7 +435,6 @@ const NFTtier = () => {
                       className="responsive-rotation"
                       style={{ position: "relative" }}
                     >
-
                       <div className="nftStaking-cards">
                         <div className="staking-card">
                           <div className="background">
@@ -487,11 +472,7 @@ const NFTtier = () => {
                               </div>
 
                               <div className="ourNft">
-                                <img
-                                  src={currentItem.image}
-                                  alt=""
-                                  srcSet=""
-                                />
+                                <img src={currentItem.image} alt="" srcSet="" />
                               </div>
 
                               <div className="card-name">
@@ -542,7 +523,6 @@ const NFTtier = () => {
                   <div className="right-side">
                     <div className="stakingDetail-card-header">
                       <h1>{currentItem.name}</h1>
-
                     </div>
                     <div className="stakCard-details">
                       <div className="price">
@@ -557,18 +537,18 @@ const NFTtier = () => {
                           <p>Description</p>
                         </div>
                         <div className="discrip">
-                          <p>
-                            {currentItem.description}
-                          </p>
+                          <p>{currentItem.description}</p>
                         </div>
                       </div>
                       <div className="select-stakingTier">
-
-                        <select name="" id="" onChange={(e) => {
-                          setTire(e.currentTarget.value)
-
-                        }}>
-
+                        <select
+                          className="customSelect"
+                          name=""
+                          id=""
+                          onChange={(e) => {
+                            setTire(e.currentTarget.value);
+                          }}
+                        >
                           <option value="">Select Tier</option>
                           <option value="15">Tier 1 ( 15 Days )</option>
                           <option value="30">Tier 2 ( 30 Days )</option>
@@ -576,9 +556,12 @@ const NFTtier = () => {
                           <option value="90">Tier 4 ( 90 Days )</option>
                         </select>
 
-
-                        <button onClick={() => stake()
-                        }>Stake</button>
+                        <button
+                          className="customStakeBtn"
+                          onClick={() => stake()}
+                        >
+                          Stake
+                        </button>
                         {/* <div className="dropdown">
                                           <button
                                             className="btn btn-secondary dropdown-toggle"
@@ -607,7 +590,6 @@ const NFTtier = () => {
                                           </ul>
                                         </div> */}
                       </div>
-
                     </div>
                   </div>
                 </div>
@@ -624,7 +606,7 @@ const NFTtier = () => {
           </Modal.Body>
         </Modal>
       </section>
-    </div >
+    </div>
   );
 };
 
