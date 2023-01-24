@@ -4,13 +4,15 @@ import tierBack from "../../assets/images/tierBack.png";
 import { Icon } from "@iconify/react";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import defly_mint_ERC721_contractABI from "../../abi/MintERC721.json";
 import Favorite from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+import Web3 from "web3/dist/web3.min.js";
 import Button from "react-bootstrap/Button";
 import StakingDetailModal from "../stakingDetail/StakingDetailModal";
 import {
-  approve,
+  Approve,
   deposit,
   getMyNFTsDataOld,
   getNFTs,
@@ -25,6 +27,12 @@ const NFTtier = () => {
   const [allDATA, setALLDATA] = useState([]);
   const [currentItem, setCurrentItem] = useState({});
   const [tireSelected, setTire] = useState("");
+  const [ApproveCheck, setApproveCheck] = useState(false);
+
+  const VITE_DEFLY_NFT_STAKING = import.meta.env.VITE_DEFLY_NFT_STAKING;
+  const VITE_DEFLY_MINT_721 = import.meta.env.VITE_DEFLY_MINT_721;
+
+  const web3 = new Web3(window.ethereum);
 
   const handleClose = () => setShow(false);
   const handleShow = (item) => {
@@ -70,24 +78,57 @@ const NFTtier = () => {
     }
   };
 
-  const stake = () => {
+  const stake = async () => {
     if (tireSelected) {
       console.log(tireSelected);
       console.log(currentItem.tokenId);
-
-      deposit(currentItem.tokenId, tireSelected);
+      await deposit(currentItem.tokenId, tireSelected);
     } else {
       alert("please select tier");
     }
   };
 
   const approveNFT = async () => {
-    approve(currentItem.tokenId);
+    console.log(currentItem.tokenId);
+    console.log(VITE_DEFLY_NFT_STAKING);
+    window.defly_mint_contract = await new web3.eth.Contract(
+      defly_mint_ERC721_contractABI,
+      VITE_DEFLY_MINT_721
+    );
+    // console.log(currentItem.tokenId);
+    // console.log(VITE_DEFLY_NFT_STAKING);
+    window.defly_mint_contract.methods
+      .approve(VITE_DEFLY_NFT_STAKING, currentItem.tokenId)
+      .send({ from: window.ethereum.selectedAddress })
+      .on("transactionHash", async (hash) => {
+        console.log(hash);
+        for (let index = 0; index > -1; index++) {
+          var receipt = await web3.eth.getTransactionReceipt(hash);
+          if (receipt != null) {
+            checkApprove();
+            break;
+          }
+          console.log("hello");
+        }
+      })
+      .on("error", (error) => {
+        toast("Something went wrong while Approving");
+      });
+    // approve(currentItem.tokenId);
+  };
+  const checkApprove = async () => {
+    const appCheck = await Approve(currentItem.tokenId);
+    console.log(appCheck);
+    setApproveCheck(appCheck);
   };
 
   useEffect(() => {
     getAllNFTs();
   }, []);
+
+  useEffect(() => {
+    checkApprove();
+  }, [currentItem]);
 
   useEffect(() => {
     mergeArray();
@@ -514,10 +555,17 @@ const NFTtier = () => {
                           </div>
                         </div>
                       </div>
+                      {ApproveCheck ? (
+                        <p></p>
+                      ) : (
+                        <div className="stake-btn">
+                          <button onClick={approveNFT}>approved</button>
+                        </div>
+                      )}
 
-                      <div className="stake-btn">
+                      {/* <div className="stake-btn">
                         <button onClick={approveNFT}>approved</button>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                   <div className="right-side">
@@ -540,56 +588,33 @@ const NFTtier = () => {
                           <p>{currentItem.description}</p>
                         </div>
                       </div>
-                      <div className="select-stakingTier">
-                        <select
-                          className="customSelect"
-                          name=""
-                          id=""
-                          onChange={(e) => {
-                            setTire(e.currentTarget.value);
-                          }}
-                        >
-                          <option value="">Select Tier</option>
-                          <option value="15">Tier 1 ( 15 Days )</option>
-                          <option value="30">Tier 2 ( 30 Days )</option>
-                          <option value="60">Tier 3 ( 60 Days )</option>
-                          <option value="90">Tier 4 ( 90 Days )</option>
-                        </select>
+                      {ApproveCheck ? (
+                        <div className="select-stakingTier">
+                          <select
+                            className="customSelect"
+                            name=""
+                            id=""
+                            onChange={(e) => {
+                              setTire(e.currentTarget.value);
+                            }}
+                          >
+                            <option value="">Select Tier</option>
+                            <option value="15">Tier 1 ( 15 Days )</option>
+                            <option value="30">Tier 2 ( 30 Days )</option>
+                            <option value="60">Tier 3 ( 60 Days )</option>
+                            <option value="90">Tier 4 ( 90 Days )</option>
+                          </select>
 
-                        <button
-                          className="customStakeBtn"
-                          onClick={() => stake()}
-                        >
-                          Stake
-                        </button>
-                        {/* <div className="dropdown">
-                                          <button
-                                            className="btn btn-secondary dropdown-toggle"
-                                            type="button"
-                                            data-bs-toggle="dropdown"
-                                            aria-expanded="false"
-                                          >
-                                            Select Tier
-                                          </button>
-                                          <ul className="dropdown-menu">
-                                            <li>
-                                              <a className="dropdown-item" onClick={(e) => {
-                                                console.log(e);
-                                              }}> Tier 1 ( 15 Days )</a>
-                                            </li>
-                                            <li>
-                                              <a className="dropdown-item"> Tier 2 ( 30 Days )</a>
-                                            </li>
-
-                                            <li>
-                                              <a className="dropdown-item"> Tier 3 (60 Days )</a>
-                                            </li>
-                                            <li>
-                                              <a className="dropdown-item"> Tier 3 (90 Days )</a>
-                                            </li>
-                                          </ul>
-                                        </div> */}
-                      </div>
+                          <button
+                            className="customStakeBtn"
+                            onClick={() => stake()}
+                          >
+                            Stake
+                          </button>
+                        </div>
+                      ) : (
+                        <p></p>
+                      )}
                     </div>
                   </div>
                 </div>

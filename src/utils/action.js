@@ -52,6 +52,8 @@ export const getNFTs = async () => {
     const nfts_data_new = await window.defly_mint_contract.methods
         .balanceOf(window.ethereum.selectedAddress)
         .call();
+    console.log(nfts_data_new);
+    console.log(window.defly_mint_contract.methods);
 
     //loop for fetching tokenIDs
     for (var i = 0; i < nfts_data_new; i++) {
@@ -150,16 +152,15 @@ export const deposit = async (tokenid, tier) => {
         });
 
 };
-export const approve = async (tokenid) => {
-    window.defly_mint_contract.methods
-        .approve(VITE_DEFLY_NFT_STAKING, tokenid)
-        .send({ from: window.ethereum.selectedAddress })
-        .on("transactionHash", async (hash) => {
-            console.log(hash);
-        })
-        .on("error", (error) => {
-            toast("Something went wrong while Approving");
-        });
+export const Approve = async (tokenid) => {
+    console.log(window.defly_mint_contract.methods);
+    const data = await window.defly_mint_contract.methods.getApproved(tokenid).call();
+    if(data == VITE_DEFLY_NFT_STAKING){
+        console.log(data);
+        return true;
+    }else{
+        return false;
+    } 
 };
 export const staker = async () => {
 
