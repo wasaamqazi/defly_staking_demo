@@ -8,12 +8,15 @@ import NftStaking from "./page/NftStaking";
 import TokenStakingPage from "./page/TokenStakingPage";
 import { Routes, Route } from "react-router-dom";
 import StakingDetail from "./components/stakingDetail/StakingDetail";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <div className="App">
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Landing />} />
         {/* <Route path="/" element={<StakingDetail />} /> */}

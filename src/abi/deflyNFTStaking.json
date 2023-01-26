@@ -23,6 +23,16 @@
 				"internalType": "uint256",
 				"name": "Days",
 				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_to",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_mintAddress",
+				"type": "address"
 			}
 		],
 		"name": "deposit",
@@ -32,11 +42,6 @@
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_ERC721address",
-				"type": "address"
-			},
 			{
 				"internalType": "address",
 				"name": "_ERC20Address",
@@ -88,8 +93,18 @@
 	{
 		"inputs": [
 			{
+				"internalType": "uint256",
+				"name": "TokenId",
+				"type": "uint256"
+			},
+			{
 				"internalType": "address",
 				"name": "_to",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_mintAddress",
 				"type": "address"
 			}
 		],
@@ -229,10 +244,25 @@
 				"internalType": "address",
 				"name": "",
 				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"name": "Staker",
 		"outputs": [
+			{
+				"internalType": "address",
+				"name": "mint721",
+				"type": "address"
+			},
 			{
 				"internalType": "uint256",
 				"name": "tokens",

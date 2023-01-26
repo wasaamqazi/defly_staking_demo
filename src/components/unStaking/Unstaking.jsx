@@ -5,87 +5,36 @@ import { Icon } from "@iconify/react";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
-import { staker, unstake } from "../../utils/action";
+import { staker } from "../../utils/action";
 import axios from "axios";
 import Countdown from "react-countdown";
+import Defly_Nft_Staking from "../../abi/deflyNFTStaking.json";
+import Web3 from "web3/dist/web3.min";
+import { toast } from "react-toastify";
+
 const Unstaking = () => {
   const [nftImage, setNftImage] = useState("");
   const [nftDetails, setNftDetails] = useState("");
   const [nftCountdown, setNftCountdown] = useState("");
-
-  const topnft = [
-    {
-      nftName: "AUSTRALIAN SHEPHARD",
-      creatorname: "Sonia Williams",
-      nftPrice: 4.89,
-      nftImg: "/assets/images/australianShephard.png",
-      creatorAvatar: "/assets/images/creatorAvatar.png",
-    },
-    {
-      nftName: "Border collie",
-      creatorname: " Jade shaw",
-      creatorAvatar: "/assets/images/creatorAvatar.png",
-
-      nftPrice: 3.6,
-      nftImg: "/assets/images/borderCollie.png",
-    },
-    {
-      nftName: "Bull terrier",
-      creatorname: "Nina holland ",
-      creatorAvatar: "/assets/images/creatorAvatar.png",
-
-      nftPrice: 3.6,
-      nftImg: "/assets/images/australianShephard.png",
-    },
-    {
-      nftName: "CHIHUAHUA ",
-      creatorname: "Jack Hager ",
-      creatorAvatar: "/assets/images/creatorAvatar.png",
-
-      nftPrice: 3.69,
-      nftImg: "/assets/images/australianShephard.png",
-    },
-    {
-      nftName: "POODLE",
-      creatorname: "john wick ",
-      creatorAvatar: "/assets/images/creatorAvatar.png",
-
-      nftPrice: 31.6,
-      nftImg: "/assets/images/australianShephard.png",
-    },
-    {
-      nftName: "DOBERMAN",
-      creatorname: " sabrina kate",
-      creatorAvatar: "/assets/images/creatorAvatar.png",
-
-      nftPrice: 3.64,
-      nftImg: "/assets/images/australianShephard.png",
-    },
-  ];
-
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
-  // const [days, setDays] = useState(0);
-  // const [hours, setHours] = useState(0);
-  // const [minutes, setMinutes] = useState(0);
-  // const [seconds, setSeconds] = useState(0);
   const [stakerDetail, setStakerDetail] = useState("");
-  //   const time = Date.parse(CountdownTime) - Date.now();
-  //   setDays(Math.floor(time / (1000 * 60 * 60 * 24)));
-  //   setHours(Math.floor((time / (1000 * 60 * 60)) % 24));
-  //   setMinutes(Math.floor((time / 1000 / 60) % 60));
-  //   setSeconds(Math.floor((time / 1000) % 60));
-  // };
+  const [loadingState, setLoadingState] = useState(false);
+  const [mintAddress, setMintAddress] = useState("");
+
+  const VITE_DEFLY_NFT_STAKING = import.meta.env.VITE_DEFLY_NFT_STAKING;
+  const VITE_DEFLY_MINT_721 = import.meta.env.VITE_DEFLY_MINT_721;
+  const VITE_MINT_OLD = import.meta.env.VITE_MINT_OLD_ADDRESS;
+  const web3 = new Web3(window.ethereum);
 
   const getStaker = async () => {
     let temp = await staker().then(async (res) => {
-      console.log(res);
+      setMintAddress(res.mint721)
       if (res && JSON.stringify(res) !== "{}") {
-        console.log("Helo axios");
         setNftCountdown(res.countdownTime);
         await axios
           .get(res.tokenuri)
           .then(async (res) => {
-            console.log(res.data);
+
             setNftDetails(res.data);
           })
           .catch((err) => {
@@ -93,30 +42,52 @@ const Unstaking = () => {
           });
       }
     });
-    console.log(temp);
   };
 
   const withDrawNFT = async () => {
-    const result = await unstake().then((res) => {
-      // setNftImage("")
-      // setNftDetails("")
-      // setNftCountdown("")
-    });
+    setLoadingState(true)
+    // defly staking contract 
+    window.defly_nft_staking = await new web3.eth.Contract(
+      Defly_Nft_Staking,
+      VITE_DEFLY_NFT_STAKING
+    );
+
+    window.defly_nft_staking.methods.withdraw(window.ethereum.selectedAddress, mintAddress)
+      .send({ from: window.ethereum.selectedAddress })
+      .on("transactionHash", async (hash) => {
+
+        for (let index = 0; index > -1; index++) {
+          var receipt = await web3.eth.getTransactionReceipt(hash)
+          if (receipt != null) {
+            window.location.reload(false)
+            // setLoadingState(false)
+            break;
+          }
+          console.log("Hello");
+        }
+      })
+      .on("error", (error) => {
+        toast("Something went wrong while Approving");
+        setLoadingState(false)
+
+      });
   };
 
   useEffect(() => {
     getStaker();
   }, []);
   useEffect(() => {
-    // console.log('details', stakerDetail);
     setNftImage(nftDetails.image);
   }, [nftDetails]);
 
-  useEffect(() => {
-    console.log(nftCountdown);
-  }, [nftCountdown]);
+
   return (
     <div>
+
+
+
+
+
       {nftDetails ? (
         <section className="unstaking">
           <div className="section-header">
@@ -127,127 +98,74 @@ const Unstaking = () => {
               className="img-fluid"
             />
           </div>
-          <div className="container">
-            {/* <div className="select-stakingTier">
-            <div className="dropdown">
-              <button
-                className="btn btn-secondary dropdown-toggle"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Select Tier
-              </button>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item"> Tier 1 ( 15 Days )</a>
-                </li>
-                <li>
-                  <a className="dropdown-item"> Tier 2 ( 30 Days )</a>
-                </li>
 
-                <li>
-                  <a className="dropdown-item"> Tier 3 (60 Days )</a>
-                </li>
-                <li>
-                  <a className="dropdown-item"> Tier 3 (90 Days )</a>
-                </li>
-              </ul>
+
+          {loadingState ? (
+            <div className="loader-wrao" style={{ visibility: "visible" }}>
+              <div className="loader"></div>
             </div>
-          </div> */}
-
-            <div className="unstaking-cards">
-              <div className="nftStaking-cards">
-                <div className="staking-card ">
-                  <div className="background">
-                    <img
-                      src="\assets\images\cardBack.png"
-                      alt=""
-                      className="backImg img-fluid"
-                    />
-                    <div
-                      className="nft-claim-reward"
-                      style={{ color: "white" }}
-                    >
-                      {<Countdown date={nftCountdown} />}
-                    </div>
-                    {/* <div className="drop-shadow"></div> */}
-                  </div>
-                  <div className="card-plate">
-                    <div className="card-gold-plate">
-                      {/* backgound gold image */}
-                      <img
-                        src="\assets\images\cardSheild.png"
-                        alt=""
-                        className="img-fluid"
-                      />
-
-                      {/* Favourite Checkbox */}
-
-                      <div className="fav d-flex align-items-center ">
-                        <Checkbox
-                          disabled
-                          className="favCheck"
-                          {...label}
-                          icon={<FavoriteBorder />}
-                          checkedIcon={
-                            <Favorite
-                              sx={{
-                                color: "white",
-                                "&.Mui-checked": {
-                                  border: "white",
-                                },
-                              }}
-                            />
-                          }
+          ) : (
+            <>
+              <div className="container">
+                <div className="unstaking-cards">
+                  <div className="nftStaking-cards">
+                    <div className="staking-card ">
+                      <div className="background">
+                        <img
+                          src="\assets\images\cardBack.png"
+                          alt=""
+                          className="backImg img-fluid"
                         />
-                        <p>100</p>
-                      </div>
 
-                      {/* Our NFT IMG (dog img) */}
-                      <div className="ourNft">
-                        {nftImage ? <img src={nftImage} alt="" /> : <></>}
-                      </div>
 
-                      {/* nft name  */}
-                      <div className="card-name">
-                        <p>{nftDetails.name}</p>
-                        {/* <p>Hello</p> */}
-                        {/* <p>{item.nftName} </p> */}
                       </div>
+                      <div className="card-plate">
+                        <div className="card-gold-plate">
 
-                      {/* nft detail price */}
-                      <div className="creator-details">
-                        <div className="left">
-                          {/* <div className="creator-avatar">
-                              <img
-                                src="\assets\images\creatorAvatar.png"
-                                alt=""
-                                className="img-fluid"
-                              />
+                          <img
+                            src="\assets\images\cardSheild.png"
+                            alt=""
+                            className="img-fluid"
+                          />
+
+                          <div className="ourNft">
+                            {nftImage ? <img src={nftImage} alt="" /> : <></>}
+                          </div>
+                          <div
+                            className="nft-claim-reward d-flex justify-content-center"
+                            style={{ color: "white" }}
+                          >
+
+
+                            <h1 className="customCountDownClass">
+                              {nftCountdown && nftCountdown > 0 ? (
+                                <Countdown date={nftCountdown} />
+                              ) : (
+                                <>00:00:00:00</>
+                              )}
+                            </h1>
+
+
+
+
+                          </div>
+
+                          {/* nft name  */}
+                          <div className="card-name">
+                            <p>{nftDetails.name}</p>
+                            {/* <p>Hello</p> */}
+                            {/* <p>{item.nftName} </p> */}
+                          </div>
+
+                          {/* nft detail price */}
+                          <div className="creator-details">
+                            <div className="left">
+
+                              <button className="claimReward" onClick={withDrawNFT}>
+                                UnStake
+                              </button>
                             </div>
-                            <div className="creator-tag">
-                              <p>Creator</p>
 
-                              <p className="creator-name">Sonia Williams</p>
-                            </div> */}
-                          <button className="claimReward" onClick={withDrawNFT}>
-                            Claim Reward
-                          </button>
-                        </div>
-                        <div className="right">
-                          <div className="price">
-                            <p>Price</p>
-                            <p>
-                              <Icon
-                                icon="cryptocurrency:eth"
-                                color="white"
-                                width="11"
-                                height="11"
-                                className="icon"
-                              />
-                              {/* <span>{item.nftPrice} ETH</span> */}
-                            </p>
                           </div>
                         </div>
                       </div>
@@ -255,19 +173,23 @@ const Unstaking = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="loadmore-btn">
-              <button>load more</button>
-            </div>
-          </div>
-          <div className="unstakback">
-            <h1>unstaking</h1>
-          </div>
+              <div className="unstakback">
+                <h1>unstaking</h1>
+              </div>
+            </>
+
+          )}
+
+
+
+
+
         </section>
       ) : (
         <></>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 };
 

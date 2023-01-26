@@ -40,20 +40,13 @@ window.defly_nft_staking = await new web3.eth.Contract(
 
 
 export const getNFTs = async () => {
-    // const test = await window.defly_mint_contract.methods.balanceOf("0x9B7fa8c2b7545FBCde4B487780833Bca2C89Df37").call()
-    // const test = await window.defly_mint_contract.methods.balanceOf("0x3BCFd85371681EFba011F68696c825759fb3cb16").call()
-    // var AllNFTs = [];
-    // for (let i = 1; i <= test; i++) {
-    //     const temp = await window.defly_mint_contract.methods.tokenURI(i).call()
-    //     AllNFTs.push({ tokenURI: temp, tokenid: i })
-    // }
+
 
     var AllNFTs = [];
     const nfts_data_new = await window.defly_mint_contract.methods
         .balanceOf(window.ethereum.selectedAddress)
         .call();
-    console.log(nfts_data_new);
-    console.log(window.defly_mint_contract.methods);
+
 
     //loop for fetching tokenIDs
     for (var i = 0; i < nfts_data_new; i++) {
@@ -65,7 +58,7 @@ export const getNFTs = async () => {
         const url = await window.defly_mint_contract.methods
             .tokenURI(tokenIdofOwner)
             .call();
-        AllNFTs.push({ tokenURI: url, tokenid: tokenIdofOwner })
+        AllNFTs.push({ tokenURI: url, tokenid: tokenIdofOwner, type: "new" })
     }
     return AllNFTs;
 
@@ -99,6 +92,7 @@ export const getMyNFTsDataOld = async () => {
             }
             const data = await response.json();
             data.tokenId = tokenIdofOwner;
+            data.type = "old";
 
             nftData.push(data);
 
@@ -129,43 +123,59 @@ export const getMyNFTsDataOld = async () => {
 
 
 };
-export const deposit = async (tokenid, tier) => {
+// export const deposit = async (tokenid, tier) => {
+//     await window.ethereum.enable();
+
+
+//     window.defly_nft_staking.methods.deposit(tokenid, tier)
+//         .send({ from: window.ethereum.selectedAddress })
+//         .on("transactionHash", async (hash) => {
+
+//             for (let index = 0; index > -1; index++) {
+//                 var receipt = await web3.eth.getTransactionReceipt(hash)
+//                 if (receipt != null) {
+//                     window.location.reload(false)
+//                     break;
+//                 }
+//                 console.log("hello");
+//             }
+//         })
+//         .on("error", (error) => {
+//             toast("Something went wrong while Approving");
+
+
+//         });
+
+// };
+export const Approve = async (tokenid) => {
     await window.ethereum.enable();
 
-    console.log(window.defly_nft_staking.methods);
-    window.defly_nft_staking.methods.deposit(tokenid, tier)
-        .send({ from: window.ethereum.selectedAddress })
-        .on("transactionHash", async (hash) => {
-            console.log(hash);
-            for (let index = 0; index > -1; index++) {
-                var receipt = await web3.eth.getTransactionReceipt(hash)
-                if (receipt != null) {
-                    window.location.reload(false)
-                    break;
-                }
-                console.log("hello");
-            }
-        })
-        .on("error", (error) => {
-            toast("Something went wrong while Approving");
-
-        });
-
-};
-export const Approve = async (tokenid) => {
-    console.log(window.defly_mint_contract.methods);
     const data = await window.defly_mint_contract.methods.getApproved(tokenid).call();
-    if(data == VITE_DEFLY_NFT_STAKING){
-        console.log(data);
+    if (data == VITE_DEFLY_NFT_STAKING) {
+
         return true;
-    }else{
+    } else {
         return false;
-    } 
+    }
 };
+
+export const ApproveOld = async (tokenid) => {
+    await window.ethereum.enable();
+
+    const data = await window.defly_nft_contract_old.methods.getApproved(tokenid).call();
+    if (data == VITE_DEFLY_NFT_STAKING) {
+
+        return true;
+    } else {
+        return false;
+    }
+};
+
+
 export const stakerInfo = async () => {
 
     let stakerDetails = await window.defly_nft_staking.methods
-        .Staker(window.ethereum.selectedAddress).call()
+        .Staker(window.ethereum.selectedAddress, VITE_DEFLY_MINT_721,).call()
     return stakerDetails;
 };
 export const staker = async () => {
@@ -185,33 +195,26 @@ export const staker = async () => {
         return {}
     }
 
-    // await axios.get(stakerDetails.tokenuri).then(async res => {
-    //     console.log(res.data);
-    //     stakerDetails.tokenuri = await window.defly_mint_contract.methods.tokenURI(stakerDetails.NFT).call()
-    //     stakerDetails.data = res.data
-    //     return res.data;
-    // }).catch(err => {
-    //     console.log(err)
-    //     return stakerDetails
-    // })
+
 
 
 };
-export const unstake = async () => {
+// export const unstake = async () => {
 
-    window.defly_nft_staking.methods.withdraw(window.ethereum.selectedAddress)
-        .send({ from: window.ethereum.selectedAddress })
-        .on("transactionHash", async (hash) => {
-            console.log(hash);
-            for (let index = 0; index > -1; index++) {
-                var receipt = await web3.eth.getTransactionReceipt(hash)
-                if (receipt != null) {
-                    window.location.reload(false)
-                    break;
-                }
-            }
-        })
-        .on("error", (error) => {
-            toast("Something went wrong while Approving");
-        });
-};
+//     window.defly_nft_staking.methods.withdraw(window.ethereum.selectedAddress)
+//         .send({ from: window.ethereum.selectedAddress })
+//         .on("transactionHash", async (hash) => {
+
+//             for (let index = 0; index > -1; index++) {
+//                 var receipt = await web3.eth.getTransactionReceipt(hash)
+//                 if (receipt != null) {
+//                     window.location.reload(false)
+//                     break;
+//                 }
+//             }
+//         })
+//         .on("error", (error) => {
+//             toast("Something went wrong while Approving");
+//             return false
+//         });
+// };

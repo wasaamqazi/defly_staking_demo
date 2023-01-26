@@ -24,7 +24,7 @@ const Hero = () => {
   return (
     <div>
       <section className="hero-section">
-        {/* <NavBar /> */}
+        <NavBar />
 
         {/* coming soon time */}
         <div className="coming-time-container">
@@ -64,7 +64,7 @@ const Hero = () => {
           <h1>DEFLY BALL</h1>
           <h1>STAKING</h1>
           <h2>
-            Comming Soon{" "}
+            Coming Soon
             <a href="https://www.deflyball.com/">Go back to home</a>
           </h2>
         </div>

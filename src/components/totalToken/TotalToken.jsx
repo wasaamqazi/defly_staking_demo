@@ -19,15 +19,19 @@ import {
   getAllStakedTokens,
 } from "../../utils/functions";
 import axios from "axios";
+import { toast } from "react-toastify";
+import defly_Token_Staking_ABI from "../../abi/TokenStaking.json";
+
 
 const TotalToken = () => {
-  const [Tokens, setTokens] = useState("");
+  const [Tokens, setTokens] = useState("0");
   const [tireSelected, setTire] = useState("");
   const [customTokens, setCustomTokens] = useState(250);
   const [approve, setApprove] = useState(false);
   const [app, setApp] = useState(false);
   const [range, setRange] = useState("");
   const [StakerInfo, setStakerInfo] = useState("");
+  const [loadingState, setLoadingState] = useState(false);
 
   const VITE_ERC_20s = import.meta.env.VITE_ERC_20;
   const VITE_DEFLY_Token_STAKING = import.meta.env.VITE_DEFLY_Token_STAKING;
@@ -35,7 +39,6 @@ const TotalToken = () => {
 
   const getAllTokens = async () => {
     const allTokens = await getTokens();
-    console.log(allTokens);
 
     setTokens(allTokens);
   };
@@ -50,25 +53,25 @@ const TotalToken = () => {
   };
 
   const Approve = async () => {
+    setLoadingState(true)
     window.defly_ERC20_contract = await new web3.eth.Contract(
       Erc20_contractABI,
       VITE_ERC_20s
     );
-    console.log(Tokens);
     if (Tokens == "") {
-      alert("You Have 0 Tokens !!!");
+      toast("You Have 0 Tokens !!!");
     } else {
       const tokensCustom = web3.utils.toWei(String(Tokens), "ether");
-      console.log(tokensCustom);
       window.defly_ERC20_contract.methods
         .approve(VITE_DEFLY_Token_STAKING, tokensCustom)
         .send({ from: window.ethereum.selectedAddress })
         .on("transactionHash", async (hash) => {
-          console.log(hash);
+
           for (let index = 0; index > -1; index++) {
             var receipt = await web3.eth.getTransactionReceipt(hash);
             if (receipt != null) {
               setApp(true);
+              setLoadingState(false)
               break;
             }
             console.log("hello");
@@ -77,6 +80,7 @@ const TotalToken = () => {
         .on("error", (error) => {
           toast("Something went wrong while Approving");
           setApp(false);
+          setLoadingState(false)
         });
       // await approveTokens(Tokens);
       StakerInfo;
@@ -85,24 +89,58 @@ const TotalToken = () => {
 
   const Stake = async () => {
     if (tireSelected == "") {
-      alert("Please Select Tier Value !!!");
+      toast("Please Select Tier Value !!!");
     } else {
       if (tireSelected == 15 && (customTokens < 250 || customTokens > 999)) {
-        alert("Select Token Value (250 - 999) !!!");
+        toast("Select Token Value (250 - 999) !!!");
       } else if (
         tireSelected == 30 &&
         (customTokens < 1000 || customTokens > 2499)
       ) {
-        alert("Select Token Value (1000 - 2499) !!!");
+        toast("Select Token Value (1000 - 2499) !!!");
       } else if (
         tireSelected == 60 &&
         (customTokens < 2500 || customTokens > 4999)
       ) {
-        alert("Select Token Value (2500 - 4999) !!!");
+        toast("Select Token Value (2500 - 4999) !!!");
       } else if (tireSelected == 90 && customTokens < 5000) {
-        alert("Select Token Value (5000 - more) !!!");
+        toast("Select Token Value (5000 - more) !!!");
       } else {
-        await StakeToken(customTokens, tireSelected);
+        // await StakeToken(customTokens, tireSelected);
+        setLoadingState(true)
+
+        window.defly_Token_contract = await new web3.eth.Contract(
+          defly_Token_Staking_ABI,
+          VITE_DEFLY_Token_STAKING
+        );
+
+
+
+
+        const tokensCustom = web3.utils.toWei(String(customTokens), "ether");
+
+        window.defly_Token_contract.methods.deposit(tokensCustom, tireSelected)
+          .send({ from: window.ethereum.selectedAddress })
+          .on("transactionHash", async (hash) => {
+
+            for (let index = 0; index > -1; index++) {
+              var receipt = await web3.eth.getTransactionReceipt(hash)
+              if (receipt != null) {
+                window.location.reload(false)
+                break;
+              }
+              console.log("hello");
+            }
+          })
+          .on("error", (error) => {
+            toast("Something went wrong while Approving");
+            setLoadingState(false)
+
+          });
+
+
+
+
       }
     }
   };
@@ -145,72 +183,7 @@ const TotalToken = () => {
                 <img src="\assets\images\defly-logo.svg" alt="" />
               </h1>
             </div>
-            {/* <div>
-              <ul className="unstyled centered">
-                <li className="listStyle">
-                  <input
-                    className="styled-checkbox"
-                    id="styled-checkbox-1"
-                    value="15%"
-                    type="radio"
-                    name="token"
-                  />
-                  <label for="styled-checkbox-1">15 %</label>
-                </li>
-                <li className="listStyle">
-                  <input
-                    className="styled-checkbox"
-                    id="styled-checkbox-2"
-                    value="value2"
-                    type="radio"
-                    name="token"
-                  />
-                  <label for="styled-checkbox-2">25 %</label>
-                </li>
-                <li>
-                  <input
-                    className="styled-checkbox"
-                    id="styled-checkbox-3"
-                    value="value3"
-                    type="radio"
-                    name="token"
-                  />
-                  <label for="styled-checkbox-3">50%</label>
-                </li>
-                <li>
-                  <input
-                    className="styled-checkbox"
-                    id="styled-checkbox-4"
-                    type="radio"
-                    value="value4"
-                    name="token"
-                  />
-                  <label for="styled-checkbox-4">75 %</label>
-                </li>
 
-                <li>
-                  <input
-                    className="styled-checkbox"
-                    id="styled-checkbox-5"
-                    value="value5"
-                    type="radio"
-                    name="token"
-                  />
-                  <label for="styled-checkbox-5">100 %</label>
-                </li>
-
-                <li>
-                  <input
-                    className="styled-checkbox"
-                    id="styled-checkbox-6"
-                    value="custom"
-                    type="radio"
-                    name="token"
-                  />
-                  <label for="styled-checkbox-6">Custom</label>
-                </li>
-              </ul>
-            </div> */}
             {StakerInfo ? (
               <div
                 className="nft-claim-reward mt-5 d-flex justify-content-center "
@@ -277,18 +250,30 @@ const TotalToken = () => {
                     />
                   </div>
                 </div>
-                <div className="stak-btn">
-                  {approve == Tokens ? (
-                    <button onClick={Stake}>Stake</button>
-                  ) : (
-                    <button onClick={Approve}>Approve</button>
-                  )}
-                </div>
+
+
+                {loadingState ? (
+                  <div className="loader-wrao" style={{ visibility: "visible" }}>
+                    <div className="loader"></div>
+                  </div>
+                ) :
+                  <div className="stak-btn">
+                    {approve == Tokens ? (
+                      <button onClick={Stake}>Stake</button>
+                    ) : (
+                      <button onClick={Approve}>Approve</button>
+                    )}
+                  </div>
+                }
+
+
               </div>
             )}
           </div>
         </div>
       </section>
+
+
     </div>
   );
 };

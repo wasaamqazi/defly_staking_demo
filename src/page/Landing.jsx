@@ -12,7 +12,7 @@ const Landing = () => {
     <div className="landing">
       <Hero />
       <StakingTab />
-      <TopNFT />
+      {/* <TopNFT /> */}
       <Footer />
     </div>
   );

@@ -10,36 +10,75 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import StakingDetailModal from "../stakingDetail/StakingDetailModal";
-import { getAllStakedTokens, unStakeToken } from "../../utils/functions";
+import { getAllStakedTokens } from "../../utils/functions";
 import axios from "axios";
+import defly_Token_Staking_ABI from "../../abi/TokenStaking.json";
+import Web3 from "web3/dist/web3.min.js";
+
 
 const TokenUnstake = () => {
   const [nftCountdown, setNftCountdown] = useState("");
   const [Tokens, setTokens] = useState("");
   const [isStaked, setIsStaked] = useState(false);
+  const [loadingState, setLoadingState] = useState(false);
+  const VITE_DEFLY_Token_STAKING = import.meta.env.VITE_DEFLY_Token_STAKING
+  const web3 = new Web3(window.ethereum);
+
 
   const getStakedTokens = async () => {
+
     const allTokens = await getAllStakedTokens();
-    console.log(allTokens);
+
     setIsStaked(allTokens.DepositToken);
     setTokens(allTokens.tokens);
-    console.log(allTokens.countdownTime);
+
     setNftCountdown(Number(allTokens.countdownTime));
+
+
   };
   const unStaked = async () => {
-    await unStakeToken();
+    setLoadingState(true)
+    window.defly_Token_contract = await new web3.eth.Contract(
+      defly_Token_Staking_ABI,
+      VITE_DEFLY_Token_STAKING
+    );
+
+
+    window.defly_Token_contract.methods.withdraw(window.ethereum.selectedAddress)
+      .send({ from: window.ethereum.selectedAddress })
+      .on("transactionHash", async (hash) => {
+
+        for (let index = 0; index > -1; index++) {
+          var receipt = await web3.eth.getTransactionReceipt(hash)
+          if (receipt != null) {
+            window.location.reload(false)
+            break;
+          }
+          console.log("hello");
+        }
+      })
+      .on("error", (error) => {
+        toast("Something went wrong while Approving");
+        setLoadingState(false)
+      });
+
+
+    // await unStakeToken();
   };
 
   useEffect(() => {
     getStakedTokens();
   }, []);
 
-  useEffect(() => {
-    console.log(nftCountdown);
-    console.log(Tokens);
-  }, [nftCountdown]);
+
   return (
     <div>
+
+
+
+
+
+
       {isStaked ? (
         <section className="section-unstakeToken">
           <div className="section-header nbg-danger">
@@ -50,7 +89,7 @@ const TokenUnstake = () => {
               className="img-fluid"
             />
           </div>
-          <section className="total-token">
+          <section className="total-token unstake">
             <div className="container">
               <div className="token-box">
                 <div className="box-heading">
@@ -73,7 +112,7 @@ const TokenUnstake = () => {
                     )}
                   </h1>
                 </div>
-                <div class="danger">
+                <div className="danger">
                   <p>
                     <strong>NOTE!</strong>
                   </p>
@@ -92,9 +131,18 @@ const TokenUnstake = () => {
                     penalty on staked tokens and <br></br> No reward of NFTs.
                   </p1>
                 </div> */}
-                <div className="stak-btn">
+
+
+                {loadingState ? (
+                  <div className="loader-wrao" style={{ visibility: "visible" }}>
+                    <div className="loader"></div>
+                  </div>
+                ) : <div className="stak-btn">
                   <button onClick={unStaked}>UnStake</button>
                 </div>
+                }
+
+
               </div>
             </div>
           </section>

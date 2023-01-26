@@ -23,12 +23,10 @@ const StakingTab = () => {
           </div>
           <div className="staking-tab-detail1">
             <p>
-              Lorem ipsum dolor sit amet consectetur. Feugiat nisl diam turpis
-              sed nec tellus egestas sed. Tincidunt molestie sed morbi lacus
-              quis at cras pharetra duis. Morbi pellentesque risus sociis ipsum
-              nam id porttitor nunc donec. Commodo mus rhoncus nunc consequat.
-              Volutpat morbi sollicitudin sapien vitae at et eleifend semper. Eu
-              quis malesuada aliquet tincidunt fames dolor.{" "}
+              Put your idle assets to work by staking DeFly Ball’s dog NFTs and $DeFly tokens to earn massive rewards in your wallets.
+              Lock up your favorite dog NFTs or $DeFly tokens for a certain period of time in 4 tiers to earn rewards with more privileges.
+              Staking NFTs in the Defly ball game is the newest way to elevate your gaming experience while also earning rewards
+
             </p>
           </div>
           <div className="stak-tabs">
@@ -65,12 +63,9 @@ const StakingTab = () => {
           </div>
           <div className="staking-tab-detail1 tab-detail2">
             <p>
-              Lorem ipsum dolor sit amet consectetur. Feugiat nisl diam turpis
-              sed nec tellus egestas sed. Tincidunt molestie sed morbi lacus
-              quis at cras pharetra duis. Morbi pellentesque risus sociis ipsum
-              nam id porttitor nunc donec. Commodo mus rhoncus nunc consequat.
-              Volutpat morbi sollicitudin sapien vitae at et eleifend semper. Eu
-              quis malesuada aliquet tincidunt fames dolor.{" "}
+              Staking NFTs with lots of perks has never been easier before. Stake your $Defly tokens or dog NFTs within the defined days of each tier and earn
+              exclusive rewards with additional perks. DeFly Ball’s staking has undoubtedly unlocked the new use cases of its digital assets for its users that
+              goes beyond just collecting them.
             </p>
           </div>
         </div>

@@ -89,17 +89,90 @@ body {
         text-transform: capitalize;
 }
 
-.customSelect{
+.customSelect {
   outline: none;
-    border: 1px solid #fff;
-    background-color: #1d171d;
-    border: 2px solid #ffffff;
-    border-radius: 3px;
-    padding: 3px 10px;
-    width: 300px;
-    color: white;
-    font-family: "Quicksand";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18.5233px;
+  border: 1px solid #fff;
+  background-color: #1d171d;
+  border: 2px solid #525252;
+  border-radius: 3px;
+  padding: 3px 10px;
+  width: 300px;
+  color: white;
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18.5233px;
+  width: 90%;
 }
+
+.select-stakingTier {
+  padding-left: 10px;
+  padding-top: 17px;
+  display: flex;
+  gap: 16px;
+
+}
+
+.creator-details .left .creator-avatar img.img-fluid.logo-in-card{
+  width: 50px;
+}
+.stakingDetail-card .left-side .nftStaking-cards .staking-card .card-plate .card-gold-plate .creator-details .left .creator-tag {
+
+  justify-content: space-evenly !important;
+
+
+}
+.already-staked{
+  color: white;
+  text-align: center;
+}
+.nft-tier .nftStaking-cards .staking-card .card-plate .card-gold-plate .creator-details .left .stake-card.already-staked { 
+  background: linear-gradient(90deg, #ffd84b 0%, #463c15 100%) !important;
+  letter-spacing: 1.5px;
+}
+section.total-token.unstake {
+  padding: 0px !important;
+}
+
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #fcc016;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-wrao {  
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+
+}
+

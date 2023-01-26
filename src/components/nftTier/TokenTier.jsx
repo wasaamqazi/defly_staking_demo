@@ -16,16 +16,7 @@ const TokenTier = () => {
               className="img-fluid"
             />
           </div>
-          <div className="staking-tab-detail1">
-            <p>
-              Lorem ipsum dolor sit amet consectetur. Feugiat nisl diam turpis
-              sed nec tellus egestas sed. Tincidunt molestie sed morbi lacus
-              quis at cras pharetra duis. Morbi pellentesque risus sociis ipsum
-              nam id porttitor nunc donec. Commodo mus rhoncus nunc consequat.
-              Volutpat morbi sollicitudin sapien vitae at et eleifend semper. Eu
-              quis malesuada aliquet dolor.
-            </p>
-          </div>
+
           <ul className="nav nav-tabs tier-parentTab" id="myTab" role="tablist">
             <li className="nav-item" role="presentation">
               <button
