@@ -3,6 +3,7 @@
   padding-bottom: 170px;
   position: relative;
   overflow-x: hidden;
+  min-height: 1320px;
   .section-header {
     margin: 0 auto;
     position: relative;
@@ -314,22 +315,23 @@
   .unstakback {
     position: absolute;
     top: 50%;
-    left: 0%;
+    left: 10%;
     transform: translate(0%, -50%);
     z-index: 0;
+    text-align: center;
     h1 {
       font-family: "Ranchers";
       font-style: normal;
       font-weight: 400;
-      font-size: 703.898px;
+      font-size: 333.898px;
       line-height: 1;
-      color: #fcc016; /* Fallback for older browsers */
+      color: #fcc016;
       color: transparent;
       text-transform: capitalize;
       -webkit-text-stroke: 6px #fcc016;
       user-select: none;
       letter-spacing: 25px;
-      //   border: 6.87px solid #fcc016;
+      text-align: center;
     }
   }
 }

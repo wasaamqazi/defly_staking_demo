@@ -33,7 +33,7 @@ const NFTtier = () => {
   const [currentItem, setCurrentItem] = useState({});
   const [tireSelected, setTire] = useState("");
   const [ApproveCheck, setApproveCheck] = useState(false);
-  const [Staker, setStaker] = useState("");
+  const [Staker, setStaker] = useState([]);
   const [loadingState, setLoadingState] = useState(false);
   const [loadingState1, setLoadingState1] = useState(false);
   // const [loadingState2, setLoadingState2] = useState(false);
@@ -108,8 +108,7 @@ const NFTtier = () => {
   };
   const stakerDet = async () => {
     const staker = await stakerInfo();
-
-    setStaker(staker.DepositToken);
+    setStaker(staker);
   };
 
   const mergeArray = async () => {
@@ -123,7 +122,9 @@ const NFTtier = () => {
       setLoadingState(false)
     }
   };
-
+  // useEffect(() => {
+  //   console.log(Staker);
+  // }, [Staker])
   const stake = async () => {
 
     if (tireSelected) {
@@ -171,9 +172,12 @@ const NFTtier = () => {
             for (let index = 0; index > -1; index++) {
               var receipt = await web3.eth.getTransactionReceipt(hash)
               if (receipt != null) {
-                window.location.reload(false)
-                // setLoadingState1(false)
-                break;
+                if (receipt.status) {
+                  window.location.reload(false)
+                  // setLoadingState1(false)
+                  break;
+                }
+
               }
               console.log("hello");
 
@@ -211,9 +215,11 @@ const NFTtier = () => {
           for (let index = 0; index > -1; index++) {
             var receipt = await web3.eth.getTransactionReceipt(hash);
             if (receipt != null) {
-              checkApprove();
-              setLoadingState1(false)
-              break;
+              if (receipt.status) {
+                checkApprove();
+                setLoadingState1(false)
+                break;
+              }
             }
             console.log("hello");
           }
@@ -242,9 +248,11 @@ const NFTtier = () => {
           for (let index = 0; index > -1; index++) {
             var receipt = await web3.eth.getTransactionReceipt(hash);
             if (receipt != null) {
-              checkApproveOld();
-              setLoadingState1(false)
-              break;
+              if (receipt.status) {
+                checkApproveOld();
+                setLoadingState1(false)
+                break;
+              }
             }
             console.log("hello");
           }
@@ -492,39 +500,27 @@ const NFTtier = () => {
                           <div className="card-name">
                             <p>{item.name} </p>
                           </div>
-                          {Staker ? (
 
-                            <div className="creator-details">
-                              <div className="left">
-                                <button
-                                  className="stake-card already-staked"
-
-                                >
-                                  ALREADY STAKED !!!
-                                </button>
-                              </div>
+                          <div className="creator-details">
+                            <div className="left">
+                              <button
+                                className="stake-card"
+                                onClick={() => handleShow(item)}
+                              >
+                                stake
+                              </button>
                             </div>
 
+                          </div>
 
-                          ) : (
-                            <div className="creator-details">
-                              <div className="left">
-                                <button
-                                  className="stake-card"
-                                  onClick={() => handleShow(item)}
-                                >
-                                  stake
-                                </button>
-                              </div>
-
-                            </div>
-                          )}
                         </div>
                       </div>
                     </div>
                   );
                 })}
               </div>
+
+
             )}
 
           </div>
@@ -577,26 +573,6 @@ const NFTtier = () => {
                                   alt=""
                                   className="img-fluid"
                                 />
-
-                                {/* <div className="fav d-flex align-items-center">
-                                <Checkbox
-                                  className="favCheck"
-                                  {...label}
-                                  icon={<FavoriteBorder />}
-                                  checkedIcon={
-                                    <Favorite
-                                      sx={{
-                                        color: "white",
-                                        "&.Mui-checked": {
-                                          border: "white",
-                                        },
-                                      }}
-                                    />
-                                  }
-                                />
-                                <p>100</p>
-                              </div> */}
-
                                 <div className="ourNft">
                                   <img src={currentItem.image} alt="" srcSet="" />
                                 </div>

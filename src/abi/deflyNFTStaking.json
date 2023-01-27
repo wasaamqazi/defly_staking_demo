@@ -2,47 +2,6 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "_amount",
-				"type": "uint256"
-			}
-		],
-		"name": "AdminAddToken",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "TokenId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "Days",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "_to",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_mintAddress",
-				"type": "address"
-			}
-		],
-		"name": "deposit",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"internalType": "address",
 				"name": "_ERC20Address",
 				"type": "address"
@@ -71,8 +30,14 @@
 		"type": "event"
 	},
 	{
-		"inputs": [],
-		"name": "renounceOwnership",
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "AdminAddToken",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -81,36 +46,151 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "newOwner",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "Count",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "ERC20Address",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
 				"type": "address"
 			}
 		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "ERC721address",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
 				"internalType": "uint256",
-				"name": "TokenId",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "ERCDetail",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
 				"type": "uint256"
 			},
 			{
 				"internalType": "address",
-				"name": "_to",
+				"name": "mintContract",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
 				"type": "address"
 			},
 			{
 				"internalType": "address",
-				"name": "_mintAddress",
+				"name": "",
 				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
-		"name": "withdraw",
-		"outputs": [],
-		"stateMutability": "nonpayable",
+		"name": "Staker",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "mint721",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokens",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "day",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "StartTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "NFT",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "count",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "DepositToken",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "TotalRemaningToken",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -166,29 +246,50 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "ERC20Address",
-		"outputs": [
+		"inputs": [
 			{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
+			}
+		],
+		"name": "countDeposit",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "ERC721address",
-		"outputs": [
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "TokenId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "Days",
+				"type": "uint256"
+			},
 			{
 				"internalType": "address",
-				"name": "",
+				"name": "_to",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_mintAddress",
 				"type": "address"
 			}
 		],
-		"stateMutability": "view",
+		"name": "deposit",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -239,70 +340,46 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "Staker",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "mint721",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokens",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "day",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "StartTime",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "NFT",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bool",
-				"name": "DepositToken",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "TotalRemaningToken",
-		"outputs": [
+		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
 			}
 		],
-		"stateMutability": "view",
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "TokenId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_to",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_mintAddress",
+				"type": "address"
+			}
+		],
+		"name": "withdraw",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ]
