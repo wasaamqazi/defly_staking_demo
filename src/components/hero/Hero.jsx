@@ -24,7 +24,7 @@ const Hero = () => {
   return (
     <div>
       <section className="hero-section">
-        <NavBar />
+        {/* <NavBar /> */}
 
         {/* coming soon time */}
         <div className="coming-time-container">
