@@ -21,19 +21,19 @@ const web3 = new Web3(window.ethereum);
 
 
 // defly mint contract
-window.defly_mint_contract = await new web3.eth.Contract(
+window.defly_mint_contract =  new web3.eth.Contract(
     defly_mint_ERC721_contractABI,
     VITE_DEFLY_MINT_721
 );
 
 // defly mint contract old
-window.defly_nft_contract_old = await new web3.eth.Contract(
+window.defly_nft_contract_old =  new web3.eth.Contract(
     defly_mint_old,
     VITE_MINT_OLD
 );
 
 // defly staking contract 
-window.defly_nft_staking = await new web3.eth.Contract(
+window.defly_nft_staking =  new web3.eth.Contract(
     Defly_Nft_Staking,
     VITE_DEFLY_NFT_STAKING
 );
