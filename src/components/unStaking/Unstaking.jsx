@@ -20,7 +20,9 @@ const Unstaking = () => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   // const [stakerDetail, setStakerDetail] = useState("");
   const [loadingState, setLoadingState] = useState(false);
+  const [loadingState1, setLoadingState1] = useState([]);
   // const [mintAddress, setMintAddress] = useState("");
+  
 
   const VITE_DEFLY_NFT_STAKING = import.meta.env.VITE_DEFLY_NFT_STAKING;
   const VITE_DEFLY_MINT_721 = import.meta.env.VITE_DEFLY_MINT_721;
@@ -32,7 +34,7 @@ const Unstaking = () => {
   const stakerDet = async () => {
     setLoadingState(true)
     const staker = await stakerInfo()
-    console.log(staker);
+    // console.log(staker);
 
     setNftDetails([])
     if (staker.length > 0) {
@@ -88,7 +90,9 @@ const Unstaking = () => {
   // };
 
   const withDrawNFT = async (mintAddress, tokenid) => {
-    setLoadingState(true)
+
+const test=tokenid+mintAddress;
+    setLoadingState1({[test]:true})
     // defly staking contract 
     window.defly_nft_staking = await new web3.eth.Contract(
       Defly_Nft_Staking,
@@ -113,30 +117,31 @@ const Unstaking = () => {
       })
       .on("error", (error) => {
         toast("Something went wrong while Approving");
-        setLoadingState(false)
+            setLoadingState1({[test]:false})
+
 
       });
   };
 
   useEffect(() => {
-    // getStaker();
     stakerDet()
   }, []);
-  // useEffect(() => {
-  //   setNftImage(nftDetails.image);
-  // }, [nftDetails]);
-  // useEffect(() => {
-  //   if (nftDetails.length > 0) {
-  //     setLoadingState(false)
-  //   }
-  // }, [nftDetails]);
-  // useEffect(() => {
-  //   if (nftDetailss.length > 0) {
-  //     // setLoadingState(false)
-  //     console.log("if");
-  //   }
-  //   console.log(nftDetailss);
-  // }, [nftDetailss]);
+ 
+
+  useEffect(() => {
+   console.log(loadingState1);
+  }, [loadingState1]);
+ 
+  useEffect(() => {
+    // console.log(nftDetailss);
+    nftDetails.map((item,index)=>{
+      console.log(index);
+     console.log(item.NFT); 
+     console.log(item.mint721); 
+     let key=item.NFT+item.mint721
+     setLoadingState1(prev=> [...prev,({[key]:false})])
+    })
+  }, [nftDetails]);
 
 
   return (
@@ -186,7 +191,7 @@ const Unstaking = () => {
                               >
                                 <h1 className="customCountDownClass">
                                   {item.countdownTime && item.countdownTime > 0 ? (
-                                    <Countdown date={item.countdownTime} />
+                                    <Countdown date={item.countdownTime+Number(2000)} />
                                   ) : (
                                     <>00:00:00:00</>
                                   )}
@@ -202,12 +207,11 @@ const Unstaking = () => {
 
                               <div className="creator-details">
                                 <div className="left">
-                                  {loadingState ? (
+                                  {
+                                 
+                                  loadingState1[item.NFT+item.mint721] ? (
                                     <div className="loader-wrao mob" style={{ visibility: "visible" }}>
-
                                       <div className="loader"></div>
-
-
                                     </div>
                                   ) :
                                     <button className="claimReward" onClick={() => withDrawNFT(item.mint721, item.NFT)}>
@@ -216,11 +220,7 @@ const Unstaking = () => {
 
                                   }
                                 </div>
-
-                              </div>
-
-
-
+                             </div>
                             </div>
                           </div>
                         </div>
@@ -228,10 +228,7 @@ const Unstaking = () => {
                     })
                     :
                     <></>
-
-
                 }
-
               </div>
             </div>
           </div>
@@ -239,13 +236,6 @@ const Unstaking = () => {
             <h1>unstaking</h1>
           </div>
         </>
-
-
-
-
-
-
-
       </section >
 
 

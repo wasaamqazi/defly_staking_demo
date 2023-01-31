@@ -21,6 +21,8 @@ import {
 import axios from "axios";
 import { toast } from "react-toastify";
 import defly_Token_Staking_ABI from "../../abi/TokenStaking.json";
+import Sliders from "@mui/material/Slider";
+
 
 
 const TotalToken = () => {
@@ -36,6 +38,11 @@ const TotalToken = () => {
   const VITE_ERC_20s = import.meta.env.VITE_ERC_20;
   const VITE_DEFLY_Token_STAKING = import.meta.env.VITE_DEFLY_Token_STAKING;
   const web3 = new Web3(window.ethereum);
+
+  const handleSliderChange=(event,value)=>{
+    setCustomTokens(value);
+  }
+  
 
   const getAllTokens = async () => {
     const allTokens = await getTokens();
@@ -176,6 +183,7 @@ const TotalToken = () => {
       <section className="total-token">
         <div className="container">
           <div className="token-box">
+         
             <div className="box-heading">
               <h1>total token</h1>
               <h1 style={{ color: "white" }}>
@@ -184,7 +192,7 @@ const TotalToken = () => {
               </h1>
             </div>
 
-            {StakerInfo ? (
+            {StakerInfo  ? (
               <div
                 className="nft-claim-reward mt-5 d-flex justify-content-center "
                 style={{
@@ -197,6 +205,8 @@ const TotalToken = () => {
                 <p>YOU ALREADY STAKED TOKENS !!!</p>
               </div>
             ) : (
+
+              Tokens>250?
               <div className="box-input">
                 <div className="bottom">
                   <ul>
@@ -239,7 +249,62 @@ const TotalToken = () => {
                     </li>
                   </ul>
                   <div className="input-resp">
-                    <input
+
+                    {
+                      tireSelected==15?  
+                      <> 
+                      {/* <input type="range"   min={250} max={999} onChange={(e)=>{setCustomTokens(e.target.value);}} /> */}
+                      <Sliders
+                    min={250}
+                    max={999}
+                   className="tireselectedrange"
+                    onChange={handleSliderChange}
+                    aria-labelledby="input-slider"
+                   
+                  />
+                      <p style={{color:"white"}}>{customTokens}</p>
+                      </>:
+                      tireSelected==30? 
+                      <>
+                      {/* <input type="range"   min={1000} max={2499} onChange={(e)=>{setCustomTokens(e.target.value);}} /> */}
+                      <Sliders
+                    min={1000}
+                    max={2499}
+                   className="tireselectedrange"
+                    onChange={handleSliderChange}
+                    aria-labelledby="input-slider"
+                   
+                  />
+                      <p style={{color:"white"}}>{customTokens}</p>
+                      </>:
+                       tireSelected==60?
+                      <>  
+                      {/* <input type="range"   min={2500} max={4999} onChange={(e)=>{setCustomTokens(e.target.value);}} /> */}
+                      <Sliders
+                    min={2500}
+                    max={4999}
+                   className="tireselectedrange"
+                    onChange={handleSliderChange}
+                    aria-labelledby="input-slider"
+                   
+                  />
+                    <p style={{color:"white"}}>{customTokens}</p>
+                    </>:
+                     tireSelected==90? <>
+                     {/* <input type="range"   min={5000} max={10000}  onChange={(e)=>{setCustomTokens(e.target.value);}} /> */}
+                     <Sliders
+                    min={5000}
+                    max={10000}
+                   className="tireselectedrange"
+                    onChange={handleSliderChange}
+                    aria-labelledby="input-slider"
+                   
+                  />
+                     <p style={{color:"white"}}>{customTokens}</p></>:<></>
+
+                    }
+                  
+                    {/* <input
                       value={customTokens}
                       type="number"
                       placeholder="Type Here ..."
@@ -247,7 +312,7 @@ const TotalToken = () => {
                       onChange={(e) => {
                         setCustomTokens(e.target.value);
                       }}
-                    />
+                    /> */}
                   </div>
                 </div>
 
@@ -261,13 +326,23 @@ const TotalToken = () => {
                     {approve == Tokens ? (
                       <button onClick={Stake}>Stake</button>
                     ) : (
-                      <button onClick={Approve}>Approve</button>
+                      tireSelected==null || tireSelected==""?<></>:
+
+                      tireSelected==15 && Tokens>=250?
+                      <button onClick={Approve}>Approve</button>:
+                     
+                      tireSelected==30 && Tokens>=1000?
+                      <button onClick={Approve}>Approve</button>:
+                      tireSelected==60 && Tokens>=2500?
+                      <button onClick={Approve}>Approve</button>:
+                      tireSelected==90 && Tokens>=5000?
+                      <button onClick={Approve}>Approve</button>:<></>
                     )}
                   </div>
                 }
 
 
-              </div>
+              </div>:<></>
             )}
           </div>
         </div>
