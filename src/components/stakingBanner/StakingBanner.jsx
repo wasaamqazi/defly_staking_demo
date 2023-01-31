@@ -10,9 +10,8 @@ const StakingBanner = () => {
           <div className="tag-line">
             <h1>
               nft <span>staking</span>
-
+              <h2>with 4 tier</h2>
             </h1>
-            <h2>with 4 tier</h2>
           </div>
         </div>
         <video className="stakingNft" playsInline autoPlay muted loop>

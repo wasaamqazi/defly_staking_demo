@@ -63,15 +63,15 @@ const Footer = () => {
               </div>
 
               <div className="social-icons">
-                {/* <a href="#" target="_blank">
+                <a href="https://t.co/mjXSqvKmWH" target="_blank">
                   <Icon
-                    icon="mdi:facebook"
+                    icon="mdi:telegram"
                     color="white"
                     width="40"
                     height="40"
                     className="social-ico"
                   />
-                </a> */}
+                </a>
                 <a href="https://www.instagram.com/deflyball/" target="_blank">
                   <Icon
                     icon="mdi:instagram"

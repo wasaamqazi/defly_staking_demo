@@ -1,7 +1,7 @@
 .staking-tab {
   // padding-left: 240px;
   // padding-right: 240px;
-  padding-top: 200px;
+  padding-top: 100px;
   .section-header {
     margin: 0 auto;
     position: relative;
@@ -74,7 +74,7 @@
     }
   }
   .tab-detail2 {
-    padding-bottom: 232px;
+    padding-bottom: 132px;
   }
 }
 
@@ -86,10 +86,12 @@
     .left {
       .blob {
         position: relative;
+        display: flex;
+        justify-content: center;
         .img-circle {
           position: absolute;
           top: 50% !important;
-          left: 45% !important;
+          left: 50% !important;
           transform: translate(-50%, -50%) !important;
           max-width: 70%;
         }
@@ -101,7 +103,7 @@
       .stak-tab-tagline {
         position: absolute;
         top: 50%;
-        left: 45% !important;
+        left: 50% !important;
         transform: translate(-50%, -50%);
         font-size: 58.5618px !important;
       }

@@ -133,6 +133,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            max-width: 21rem;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
             img {
               width: auto;
               max-height: 240px;
@@ -171,7 +175,7 @@
               display: flex;
               align-items: center;
               width: 100%;
-              .logo-in-card{
+              .logo-in-card {
                 width: 10px;
               }
 
@@ -319,10 +323,11 @@
 @media screen and (max-width: 600px) {
   .nft-tier {
     .section-header {
-      margin: 55px auto;
+      margin: 5px auto;
       position: relative;
 
       width: fit-content;
+      padding: 50px 0;
     }
     .staking-tab-detail1 {
       margin-top: 55px;
@@ -464,11 +469,8 @@
   }
 }
 .nft-staking-banner .stakingBanner-content .tag-line {
- 
   flex-direction: column;
 }
-
-
 
 .nft-staking-banner {
   overflow-x: hidden;

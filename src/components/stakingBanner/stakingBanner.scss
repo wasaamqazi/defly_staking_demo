@@ -14,6 +14,8 @@
         color: #ffffff;
         text-transform: uppercase;
         text-align: center;
+        width: fit-content;
+        margin: auto;
         span {
           color: #fcc016;
         }
@@ -163,7 +165,7 @@
         h2 {
           font-size: 62px;
           padding: 6px 29px;
-          margin-right: 40px;
+          margin-right: 0px;
         }
       }
     }

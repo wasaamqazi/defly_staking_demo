@@ -25,7 +25,6 @@ import NavBar from "../navbar/NavBar";
 import { toast } from "react-toastify";
 import defly_mint_old from "../../abi/deflyballnft-abiOLD.json";
 
-
 const NFTtier = () => {
   const [show, setShow] = useState(false);
   const [NFTdetails, setNFTdetails] = useState([]);
@@ -37,27 +36,22 @@ const NFTtier = () => {
   const [loadingState, setLoadingState] = useState(false);
   const [loadingState1, setLoadingState1] = useState(false);
   // const [loadingState2, setLoadingState2] = useState(false);
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   const VITE_DEFLY_NFT_STAKING = import.meta.env.VITE_DEFLY_NFT_STAKING;
   const VITE_DEFLY_MINT_721 = import.meta.env.VITE_DEFLY_MINT_721;
   const VITE_MINT_OLD = import.meta.env.VITE_MINT_OLD_ADDRESS;
 
-
   const web3 = new Web3(window.ethereum);
 
   const handleClose = () => setShow(false);
   const handleShow = async (item) => {
-
-
     if (item.type == "new") {
       // checkApprove();
 
       const appCheck = await Approve(item.tokenId);
 
       setApproveCheck(appCheck);
-
 
       console.log("new approve check");
     } else if (item.type == "old") {
@@ -68,30 +62,24 @@ const NFTtier = () => {
       setApproveCheck(appCheck);
 
       console.log("old approve check");
-
     }
     setShow(true);
 
     setCurrentItem(item);
 
-    navigate("#NFTtiers")
-
+    navigate("#NFTtiers");
   };
 
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
   const getAllNFTs = async () => {
-
-    setLoadingState(true)
+    setLoadingState(true);
 
     const allNFTs = await getNFTs();
 
     var temp = [];
     allNFTs.map((item, index) => {
-
       axios.get(item.tokenURI).then((res) => {
-
-
         temp.push({
           description: res.data.description,
           id: res.data.id,
@@ -100,7 +88,7 @@ const NFTtier = () => {
           name: res.data.name,
           tokenId: item.tokenid,
           attributes: res.data.attributes,
-          type: "new"
+          type: "new",
         });
         setNFTdetails(temp);
       });
@@ -117,16 +105,14 @@ const NFTtier = () => {
 
       let nftTempArr = [...NFTdetails, ...oldNFTS.nftData];
 
-
       setALLDATA(nftTempArr);
-      setLoadingState(false)
+      setLoadingState(false);
     }
   };
   // useEffect(() => {
   //   console.log(Staker);
   // }, [Staker])
   const stake = async () => {
-
     if (tireSelected) {
       window.defly_nft_staking = await new web3.eth.Contract(
         Defly_Nft_Staking,
@@ -135,72 +121,74 @@ const NFTtier = () => {
 
       if (currentItem.type == "new") {
         console.log("new");
-        setLoadingState1(true)
+        setLoadingState1(true);
         await window.ethereum.enable();
-        window.defly_nft_staking.methods.deposit(currentItem.tokenId, tireSelected, window.ethereum.selectedAddress, VITE_DEFLY_MINT_721)
+        window.defly_nft_staking.methods
+          .deposit(
+            currentItem.tokenId,
+            tireSelected,
+            window.ethereum.selectedAddress,
+            VITE_DEFLY_MINT_721
+          )
           .send({ from: window.ethereum.selectedAddress })
           .on("transactionHash", async (hash) => {
-
             for (let index = 0; index > -1; index++) {
-              var receipt = await web3.eth.getTransactionReceipt(hash)
+              var receipt = await web3.eth.getTransactionReceipt(hash);
               if (receipt != null) {
-                window.location.reload(false)
+                window.location.reload(false);
                 // setLoadingState1(false)
                 break;
               }
               console.log("hello");
-
             }
           })
           .on("error", (error) => {
             toast("Something went wrong while Approving");
-            setLoadingState1(false)
+            setLoadingState1(false);
           });
       } else if (currentItem.type == "old") {
         console.log("old");
 
+        setLoadingState1(true);
 
-        setLoadingState1(true)
-
-        // defly staking contract 
+        // defly staking contract
 
         await window.ethereum.enable();
-        window.defly_nft_staking.methods.deposit(currentItem.tokenId, tireSelected, window.ethereum.selectedAddress, VITE_MINT_OLD)
+        window.defly_nft_staking.methods
+          .deposit(
+            currentItem.tokenId,
+            tireSelected,
+            window.ethereum.selectedAddress,
+            VITE_MINT_OLD
+          )
           .send({ from: window.ethereum.selectedAddress })
           .on("transactionHash", async (hash) => {
-
             for (let index = 0; index > -1; index++) {
-              var receipt = await web3.eth.getTransactionReceipt(hash)
+              var receipt = await web3.eth.getTransactionReceipt(hash);
               if (receipt != null) {
                 if (receipt.status) {
-                  window.location.reload(false)
+                  window.location.reload(false);
                   // setLoadingState1(false)
                   break;
                 }
-
               }
               console.log("hello");
-
             }
           })
           .on("error", (error) => {
             toast("Something went wrong while Approving");
-            setLoadingState1(false)
+            setLoadingState1(false);
           });
-
       }
       // await deposit(currentItem.tokenId, tireSelected);
     } else {
       toast("please select tier");
     }
-
   };
 
   const approveNFT = async () => {
     if (currentItem.type == "new") {
-      setLoadingState1(true)
-
-
+      setLoadingState1(true);
 
       window.defly_mint_contract = await new web3.eth.Contract(
         defly_mint_ERC721_contractABI,
@@ -211,13 +199,12 @@ const NFTtier = () => {
         .approve(VITE_DEFLY_NFT_STAKING, currentItem.tokenId)
         .send({ from: window.ethereum.selectedAddress })
         .on("transactionHash", async (hash) => {
-
           for (let index = 0; index > -1; index++) {
             var receipt = await web3.eth.getTransactionReceipt(hash);
             if (receipt != null) {
               if (receipt.status) {
                 checkApprove();
-                setLoadingState1(false)
+                setLoadingState1(false);
                 break;
               }
             }
@@ -226,13 +213,10 @@ const NFTtier = () => {
         })
         .on("error", (error) => {
           toast("Something went wrong while Approving");
-          setLoadingState1(false)
+          setLoadingState1(false);
         });
-    }
-    else if (currentItem.type == "old") {
-
-      setLoadingState1(true)
-
+    } else if (currentItem.type == "old") {
+      setLoadingState1(true);
 
       // defly mint contract old
       window.defly_nft_contract_old = await new web3.eth.Contract(
@@ -244,13 +228,12 @@ const NFTtier = () => {
         .approve(VITE_DEFLY_NFT_STAKING, currentItem.tokenId)
         .send({ from: window.ethereum.selectedAddress })
         .on("transactionHash", async (hash) => {
-
           for (let index = 0; index > -1; index++) {
             var receipt = await web3.eth.getTransactionReceipt(hash);
             if (receipt != null) {
               if (receipt.status) {
                 checkApproveOld();
-                setLoadingState1(false)
+                setLoadingState1(false);
                 break;
               }
             }
@@ -259,13 +242,9 @@ const NFTtier = () => {
         })
         .on("error", (error) => {
           toast("Something went wrong while Approving");
-          setLoadingState1(false)
+          setLoadingState1(false);
         });
-
     }
-
-
-
   };
   const checkApprove = async () => {
     const appCheck = await Approve(currentItem.tokenId);
@@ -290,12 +269,8 @@ const NFTtier = () => {
     mergeArray();
   }, [NFTdetails]);
 
-
-
   return (
     <div className="nfttier" id="NFTtiers">
-
-
       <div>
         <section className="nft-staking-banner">
           <NavBar />
@@ -303,9 +278,8 @@ const NFTtier = () => {
             <div className="tag-line">
               <h1>
                 nft <span>staking</span>
-
+                <h2>with 4 tier</h2>
               </h1>
-              <h2>with 4 tier</h2>
             </div>
           </div>
           <video className="stakingNft" playsInline autoPlay muted loop>
@@ -333,7 +307,11 @@ const NFTtier = () => {
               quis malesuada aliquet dolor.
             </p>
           </div> */}
-            <ul className="nav nav-tabs tier-parentTab" id="myTab" role="tablist">
+            <ul
+              className="nav nav-tabs tier-parentTab"
+              id="myTab"
+              role="tablist"
+            >
               <li className="nav-item" role="presentation">
                 <button
                   className="nav-link active"
@@ -350,13 +328,13 @@ const NFTtier = () => {
                     alt=""
                     className="tierback"
 
-                  //   className={isActive ? "tierback" : "tierBackRotate"}
+                    //   className={isActive ? "tierback" : "tierBackRotate"}
                   />
                 </button>
                 <p
                   data-bs-target="#tier1"
                   data-bs-toggle="tab"
-                // onClick={rotateback}
+                  // onClick={rotateback}
                 >
                   tier 1
                 </p>
@@ -417,7 +395,6 @@ const NFTtier = () => {
 
             {/* this is tab1 tier1 */}
 
-
             <div className="tab-content" id="myTabContent">
               <div
                 className="tab-pane fade show active"
@@ -429,8 +406,6 @@ const NFTtier = () => {
                 <p className="tier-tabContent">
                   Tier1 : You Can Stake Your DEFLY BALL NFT for 15 Days
                 </p>
-
-
               </div>
               <div
                 className="tab-pane fade"
@@ -466,8 +441,6 @@ const NFTtier = () => {
                 </p>
               </div>
             </div>
-
-
 
             {loadingState ? (
               <div className="loader-wrao" style={{ visibility: "visible" }}>
@@ -510,25 +483,16 @@ const NFTtier = () => {
                                 stake
                               </button>
                             </div>
-
                           </div>
-
                         </div>
                       </div>
                     </div>
                   );
                 })}
               </div>
-
-
             )}
-
           </div>
-
-
-
         </section>
-
       </div>
 
       <Modal
@@ -541,13 +505,11 @@ const NFTtier = () => {
         centered
       >
         <Modal.Body>
-
           {loadingState1 ? (
             <div className="loader-wrao" style={{ visibility: "visible" }}>
               <div className="loader"></div>
             </div>
-          )
-            :
+          ) : (
             <>
               <div>
                 <div className="staking-modal">
@@ -574,7 +536,11 @@ const NFTtier = () => {
                                   className="img-fluid"
                                 />
                                 <div className="ourNft">
-                                  <img src={currentItem.image} alt="" srcSet="" />
+                                  <img
+                                    src={currentItem.image}
+                                    alt=""
+                                    srcSet=""
+                                  />
                                 </div>
 
                                 <div className="card-name">
@@ -596,7 +562,6 @@ const NFTtier = () => {
                                       <p className="creator-name">Deflyball</p>
                                     </div>
                                   </div>
-
                                 </div>
                               </div>
                             </div>
@@ -676,13 +641,9 @@ const NFTtier = () => {
                 />
               </button>
             </>
-          }
-
+          )}
         </Modal.Body>
       </Modal>
-
-
-
     </div>
   );
 };
