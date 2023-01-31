@@ -13,7 +13,7 @@ const Landing = () => {
       <Hero />
       {/* <StakingTab /> */}
       {/* <TopNFT /> */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
