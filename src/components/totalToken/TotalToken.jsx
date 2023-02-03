@@ -174,7 +174,7 @@ const TotalToken = () => {
             <div className="box-heading">
               <h1>total token</h1>
               <h1 style={{ color: "white" }}>
-                {Tokens}
+                {Number(Tokens)?.toFixed(2)}
                 <img src="\assets\images\defly-logo.svg" alt="" />
               </h1>
             </div>

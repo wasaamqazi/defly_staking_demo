@@ -136,13 +136,25 @@ const Unstaking = () => {
       <section className="unstaking">
         <div className="section-header">
           <h1>un staking</h1>
+
           <img
             src="\assets\images\headingBackground.png"
             alt=""
             className="img-fluid"
           />
         </div>
-
+        <div className="staking-tab-detail1">
+          <div className="danger">
+            <p>
+              <strong>NOTE!</strong>
+            </p>
+            <p>
+              {" "}
+              If NFT are unstake before time then 2% penalty on the rewards
+              <br></br> earned for the days.
+            </p>
+          </div>
+        </div>
         <>
           <div className="container">
             <div className="unstaking-cards">
@@ -180,7 +192,7 @@ const Unstaking = () => {
                                 {item.countdownTime &&
                                 item.countdownTime > 0 ? (
                                   <Countdown
-                                    date={item.countdownTime + Number(2000)}
+                                    date={item.countdownTime + Number(60000)}
                                   />
                                 ) : (
                                   <>00:00:00:00</>
