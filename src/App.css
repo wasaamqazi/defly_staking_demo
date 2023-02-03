@@ -3,7 +3,9 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+body{
+  overflow-x: hidden;
+}
 .content {
   background-color: rgb(211, 195, 195);
   height: 200vh;
@@ -235,3 +237,4 @@ color: #c5a608 !important;
   width: 307px;
   margin-left: 70px;
 }
+

@@ -19,7 +19,9 @@ function App() {
     <div className="App">
       <ToastContainer />
       <Routes>
-        <Route path="/" element={<Landing />} />
+        {/* Coming Soon */}
+        <Route path="/" element={<Landing />} /> 
+        {/* Home Page */}
         <Route path="/home" element={<HomePage />} />
         <Route path="/navigateTokenStaking" element={<TokenStakingPage />} />
         <Route path="/navNFTStaking" element={<NftStaking />} />
