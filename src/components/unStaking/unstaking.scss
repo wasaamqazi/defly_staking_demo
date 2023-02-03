@@ -7,7 +7,7 @@
     margin: 0 auto;
     position: relative;
     width: fit-content;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     h1 {
       font-family: "Quicksand";
       font-style: normal;
@@ -335,6 +335,19 @@
       user-select: none;
       letter-spacing: 25px;
       text-align: center;
+    }
+  }
+
+  .staking-tab-detail1 {
+    // margin-top: 74px;
+    padding-bottom: 90px;
+    p {
+      font-family: "Quicksand";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 22px;
+      text-align: center;
+      color: #ffffff;
     }
   }
 }

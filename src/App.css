@@ -235,3 +235,7 @@ color: #c5a608 !important;
   width: 307px;
   margin-left: 70px;
 }
+
+.staking-tab-detail1 .danger{
+border: none ;
+}

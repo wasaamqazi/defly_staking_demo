@@ -3,18 +3,29 @@ import "./nftTier.scss";
 import tierBack from "../../assets/images/tierBack.png";
 
 const TokenTier = () => {
-
   return (
     <div>
       <section className="tokenTier">
         <div className="container">
           <div className="section-header">
             <h1>staking</h1>
+
             <img
               src="\assets\images\headingBackground.png"
               alt=""
               className="img-fluid"
             />
+          </div>
+          <div className="staking-tab-detail1">
+            <p>
+              Staking $DeFly tokens in four tiers offers token holders a way to
+              earn rewards while supporting the network's security. Each tier
+              has different rewards, with higher tiers providing greater
+              benefits. However, unstaking before the specified time will result
+              in a 2% penalty on the tokens staked and no NFT will be given as a
+              reward. This penalty is designed to discourage premature unstaking
+              and maintain stability in the staking system.
+            </p>
           </div>
 
           <ul className="nav nav-tabs tier-parentTab" id="myTab" role="tablist">
@@ -34,13 +45,13 @@ const TokenTier = () => {
                   alt=""
                   className="tierback"
 
-                //   className={isActive ? "tierback" : "tierBackRotate"}
+                  //   className={isActive ? "tierback" : "tierBackRotate"}
                 />
               </button>
               <p
                 data-bs-target="#tier1"
                 data-bs-toggle="tab"
-              // onClick={rotateback}
+                // onClick={rotateback}
               >
                 tier 1
               </p>
@@ -107,7 +118,8 @@ const TokenTier = () => {
               tabIndex="0"
             >
               <p className="tier-tabContent">
-                Tier1 : You Can Stake Your DEFLY BALL NFT for 15 Days
+                Tier1 : You Can Stake Your DEFLY TOKENS for 15 Days and Get 1
+                NFT
               </p>
             </div>
             <div
@@ -118,7 +130,8 @@ const TokenTier = () => {
               tabIndex="0"
             >
               <p className="tier-tabContent">
-                Tier1 : You Can Stake Your DEFLY BALL NFT for 30 Days
+                Tier2 : You Can Stake Your DEFLY TOKENS for 30 Days and Get 2
+                NFT
               </p>
             </div>
             <div
@@ -129,7 +142,8 @@ const TokenTier = () => {
               tabIndex="0"
             >
               <p className="tier-tabContent">
-                Tier1 : You Can Stake Your DEFLY BALL NFT for 60 Days
+                Tier3 : You Can Stake Your DEFLY TOKENS for 60 Days and Get 3
+                NFT
               </p>
             </div>
             <div
@@ -140,7 +154,8 @@ const TokenTier = () => {
               tabIndex="0"
             >
               <p className="tier-tabContent">
-                Tier1 : You Can Stake Your DEFLY BALL NFT for 90 Days
+                Tier4 : You Can Stake Your DEFLY TOKENS for 90 Days and Get 4
+                NFT
               </p>
             </div>
           </div>

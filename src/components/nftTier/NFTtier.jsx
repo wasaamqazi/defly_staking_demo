@@ -194,6 +194,7 @@ const NFTtier = () => {
         defly_mint_ERC721_contractABI,
         VITE_DEFLY_MINT_721
       );
+      console.log(VITE_DEFLY_NFT_STAKING);
 
       window.defly_mint_contract.methods
         .approve(VITE_DEFLY_NFT_STAKING, currentItem.tokenId)
@@ -223,6 +224,7 @@ const NFTtier = () => {
         defly_mint_old,
         VITE_MINT_OLD
       );
+      console.log(VITE_DEFLY_NFT_STAKING);
 
       window.defly_nft_contract_old.methods
         .approve(VITE_DEFLY_NFT_STAKING, currentItem.tokenId)
@@ -297,16 +299,19 @@ const NFTtier = () => {
                 className="img-fluid"
               />
             </div>
-            {/* <div className="staking-tab-detail1">
-            <p>
-              Lorem ipsum dolor sit amet consectetur. Feugiat nisl diam turpis
-              sed nec tellus egestas sed. Tincidunt molestie sed morbi lacus
-              quis at cras pharetra duis. Morbi pellentesque risus sociis ipsum
-              nam id porttitor nunc donec. Commodo mus rhoncus nunc consequat.
-              Volutpat morbi sollicitudin sapien vitae at et eleifend semper. Eu
-              quis malesuada aliquet dolor.
-            </p>
-          </div> */}
+            <div className="staking-tab-detail1">
+              <p>
+                Staking NFTs in four tiers is a novel way to not just secure
+                your digital assets for a certain time, but also reap the
+                benefits of a tiered reward system. Each tier offers different
+                rewards, with higher tiers providing higher rewards (tokens).
+                However, unstaking before the specified time will result in a 2%
+                penalty on the rewards earned for the days the NFTs were staked.
+                It's important to carefully consider the length of time you are
+                willing to commit to staking before participating in a staking
+                program for NFTs.
+              </p>
+            </div>
             <ul
               className="nav nav-tabs tier-parentTab"
               id="myTab"
@@ -404,7 +409,8 @@ const NFTtier = () => {
                 tabIndex="0"
               >
                 <p className="tier-tabContent">
-                  Tier1 : You Can Stake Your DEFLY BALL NFT for 15 Days
+                  Tier1 : You Can Stake Your DEFLY BALL NFT for 15 Days and Get
+                  5000 Tokens
                 </p>
               </div>
               <div
@@ -415,7 +421,8 @@ const NFTtier = () => {
                 tabIndex="0"
               >
                 <p className="tier-tabContent">
-                  Tier2 : You Can Stake Your DEFLY BALL NFT for 30 Days
+                  Tier2 : You Can Stake Your DEFLY BALL NFT for 30 Days and Get
+                  7500 Tokens
                 </p>
               </div>
               <div
@@ -426,7 +433,8 @@ const NFTtier = () => {
                 tabIndex="0"
               >
                 <p className="tier-tabContent">
-                  Tier3 : You Can Stake Your DEFLY BALL NFT for 60 Days
+                  Tier3 : You Can Stake Your DEFLY BALL NFT for 60 Days and Get
+                  12500 Tokens
                 </p>
               </div>
               <div
@@ -437,7 +445,8 @@ const NFTtier = () => {
                 tabIndex="0"
               >
                 <p className="tier-tabContent">
-                  Tier4 : You Can Stake Your DEFLY BALL NFT for 90 Days
+                  Tier4 : You Can Stake Your DEFLY BALL NFT for 90 Days and Get
+                  17500 Tokens
                 </p>
               </div>
             </div>
