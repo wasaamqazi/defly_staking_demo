@@ -42,9 +42,9 @@ const Footer = () => {
               </div>
               <a href="#">Whitepaper</a>
               <a href="#">Pitch Deck</a>
-              <Link to="https://market.deflyball.com/" target="_blank">
+              <a href="https://market.deflyball.com/" target="_blank">
                 Marketplace
-              </Link>
+              </a>
               <a href="#">Smart contract</a>
             </div>
             <div className="learn-more subscribe-us">
