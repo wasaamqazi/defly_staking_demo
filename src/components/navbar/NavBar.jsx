@@ -5,11 +5,10 @@ import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const NavBar = () => {
-
-  //Main Net
-  // const bnbChainId = "0x38";
+  // Main Net
+  const bnbChainId = "0x38";
   //Test Net
-  const bnbChainId = "0x61";
+  // const bnbChainId = "0x61";
 
   const [selectwallet, setShowSlctWallet] = useState(false);
   const SWhandleClose = () => setShowSlctWallet(false);
@@ -22,8 +21,19 @@ const NavBar = () => {
       try {
         const addressArray = await window.ethereum.request({
           method: "eth_requestAccounts",
+          params: [{ chainId: bnbChainId }],
         });
 
+        if (window.ethereum.chainId != bnbChainId) {
+          await window.ethereum.request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: bnbChainId }],
+          });
+
+          // toast.error("Please connect to BSC main network", {
+          //   toastId: "error1",
+          // });
+        }
         const obj = {
           status: "👆🏽 Write a message in the text-field above.",
           address: addressArray[0],
@@ -84,6 +94,7 @@ const NavBar = () => {
         const addressArray = await window.ethereum.request({
           method: "eth_accounts",
         });
+        console.log(window.ethereum);
         if (addressArray.length > 0) {
           return {
             address: addressArray[0],
@@ -188,7 +199,6 @@ const NavBar = () => {
     walletAtLoad();
   }, []);
 
-
   return (
     <div>
       <section className="nav-bar">
@@ -259,7 +269,6 @@ const NavBar = () => {
                   </a>
                 </li>
                 <li className="nav-item">
-
                   {walletAddress && walletAddress != "" ? (
                     <button>
                       {"" +
@@ -272,7 +281,6 @@ const NavBar = () => {
                       Connect Wallet
                     </button>
                   )}
-
                 </li>
               </ul>
             </div>
