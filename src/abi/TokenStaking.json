@@ -35,6 +35,25 @@
 		"type": "event"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "Tier",
+				"type": "uint256"
+			}
+		],
+		"name": "CheckTierURI",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "ERC20Address",
 		"outputs": [
@@ -105,27 +124,19 @@
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
-		"name": "URI",
+		"name": "URITier",
 		"outputs": [
 			{
 				"internalType": "string",
 				"name": "",
 				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "counter",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "_value",
-				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -177,7 +188,76 @@
 				"type": "string"
 			}
 		],
-		"name": "setURI",
+		"name": "setTier1",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_uri1",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_uri2",
+				"type": "string"
+			}
+		],
+		"name": "setTier2",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_uri1",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_uri2",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_uri3",
+				"type": "string"
+			}
+		],
+		"name": "setTier3",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_uri1",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_uri2",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_uri3",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_uri4",
+				"type": "string"
+			}
+		],
+		"name": "setTier4",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
