@@ -12,28 +12,24 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import HomePage from "./page/HomePage";
 
-
 function App() {
   const [count, setCount] = useState(0);
 
-  const test=()=>{
-    return(
-      <></>
-    )
-  }
+  const test = () => {
+    return <></>;
+  };
 
   return (
     <div className="App">
       <ToastContainer />
       <Routes>
         {/* Coming Soon */}
-        <Route path="/" element={<Landing />} /> 
+        {/* <Route path="/" element={<Landing />} />  */}
         {/* Home Page */}
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/navigateTokenStaking" element={<TokenStakingPage />} />
         <Route path="/navNFTStaking" element={<NftStaking />} />
         <Route path="/stakingDetail" element={<StakingDetail />} />
-        
       </Routes>
     </div>
   );
